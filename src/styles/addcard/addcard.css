@@ -1,0 +1,41 @@
+.add_card {
+  padding: 15px;
+}
+
+.add_card .add-card {
+  margin-top: 30px;
+}
+
+.add_card .player-info {
+  gap: 10px;
+}
+
+.add_card input, .add_card textarea {
+  padding: 10px 0 5px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+}
+
+.add_card input[type="file"] {
+  display: none;
+}
+
+.add_card textarea {
+  border-left: 1px solid var(--border);
+  padding: 10px;
+}
+
+.add_card input, .add_card textarea, .add_card label {
+  width: 100%;
+}
+
+.add_card label {
+  font-size: 0.8em;
+  color: var(--text-color2);
+}
+
+.add_card button {
+  padding: 10px;
+}
+/*# sourceMappingURL=addcard.css.map */

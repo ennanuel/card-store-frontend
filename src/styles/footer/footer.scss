@@ -1,0 +1,38 @@
+.footer {
+    max-width: 90%;
+    margin: 0 auto 50px;
+    background-color: #eee;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    
+
+    .navigate {
+        justify-content: space-between;
+        padding: 30px 20px;
+        flex-wrap: wrap;
+
+        h3 {
+            border-bottom: 1px dashed black;
+            padding-bottom: 10px;
+        }
+
+        li {
+            font-size: 0.9rem;
+            color: var(--text-color2);
+            margin-top: 10px;
+        }
+    }
+
+    .copyright {
+        padding: 30px;
+        text-align: center;
+        background-color: #222;
+        color: white;
+        font-size: 0.8rem;
+
+        p {
+            margin-bottom: 5px;
+        }
+    }
+}

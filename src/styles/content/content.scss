@@ -1,0 +1,129 @@
+.content {
+    max-width: 90%;
+    margin: 20px auto 0;
+    background-color: white;
+    padding: 20px 20px 75px;
+    border-radius: 5px 5px 0 0;
+
+    .home-content {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 25% calc(75% - 20px);
+        grid-template-areas: "sidebar main-content";
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+
+        .cat {
+
+
+            ul {
+                padding: 15px;
+
+                li {
+                    padding: 5px;
+                    cursor: pointer;
+                }
+            }
+
+            h2 {
+                border-bottom: 1px solid var(--border);
+            }
+        }
+    }
+
+    .main-content {
+        grid-area: main-content;
+
+        .alph-cat {
+            gap: 10px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin: 20px;
+            flex-wrap: wrap;
+
+            li {
+                padding: 2px 7px;
+                cursor: pointer;
+                background-color: transparent;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    color: white;
+                    background-color: var(--search-button-bg);
+                    border-color: none;
+                }
+            }
+        }
+
+        
+
+        .intro {
+
+            p {
+                margin: 20px 0;
+                font-size: 0.9rem;
+                color: var(--text-color2)
+            }
+        }
+    }
+}
+
+.cards {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 30px;
+    grid-row-gap: 15px;
+
+    .card {
+        padding: 10px;
+        gap: 10px;
+
+        .small-card-info{
+            width: 100%;
+
+            .card-title {
+                border-bottom: 1px solid var(--text-color1);
+                font-weight: 400;
+                font-size: 1.1rem;
+                color: var(--text-color1);
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+            }
+
+            .card-desc {
+                font-size: 0.8rem;
+                color: var(--text-color2);
+            }
+
+            .card-price {
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 10px;
+
+                span {
+                    color: var(--text-color2);
+                    font-size: 0.7rem;
+                    top: -5px;
+                }
+            }
+        }
+
+        .card-img {
+            max-width: 30%;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 100%;
+            } 
+        }
+
+        
+    }
+}

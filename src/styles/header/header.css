@@ -1,0 +1,207 @@
+.header {
+  max-width: 90%;
+  margin: 10px auto;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.header .top {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 30px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.header .top .logo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.header .top .search {
+  gap: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 40px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.header .top .search .search-input {
+  width: 100%;
+  max-width: 300px;
+}
+
+.header .top .search .search-input input {
+  border: none;
+  outline: none;
+  padding: 0 20px;
+}
+
+.header .top .search .search-input button {
+  height: 100%;
+  border-radius: 0;
+  outline: none;
+  border: 1px solid var(--search-button-bg);
+  background-color: var(--search-button-bg);
+  font-size: 1.2em;
+  width: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.header .top .search .cart-btn {
+  gap: 3px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: 0.3s background-color ease;
+  transition: 0.3s background-color ease;
+}
+
+.header .top .search .cart-btn .cart-icon {
+  font-size: 1.7rem;
+  z-index: 0;
+}
+
+.header .top .search .cart-btn .cart-icon .cart-number {
+  top: 0;
+  right: 0;
+  display: block;
+  padding: 3px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  -webkit-transform: translateX(20%) translateY(-20%);
+          transform: translateX(20%) translateY(-20%);
+  border-radius: 8px;
+  background-color: red;
+  color: white;
+}
+
+.header .top .search .cart-btn:hover {
+  background-color: var(--link-hover-bg);
+  color: white;
+  border-color: transparent;
+}
+
+.header .top .search .cart-btn:hover .cart-icon .cart-number {
+  color: var(--link-hover-bg);
+  background-color: white;
+}
+
+.header .bottom {
+  background-color: var(--notification-bg);
+  border-radius: 0 0 5px 5px;
+}
+
+.header .bottom ul {
+  font-weight: 700;
+}
+
+.header .bottom ul li {
+  cursor: pointer;
+  padding: 15px 10px;
+  background-color: transparent;
+}
+
+.header .bottom ul li p {
+  gap: 3px;
+}
+
+.header .bottom ul li:hover {
+  background-color: var(--link-hover-bg);
+  color: white;
+}
+
+.header .bottom .menu-icon {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 1.3em;
+}
+
+.header .bottom .menu-icon span {
+  border-radius: 3px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  max-width: 25px;
+  aspect-ratio: 1;
+  padding: 5px;
+  display: none;
+}
+
+.header .bottom .menu-icon span:active {
+  background-color: var(--text-color1);
+  color: var(--notification-bg);
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.header .profile .profile_info {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  gap: 10px;
+  min-width: 120px;
+  -webkit-transition: 0.5s opacity ease;
+  transition: 0.5s opacity ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.header .profile .profile_info .uid {
+  font-size: 0.8em;
+  color: var(--text-color1);
+}
+
+.header .profile .profile_info a {
+  color: white;
+  background-color: var(--text-color1);
+  padding: 5px;
+  font-size: 0.7em;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.header .profile .profile_info button {
+  width: 100%;
+  background: none;
+  color: var(--text-color1);
+  border: none;
+  border-radius: none;
+  font-size: 0.9em;
+}
+
+.header .profile .profile_info button:hover {
+  text-decoration: underline;
+}
+
+.header .profile img {
+  height: 100%;
+  aspect-ratio: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--search-button-bg);
+}
+
+.header .profile:hover .profile_info {
+  opacity: 1;
+  pointer-events: all;
+}
+/*# sourceMappingURL=header.css.map */

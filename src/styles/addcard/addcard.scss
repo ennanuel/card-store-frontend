@@ -1,0 +1,40 @@
+.add_card {
+    padding: 15px;
+
+    .add-card {
+        margin-top: 30px;
+    }
+
+    .player-info {
+        gap: 10px;
+    }
+
+    input, textarea {
+        padding: 10px 0 5px;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        outline: none;
+    } 
+
+    input[type="file"] {
+        display: none;
+    }
+
+    textarea {
+        border-left: 1px solid var(--border);
+        padding: 10px;
+    }
+
+    input, textarea, label {
+        width: 100%;
+    }
+
+    label {
+        font-size: 0.8em;
+        color: var(--text-color2)
+    }
+
+    button {
+        padding: 10px;
+    }
+}

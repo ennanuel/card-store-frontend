@@ -1,0 +1,59 @@
+.card-info {
+    margin: 20px auto;
+    padding: 15px;
+    gap: 15px;
+
+    .player-image {
+        flex: 2;
+
+        img {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: auto;
+            max-height: 50vh;
+        }
+    }
+
+    .player-info {
+        flex: 2;
+
+        .player-name {
+            font-size: 2rem;
+            color: var(--text-color1)
+        }
+
+        .player-card-desc {
+            color: var(--text-color2);
+            margin: 20px auto;
+        }
+
+        .additional-info {
+            tr {
+                margin-top: 5px;
+            }
+            
+            .link {
+                padding-left: 15px;
+            }
+        }
+    }
+
+    .payment {
+        flex: 1;
+        border-radius: 10px;
+        padding: 10px;
+        height: fit-content;
+
+        .price {
+            font-size: 2em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 5px 0;
+            color: var(--text-color1)
+        }
+    }
+}
