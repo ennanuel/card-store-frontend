@@ -3,6 +3,27 @@
   padding: 5%;
 }
 
+.login-register .pword_input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.login-register .pword_input input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0;
+}
+
+.login-register .pword_input button {
+  background-color: transparent;
+  color: var(--text-color1);
+  font-size: 1.2em;
+}
+
 .login-register form {
   max-width: 600px;
   padding: 5%;

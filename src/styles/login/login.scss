@@ -2,6 +2,23 @@
     min-height: 100vh;
     padding: 5%;
 
+    .pword_input {
+        flex: 1;
+        padding: 0;
+        padding-left: 10px;
+
+        input {
+            flex: 1;
+            margin: 0;
+        }
+
+        button {
+            background-color: transparent;
+            color: var(--text-color1);
+            font-size: 1.2em;
+        }
+    }
+
     form {
         max-width: 600px;
         padding: 5%;
