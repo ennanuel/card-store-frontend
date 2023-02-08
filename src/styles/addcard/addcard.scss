@@ -3,16 +3,25 @@
 
     .add-card {
         margin-top: 30px;
+        gap: 15px;
     }
 
     .player-info {
-        gap: 10px;
+        flex: 1;
+
+        .names {
+            column-gap: 10px;
+
+            input {
+                width: 100%;
+            }
+        }
     }
 
     input, textarea {
-        padding: 10px 0 5px;
-        border: none;
-        border-bottom: 1px solid var(--border);
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border: 1px solid var(--notification-bg);
         outline: none;
     } 
 
@@ -20,21 +29,32 @@
         display: none;
     }
 
-    textarea {
-        border-left: 1px solid var(--border);
-        padding: 10px;
-    }
-
     input, textarea, label {
         width: 100%;
     }
 
     label {
+        margin-bottom: 5px;
         font-size: 0.8em;
         color: var(--text-color2)
     }
 
     button {
         padding: 10px;
+    }
+    
+    .input-img {
+        height: fit-content;
+        max-height: 90vh;
+        flex: 1;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+            margin: auto;
+        }
     }
 }

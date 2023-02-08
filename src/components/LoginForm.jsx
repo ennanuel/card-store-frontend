@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BiShow, BiHide } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
 const LoginForm = ({ handleLogin, handleLoginChange, authStatus }) => {
@@ -8,7 +9,7 @@ const LoginForm = ({ handleLogin, handleLoginChange, authStatus }) => {
     setShowPword(prev => !prev)
   }
 
-  
+
   return (
       <form onSubmit={handleLogin} className="login full-w">
         <div className="flex-row form-quest align-items-center full-w">
@@ -21,9 +22,9 @@ const LoginForm = ({ handleLogin, handleLoginChange, authStatus }) => {
         </p>
         <div className="inputs flex-col">
             <input type="text" name="username" id="username" placeholder="Username" onChange={handleLoginChange} />
-            <div className="pword_input flex-row align-items-flexend">
-                <input type={showPword ? 'text': 'password'} name="password" id="password" placeholder="Password" onChange={handleRegisterChange} />
-                <button className="change_input_type flex-row justify-content-center align-items-center" type="button" onClick={handleClick}>
+            <div className="pword_input flex-row align-items-flexend relative">
+                <input type={showPword ? 'text': 'password'} name="password" id="password" placeholder="Password" onChange={handleLoginChange} />
+                <button className="change_input_type absolute flex-row justify-content-center align-items-center" type="button" onClick={handleClick}>
                 {
                   showPword ?
                   <BiHide /> :

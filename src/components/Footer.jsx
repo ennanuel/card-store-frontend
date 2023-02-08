@@ -20,8 +20,8 @@ const Footer = () => {
             }
         </div>
         <div className="copyright">
-            <p>2001-2023 Nexmark, Inc.</p>
-            <p><a href="http://cardStore.netlify.app" className="link">cardStore.netlify.app</a> features a wide selection of football trading cards,</p>
+            <p>2001-2023 cardStore, Inc.</p>
+            <p><a href="http://cardstore.netlify.app" style={{color: 'var(--notification-bg)', textDecoration: 'none'}} className="link">cardStore.netlify.app</a> features a wide selection of sports trading cards,</p>
             <p>including rookie cards, team sets and graded cards.</p>
         </div>
     </footer>

@@ -64,6 +64,10 @@
     .footer .navigate {
         gap: 20px;
     }
+
+    .names, .add-card {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 360px) {

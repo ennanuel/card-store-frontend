@@ -46,9 +46,9 @@ const RegisterForm = ({ register, handleRegisterChange, handleRegister, pwordChe
             
             <input type="text" name="username" id="username" placeholder="Username" onChange={handleRegisterChange} />
             <div className="passwords full-w flex-row">
-              <div className="pword_input flex-row align-items-flexend">
+              <div className="pword_input relative flex-row align-items-flexend">
                 <input type={showPword ? 'text': 'password'} name="password" id="password" placeholder="Password" onChange={handleRegisterChange} />
-                <button className="change_input_type flex-row justify-content-center align-items-center" type="button" onClick={handleClick}>
+                <button className="change_input_type absolute flex-row justify-content-center align-items-center" type="button" onClick={handleClick}>
                   {
                     showPword ?
                     <BiHide /> :

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import image from '../assets/card-images/91UKzod+lkL._AC_SL1500_.jpg'
 
 const Profile = ({user, setUser}) => {
-    console.log(typeof(user))
     const logOut = () => {
         setUser(null);
         localStorage.clear();

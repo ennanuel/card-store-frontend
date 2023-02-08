@@ -1,6 +1,5 @@
 import Notification from "./Notification";
 import Header from "./Header";
-import Content from "./Content";
 import Card from "./Card";
 import Footer from "./Footer";
 import CardInfo from "./CardInfo";
@@ -11,5 +10,7 @@ import LoginForm from "./LoginForm";
 import Profile from "./Profile"
 import UserInfo from "./UserInfo";
 import EditInfo from "./EditInfo";
+import Sidebar from "./Sidebar";
+import About from "./About"
 
-export { Notification, Header, Content, Card, Footer, CardInfo, PageInfo, SellCard, RegisterForm, LoginForm, Profile, UserInfo, EditInfo };
+export { Notification, Header, Card, Footer, CardInfo, PageInfo, SellCard, RegisterForm, LoginForm, Profile, UserInfo, EditInfo, Sidebar, About };

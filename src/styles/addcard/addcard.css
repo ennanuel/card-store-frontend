@@ -4,16 +4,28 @@
 
 .add_card .add-card {
   margin-top: 30px;
+  gap: 15px;
 }
 
 .add_card .player-info {
-  gap: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.add_card .player-info .names {
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+}
+
+.add_card .player-info .names input {
+  width: 100%;
 }
 
 .add_card input, .add_card textarea {
-  padding: 10px 0 5px;
-  border: none;
-  border-bottom: 1px solid var(--border);
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 1px solid var(--notification-bg);
   outline: none;
 }
 
@@ -21,21 +33,37 @@
   display: none;
 }
 
-.add_card textarea {
-  border-left: 1px solid var(--border);
-  padding: 10px;
-}
-
 .add_card input, .add_card textarea, .add_card label {
   width: 100%;
 }
 
 .add_card label {
+  margin-bottom: 5px;
   font-size: 0.8em;
   color: var(--text-color2);
 }
 
 .add_card button {
   padding: 10px;
+}
+
+.add_card .input-img {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 90vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+}
+
+.add_card .input-img img {
+  width: 100%;
+  max-height: 100%;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: auto;
 }
 /*# sourceMappingURL=addcard.css.map */

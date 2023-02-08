@@ -1,8 +1,7 @@
 import { Card } from '../components'
 import { CardInfo, PageInfo } from '../components'
 
-const ViewCard = () => {
-    const letters = 'abcdef'.split('')
+const ViewCard = ({ cards }) => {
     
     return (
         <article className="view-card">
@@ -12,7 +11,7 @@ const ViewCard = () => {
                 <h2 className="title full-border">Related Players</h2>
                 <ul className="cards">   
                     {
-                        letters.map( ( letter, i) => <li key={i}><Card /></li> )
+                        cards?.map( ( card, i) => <li key={i}><Card card={card} /></li> )
                     }
                 </ul>
             </div>

@@ -5,17 +5,18 @@
     .pword_input {
         flex: 1;
         padding: 0;
-        padding-left: 10px;
-
-        input {
-            flex: 1;
-            margin: 0;
-        }
 
         button {
             background-color: transparent;
             color: var(--text-color1);
             font-size: 1.2em;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            top: 0;
+            right: 0;
+            background-color: white;
+            padding: 0 15px;
         }
     }
 

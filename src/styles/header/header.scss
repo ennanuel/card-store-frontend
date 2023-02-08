@@ -11,6 +11,11 @@
 
         .logo {
             flex: 1;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
         }
 
         .search {
@@ -87,17 +92,37 @@
         background-color: var(--notification-bg);
         border-radius: 0 0 5px 5px;
 
+        .add_card_btn {
+            padding: 0;
+            flex: 1;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 5px;
+
+            a {
+                background-color: var(--text-color1);
+                border: none;
+                outline: none;
+                color: white;
+                padding: 10px 15px;
+                text-decoration: none;
+                border-radius: 3px;
+            }
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
         ul {
             font-weight: 700;
 
-            li {
+            a {
                 cursor: pointer;
                 padding: 15px 10px;
                 background-color: transparent;
-
-                p {
-                    gap: 3px;
-                }
+                text-decoration: none;
+                color: var(--text-color1);
 
                 &:hover {
                     background-color: var(--link-hover-bg);

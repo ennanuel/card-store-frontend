@@ -2,34 +2,10 @@ export const footerNavigate = [
     {
         title: "Football Cards",
         links: [
-            "Football Card Singles",
-            "Football Cards by Set",
-            "Football Team Sets",
-            "Football Player Lots",
+            "Cards by Player",
+            "Cards by Rating",
             "Cards by Team",
-            "Cards by College",
             "Other Sports",
-            "Graded Cards",
-        ]
-    },
-    {
-        title: "Site Information",
-        links: [
-            "View Shopping Cart",
-            "Checkout Order",
-            "Advanced Search",
-            "My Watchlist Login",
-            "Contact Us",
-            "Privacy Policy",
-        ]
-    },
-    {
-        title: "Other Pages",
-        links: [
-            "Football Card Gallery",
-            "Football Hall of Fame",
-            "Football Card History",
-            "Other Sites",
         ]
     },
     {
@@ -64,4 +40,27 @@ export const footerNavigate = [
             "Instagram",
         ]
     },
+]
+
+export const navList = [
+    {
+        name: 'Home',
+        link: '/'
+    },
+    {
+        name: 'By Player',
+        link: '/'
+    },
+    {
+        name: 'By Ranking',
+        link: '/'
+    },
+    {
+        name: 'By Team',
+        link: '/'
+    },
+    {
+        name: 'By Sport',
+        link: '/'
+    }
 ]
