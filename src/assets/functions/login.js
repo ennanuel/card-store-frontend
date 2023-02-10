@@ -1,3 +1,5 @@
+import { apiURL } from "../data";
+
 export const checkLogin = (data, setUser, setAuthStatus, navigate, setLoading) => {
     setLoading(true)
 
@@ -13,7 +15,7 @@ export const checkLogin = (data, setUser, setAuthStatus, navigate, setLoading) =
     redirect: 'follow'
     };
 
-    fetch("http://localhost:5000/api/auth/login", requestOptions)
+    fetch(`${apiURL}/auth/login`, requestOptions)
     .then(response => {
         if(response.status !== 200) {
             setAuthStatus('Incorrect username or password')

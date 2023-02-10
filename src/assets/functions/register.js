@@ -1,3 +1,5 @@
+import { apiURL } from "../data";
+
 export const registerAuth = ({...inputs}) => {
     for(let [input, value] of Object.entries(inputs)) {
         if(!value) return `${input.split('_').join('')} field can't be left empty`;
@@ -29,9 +31,7 @@ export const registerReq = async (data, setAuthStatus, navigate, setLoading) => 
       redirect: 'follow'
     };
 
-    console.log(body)
-
-    fetch("http://localhost:5000/api/auth/register", requestOptions)
+    fetch(`${apiURL}/auth/register`, requestOptions)
       .then(response => {
         if(response.status !== 200) {
             throw 'Registeration failed!'
