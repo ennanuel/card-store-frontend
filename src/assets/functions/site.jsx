@@ -1,69 +1,56 @@
 import { Link } from "react-router-dom";
 import { SportFilter, NameFilter, PriceFilter, RatingFilter, TeamFilter } from "../../components/filters"
-import { fetchPlayers, fetchSports, fetchTeams } from "./card";
 
 
-export const getMenu = async (type = 'name') => {
+export const getMenu = (type, players, teams, sports) => {
   let res = [];
-  let players;
+
+  if(players == undefined || teams == undefined || sports == undefined || type == undefined ) return res;
 
   switch(type) {
     case 'name':
-      players = await fetchPlayers();
-
       res.push({
         name: 'Recently Uploaded',
-        links: players.map( elem => <Link to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> ).slice(0, 5)
+        links: players.map( elem => <Link to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> ).slice(0, 5)
       })
 
       res.push({
         name: 'Most Popular',
-        links: players.sort( (a, b) => a.price > b.price ? -1 : 1 )
+        links: players
           .slice(0, 10)
-          .map( elem => <Link to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .sort( (a, b) => a.price > b.price ? -1 : 1 )
+          .map( elem => <Link to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
       break;
     case 'rating':
-      players = await fetchPlayers();
-      console.log(players)
-      let i = 0;
-
-      for(i; i <= 100; i++) {
+      for(let i = 0; i < 100; i+=25) {
         res.push({
-          name: `From ${i} to ${i+=25}`,
-          links: players.filter( elem => elem.rating <= i )
-            .sort( a, b => a.rating > b.rating ? -1 : 1 )
+          name: `From ${i} - ${i+25}`,
+          links: players.filter( elem => elem.rating <= i + 25 && elem.rating > i )
             .slice(0, 10)
-            .map( elem => <Link to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+            .map( elem => <Link to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
         })
       }
       break;
     case 'team':
-      let teams = await fetchTeams()
-      console.log(teams)
-
       res.push({
         name: 'Popular Teams',
         links: teams.slice(0, 20).map( elem => <Link to={`/cards/team/${elem.name.replace(' ', '+')}`}>{elem.name}</Link>)
       })
       break;
     case 'sport':
-      let sports = await fetchSports()
-
       res.push({
         name: 'Popular Sports',
         links: sports.map( sport => <Link to={`/cards/sport/${sport}`}>{sport}</Link> )
       })
       break;
     case 'price':
-      players = await fetchPlayers()
-
       res.push({
         name: 'Cheaper Cards',
         links: players.filter( elem => elem.price <= 5000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
-          .map( (elem, i) => <Link key={i} to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
 
       res.push({
@@ -71,15 +58,15 @@ export const getMenu = async (type = 'name') => {
         links: players.filter( elem => elem.price <= 10000 && elem.price > 5000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
-          .map( (elem, i) => <Link key={i} to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
 
       res.push({
         name: 'Premium Cards',
-        links: players.filter( elem => elem.price > 100000 )
+        links: players.filter( elem => elem.price > 10000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
-          .map( (elem, i) => <Link key={i} to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
       break;
   }

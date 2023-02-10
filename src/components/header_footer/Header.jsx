@@ -6,11 +6,17 @@ import { getMenu } from '../../assets/functions/site'
 import { Profile } from '..'
 import { navList } from '../../assets/data'
 import '../../styles/header/header.css'
-import { fetchPlayers } from '../../assets/functions/card'
+import { fetchPlayers, fetchSports, fetchTeams } from '../../assets/functions/card'
+import MenuLinks from './MenuLinks'
+
+let firstTime = true
 
 const Header = ({user, setUser}) => {
     const [menuLinks, setMenuLinks] = useState([])
     const [showMenu, setShowMenu] = useState(false);
+    const [players, setPlayers] = useState([])
+    const [teams, setTeams] = useState([])
+    const [sports, setSports] = useState([])
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -27,11 +33,16 @@ const Header = ({user, setUser}) => {
     }
 
     useEffect( () => {
-      const navLinks = navList.map( list => list.type ? list : ({ ...list, sub: getMenu(list.type) }) )
-      console.log(fetchPlayers())
-      console.log(fetchTeams())
+      if(firstTime) {
+        firstTime = false
+        fetchPlayers(setPlayers)
+        fetchTeams(setTeams);
+        fetchSports(setSports);
+      }
+
+      const navLinks = navList.map( list => ({ ...list, sub: getMenu(list.type, players, teams, sports) }) )
       setMenuLinks(navLinks)
-    }, [])
+    }, [players, teams, sports])
 
   return (
     <header className="header full-w">
@@ -51,20 +62,7 @@ const Header = ({user, setUser}) => {
               <span>{showMenu ? <GrClose /> : <AiOutlineMenu />}</span>
             </div>
           </div>
-            <ul id="menu" className="nav-links flex-row align-items-center full-w">
-                {
-                    menuLinks.map( (menuLink, i) => {
-                      return (
-                        <li onClick={closeMenu} key={i}>
-                          <Link to={menuLink.link} className="flex-row align-items-center">{menuLink.name}</Link>
-                        </li>
-                      )
-                    })
-                }
-                {
-                  location.pathname !== '/add-card' && <li className="add_card_btn flex-row full-h"><Link to="/add-card">Add Card</Link></li>
-                }
-            </ul>
+          <MenuLinks menuLinks={menuLinks} closeMenu={closeMenu} />
       </nav>
     </header>
   )

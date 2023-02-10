@@ -44,7 +44,7 @@ export const fetchCards = (setState, setError, setEmpty, type, val, op) => {
 
 
 
-export const fetchSports = (setSports = false) => {
+export const fetchSports = (setSports) => {
   fetch(`${apiURL}/sport`)
   .then( res => {
     if(res.status !== 200) {
@@ -56,18 +56,14 @@ export const fetchSports = (setSports = false) => {
     const result = JSON.parse(dat)
     const value = result.map( elem => elem.sport )
     
-    if(setSports) {
-      setSports(value)
-    } else {
-      return value
-    }
+    setSports(value)
   })
-  .then( err => setSports ? console.error(err) : [] )
+  .then( err => console.error(err) )
 }
 
 
 
-export const fetchTeams = (setTeams = false) => {
+export const fetchTeams = (setTeams) => {
   fetch(`${apiURL}/team`)
   .then( res => {
     if(res.status !== 200) {
@@ -79,18 +75,14 @@ export const fetchTeams = (setTeams = false) => {
     const result = JSON.parse(dat)
     const value = result.map( elem => ({ name: elem.team, sport: elem.sport }))
 
-    if(setTeams) {
-      setTeams(value)
-    } else {
-      return value
-    }
+    setTeams(value)
   })
-  .then( err => setTeams ? console.error(err) : [] )
+  .then( err => console.error(err) )
 }
 
 
 
-export const fetchPlayers = () => {
+export const fetchPlayers = (setPlayers) => {
   fetch(`${apiURL}/player/`)
   .then( res => {
     if(res.status !== 200) {
@@ -100,10 +92,10 @@ export const fetchPlayers = () => {
   })
   .then( dat => {
     const result = JSON.parse(dat)
-    return result;
-    return result.map(elem => ({ names: elem.names, id: elem._id }) )
+    
+    setPlayers(result)
   })
-  .then( err => [] )
+  .then( err => console.error(err) )
 }
 
 

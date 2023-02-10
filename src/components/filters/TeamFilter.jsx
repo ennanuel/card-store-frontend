@@ -17,7 +17,7 @@ const TeamFilter = ({ navigate, val }) => {
   return (
       <article className="sport_filter flex-row align-items-center">
           <label htmlFor="select_team">Showing cards of players in <b className="highlight">{val ? val.replace('+', ' ') : "All Teams"}</b></label>
-          <select name="select_team" id="select_team" onChange={handleChange} value={val}>
+          <select name="select_team" id="select_team" onChange={handleChange}>
               <option value=""> All Team </option>
               { teams.map( (team, i) => <option key={i} value={team.name}>{team.name} ({team.sport})</option>) }
           </select>

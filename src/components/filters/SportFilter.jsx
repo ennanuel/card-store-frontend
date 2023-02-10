@@ -15,7 +15,7 @@ const SportFilter = ({ val, navigate, location }) => {
     return (
         <article className="sport_filter flex-row align-items-center">
             <label htmlFor="select_team">Showing <b className="highlight">{val ? val.replace('+', ' ') : 'All'}</b> Cards</label>
-            <select name="select_team" id="select_team" value={val} onChange={handleChange}>
+            <select name="select_team" id="select_team" onChange={handleChange}>
                 <option value=""> All Sports </option>
                 { sports.map( (sport, i) => <option key={i} value={sport}>{sport}</option>) }
             </select>
