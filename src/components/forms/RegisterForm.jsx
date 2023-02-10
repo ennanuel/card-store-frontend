@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Loader } from '../../components'
 import { MdCancel } from "react-icons/md"
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BiShow, BiHide } from 'react-icons/bi'
 
-const RegisterForm = ({ handleRegisterChange, handleRegister, pwordCheck, authStatus }) => {
+const RegisterForm = ({ handleRegisterChange, handleRegister, pwordCheck, authStatus, loading }) => {
   const [showPword, setShowPword] = useState(false)
   const handleClick = () => {
     setShowPword(prev => !prev)
@@ -12,7 +13,11 @@ const RegisterForm = ({ handleRegisterChange, handleRegister, pwordCheck, authSt
 
 
   return (
-    <form onSubmit={handleRegister} className="register full-w">
+    <form onSubmit={handleRegister} className="register relative full-w">
+      {
+        loading && 
+        <div className="form_loading absolute flex-row full-w full-h align-items-center justify-content-center"><Loader text="Please wait..." /></div>
+      }
           <div className="flex-row form-quest full-w align-items-center">
             <p className="form-text">Already Registered? <span className="form-link"><Link to="/login">Login</Link></span></p>
             <h1 className="logo">cardStore</h1>

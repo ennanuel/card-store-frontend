@@ -40,6 +40,14 @@ h6 {
   color: var(--text-color1)
 }
 
+a {
+  text-decoration: none;
+}
+
+.highlight {
+  color: var(--notification-bg)
+}
+
 .logo {
   color: var(--add-to-cart);
 }

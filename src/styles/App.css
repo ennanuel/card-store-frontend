@@ -68,6 +68,10 @@
     .names, .add-card {
         flex-direction: column;
     }
+
+    .price_filter p:not(.filter_err_msg) {
+        text-align: center;
+    }
 }
 
 @media (max-width: 360px) {

@@ -13,7 +13,7 @@ const ViewCard = ({ cards, page }) => {
                 <h2 className="title full-border">Related Players</h2>
                 <ul className="cards">   
                     {
-                        cards?.filter( card => card._id !== id ).map( ( card, i) => <li key={i}><Card card={card} /></li> )
+                        cards?.filter( card => card._id !== id ).map( ( card, i) => <li key={i}><Card card={card} /></li> ).slice(5)
                     }
                 </ul>
             </div>

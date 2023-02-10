@@ -52,6 +52,9 @@
 
 .cards_page .filter .price_filter {
   padding: 15px;
+}
+
+.cards_page .filter .price_filter .filters {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 10px;
@@ -62,14 +65,21 @@
   padding: 0 5px;
   background-color: white;
   top: 0;
-  left: 19px;
+  left: 10px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   color: var(--notification-bg);
+  font-weight: bold;
 }
 
 .cards_page .filter .price_filter .bad {
   color: red;
+}
+
+.cards_page .filter .price_filter .filter_err_msg {
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .cards_page .filter .price_filter input {
@@ -94,6 +104,10 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.cards_page .filter .price_filter p {
+  color: var(--text-color2);
 }
 
 .cards_page .cards-container {

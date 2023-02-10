@@ -1,5 +1,5 @@
 import '../styles/content/content.css'
-import { About, Sidebar, Card, AlphabetList, Loader, Error, NoResult, CardsList } from '../components'
+import { About, Sidebar, AlphabetList, CardsList } from '../components'
 
 const Home = ({ cards, error, empty }) => {
     const cat = ['Cards by Player', 'Cards by Team', 'Cards by Sport', 'Card by Rating', 'Recent Cards']
@@ -12,7 +12,7 @@ const Home = ({ cards, error, empty }) => {
                 <AlphabetList />
 
                 <h2 className="title full-border">Newest Sport Card Releases</h2>
-                <CardsList cards={cards} error={error} empty={empty} />
+                <CardsList cards={cards.slice(0, 6)} error={error} empty={empty} />
 
                 <About />
             </article>

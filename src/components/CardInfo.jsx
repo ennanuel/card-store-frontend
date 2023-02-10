@@ -2,7 +2,7 @@ import image from '../assets/card-images/empty.jpg'
 import '../styles/cardinfo/cardinfo.css'
 import SellCard from './SellCard'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getPrice } from '../assets/functions/site'
 import { fetchCard } from '../assets/functions/card'
 import { Loader, Error } from '../components'
@@ -38,15 +38,15 @@ const CardInfo = () => {
               <tbody>
                 <tr>
                     <td><b>Ranking:</b></td>
-                    <td><span className="link">{ player?.rating }</span></td>
+                    <td><span className="link"><Link to={`/cards/rating/${player?.rating}+100`}>{ player?.rating }</Link></span></td>
                 </tr>
                 <tr>
                     <td><b>Team:</b></td>
-                    <td><span className="link">{ player?.team }</span></td>
+                    <td><span className="link"><Link to={`/cards/team/${player?.team}`}>{ player?.team }</Link></span></td>
                 </tr>
                 <tr>
                     <td><b>Sport:</b></td>
-                    <td><span className="link">{ player?.sport }</span></td>
+                    <td><span className="link"><Link to={`/cards/sport/${player?.sport}`}>{ player?.sport }</Link></span></td>
                 </tr>
               </tbody>
             </table>

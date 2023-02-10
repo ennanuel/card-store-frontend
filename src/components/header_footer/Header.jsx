@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai'
 import { GrClose } from 'react-icons/gr'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { getMenu } from '../../assets/functions/site'
 import { Profile } from '..'
 import { navList } from '../../assets/data'
 import '../../styles/header/header.css'
+import { fetchPlayers } from '../../assets/functions/card'
 
 const Header = ({user, setUser}) => {
+    const [menuLinks, setMenuLinks] = useState([])
     const [showMenu, setShowMenu] = useState(false);
     const location = useLocation()
     const navigate = useNavigate()
@@ -22,6 +25,13 @@ const Header = ({user, setUser}) => {
       menu.style.maxHeight = null
       setShowMenu(false)
     }
+
+    useEffect( () => {
+      const navLinks = navList.map( list => list.type ? list : ({ ...list, sub: getMenu(list.type) }) )
+      console.log(fetchPlayers())
+      console.log(fetchTeams())
+      setMenuLinks(navLinks)
+    }, [])
 
   return (
     <header className="header full-w">
@@ -43,10 +53,13 @@ const Header = ({user, setUser}) => {
           </div>
             <ul id="menu" className="nav-links flex-row align-items-center full-w">
                 {
-                    navList.map( (navItem, i) => 
-                    <li onClick={closeMenu} key={i}>
-                        <Link to={navItem.link} className="flex-row align-items-center">{navItem.name}</Link>
-                    </li> )
+                    menuLinks.map( (menuLink, i) => {
+                      return (
+                        <li onClick={closeMenu} key={i}>
+                          <Link to={menuLink.link} className="flex-row align-items-center">{menuLink.name}</Link>
+                        </li>
+                      )
+                    })
                 }
                 {
                   location.pathname !== '/add-card' && <li className="add_card_btn flex-row full-h"><Link to="/add-card">Add Card</Link></li>

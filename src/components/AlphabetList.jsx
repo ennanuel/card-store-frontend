@@ -7,7 +7,7 @@ const AlphabetList = () => {
     return (
         <ul className="alph-cat flex-row align-items-center justify-content-center">
             {
-                alph.map( (letter, i) => <li className={`full-border ${ val === letter && 'active-alph'}`} key={i}><Link to={`/cards/name/first/${letter}`}>{letter}</Link></li> )
+                alph.map( (letter, i) => <li className={`full-border ${ val === letter && 'active-alph'}`} key={i}><Link to={`/cards/name/${letter}/first`}>{letter}</Link></li> )
             }
         </ul>
     )

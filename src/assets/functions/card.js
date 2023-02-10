@@ -1,7 +1,9 @@
+import { apiURL } from "../data"
+
 export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError) => {
     setError(false)
 
-    fetch(`http://localhost:5000/api/player/find/${id}`)
+    fetch(`${apiURL}/player/find/${id}`)
       .then(res => res.text())
       .then(data => {
         const result = JSON.parse(data)
@@ -21,7 +23,7 @@ export const fetchCards = (setState, setError, setEmpty, type, val, op) => {
   setEmpty(false)
   setError(false)
 
-  fetch(`http://localhost:5000/api/player/?type=${type}&val=${val}${op ? `&op=${op}` : ''}`)
+  fetch(`${apiURL}/player/?type=${type}&val=${val}${op ? `&op=${op}` : ''}`)
     .then(res => {
       if(res.status !== 200) {
           throw "Could not Fetch!";
@@ -42,8 +44,8 @@ export const fetchCards = (setState, setError, setEmpty, type, val, op) => {
 
 
 
-export const fetchSports = (setSports) => {
-  fetch('http://localhost:5000/api/sport')
+export const fetchSports = (setSports = false) => {
+  fetch(`${apiURL}/sport`)
   .then( res => {
     if(res.status !== 200) {
         throw "Could not Fetch!";
@@ -52,15 +54,21 @@ export const fetchSports = (setSports) => {
   })
   .then( dat => {
     const result = JSON.parse(dat)
-    setSports(result.map(elem => elem.sport ))
+    const value = result.map( elem => elem.sport )
+    
+    if(setSports) {
+      setSports(value)
+    } else {
+      return value
+    }
   })
-  .then( err => console.error(err) )
+  .then( err => setSports ? console.error(err) : [] )
 }
 
 
 
-export const fetchTeams = (setTeams) => {
-  fetch('http://localhost:5000/api/team')
+export const fetchTeams = (setTeams = false) => {
+  fetch(`${apiURL}/team`)
   .then( res => {
     if(res.status !== 200) {
         throw "Could not Fetch!";
@@ -69,9 +77,33 @@ export const fetchTeams = (setTeams) => {
   })
   .then( dat => {
     const result = JSON.parse(dat)
-    setTeams(result.map(elem => ({ name: elem.team, sport: elem.sport }) ))
+    const value = result.map( elem => ({ name: elem.team, sport: elem.sport }))
+
+    if(setTeams) {
+      setTeams(value)
+    } else {
+      return value
+    }
   })
-  .then( err => console.error(err) )
+  .then( err => setTeams ? console.error(err) : [] )
+}
+
+
+
+export const fetchPlayers = () => {
+  fetch(`${apiURL}/player/`)
+  .then( res => {
+    if(res.status !== 200) {
+        throw "Could not Fetch!";
+      }
+    return res.text()
+  })
+  .then( dat => {
+    const result = JSON.parse(dat)
+    return result;
+    return result.map(elem => ({ names: elem.names, id: elem._id }) )
+  })
+  .then( err => [] )
 }
 
 
@@ -97,7 +129,7 @@ export const addCard = async (data, navigate, setError, setLoading) => {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:5000/api/player/create", requestOptions)
+    fetch(`${apiURL}/player/create`, requestOptions)
       .then(response => response.text())
       .then(result => {
         setLoading(false)

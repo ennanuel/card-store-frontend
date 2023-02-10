@@ -8,7 +8,7 @@ import { fetchCards } from './assets/functions/card'
 import { getPathInfo } from './assets/functions/site'
 
 const App = () => {
-  const [user, setUser] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null)
+  const [user, setUser] = useState(localStorage.getItem('user') !== "undefined" && localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null)
   const [page, setPage] = useState('')
   const [cards, setCards] = useState([])
   const [error, setError] = useState(false)
@@ -41,7 +41,7 @@ const App = () => {
               <Route path="/Card/:id/:name?" element={<ViewCard cards={cards} page={page} />} />
               <Route path="/Add-Card" element={<AddCard />} />
               <Route path="/User" element={<EditUser user={user} />} />
-              <Route path="/Cards/:type/:op?/:val?" element={<Cards page={page} />} />
+              <Route path="/Cards/:type/:val?/:op?" element={<Cards page={page} />} />
               <Route path="/Search/:val?" element={<Search />} />
             </Routes>
           </section>

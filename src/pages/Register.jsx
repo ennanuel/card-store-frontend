@@ -8,7 +8,7 @@ const Register = () => {
   const [register, setRegister] = useState({first_name: '', middle_name: '', last_name: '', email: '', phone: '', age: '', address: '', bank: '', account_number: '', username: '', password: '', confirmPword: ''});
   const [pwordCheck, setPwordCheck] = useState('')
   const [authStatus, setAuthStatus] = useState('')
-  const [fetchStatus, setFetchStatus] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const Register = () => {
   
   const handleRegister = (e) => {
     e.preventDefault()
-    registerReq(register, setAuthStatus, navigate)
+    registerReq(register, setAuthStatus, navigate, setLoading)
   }
 
   useEffect( () => {
@@ -29,11 +29,13 @@ const Register = () => {
 
   return (
     <div className="login-register full-w flex-col align-items-center justify-content-center">
-        <RegisterForm 
-          handleRegisterChange={handleRegisterChange} 
-          handleRegister={handleRegister}
-          pwordCheck={pwordCheck} authStatus={authStatus} 
-        />
+      <RegisterForm 
+        handleRegisterChange={handleRegisterChange} 
+        handleRegister={handleRegister}
+        pwordCheck={pwordCheck} 
+        authStatus={authStatus} 
+        loading={loading}
+       />
     </div>
   )
 }

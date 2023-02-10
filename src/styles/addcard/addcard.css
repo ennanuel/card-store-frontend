@@ -68,6 +68,9 @@
 }
 
 .form_loading {
+  top: 0;
+  left: 0;
+  border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.5);
 }
 /*# sourceMappingURL=addcard.css.map */

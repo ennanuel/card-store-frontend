@@ -1,4 +1,6 @@
-export const checkLogin = (data, setUser, setAuthStatus, navigate) => {
+export const checkLogin = (data, setUser, setAuthStatus, navigate, setLoading) => {
+    setLoading(true)
+
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -17,15 +19,17 @@ export const checkLogin = (data, setUser, setAuthStatus, navigate) => {
             setAuthStatus('Incorrect username or password')
             throw new Error(response);
         } else { 
-            response.json()
-                .then( dat => {
-                    setUser(dat);
-                    localStorage.setItem('user', JSON.stringify(dat));
-                    navigate('/');
-                })
+            return response.text()     
         }
     })
+    .then( dat => {
+        setUser(JSON.parse(dat));
+        setLoading(false)
+        localStorage.setItem('user', dat);
+        navigate('/');
+    })
     .catch(error => {
+        setLoading(false)
         console.log(error)
     });
 }

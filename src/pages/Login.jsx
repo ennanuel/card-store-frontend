@@ -6,11 +6,12 @@ import { checkLogin } from "../assets/functions/login"
 const Login = ({setUser}) => {
     const [login, setLogin] = useState({username: '', password: ''})
     const [authStatus, setAuthStatus] = useState('');
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
       e.preventDefault()
-      checkLogin(login, setUser, setAuthStatus, navigate)
+      checkLogin(login, setUser, setAuthStatus, navigate, setLoading)
     }
 
     const handleLoginChange = (e) => {
@@ -19,8 +20,13 @@ const Login = ({setUser}) => {
 
 
     return (
-        <div className="login-register full-w flex-col align-items-center justify-content-center">
-          <LoginForm handleLoginChange={handleLoginChange} handleLogin={handleLogin} login={login} authStatus={authStatus} />
+        <div className="login-register relative full-w flex-col align-items-center justify-content-center">
+          <LoginForm 
+          handleLoginChange={handleLoginChange} 
+          handleLogin={handleLogin} login={login} 
+          authStatus={authStatus}
+          loading={loading}
+          />
         </div>
     )
 }

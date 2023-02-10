@@ -7,7 +7,9 @@ export const registerAuth = ({...inputs}) => {
 
 
 
-export const registerReq = async (data, setAuthStatus, navigate) => {
+export const registerReq = async (data, setAuthStatus, navigate, setLoading) => {
+    setLoading(true)
+
     const {confirmPword, image, dob, ...others} = data
     const check = registerAuth(others)
     
@@ -38,9 +40,13 @@ export const registerReq = async (data, setAuthStatus, navigate) => {
         }
       })
       .then(result => {
+        setLoading(false)
         navigate('/login')
       })
-      .catch(error => console.error('error', error));
+      .catch(error => {
+        setLoading(false)
+        console.error('error', error)
+    });
 }
 
 

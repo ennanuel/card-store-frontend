@@ -1,3 +1,5 @@
+export const apiURL = 'http://localhost:5000/api'
+
 export const footerNavigate = [
     {
         title: "Football Cards",
@@ -49,22 +51,27 @@ export const navList = [
     },
     {
         name: 'By Player',
+        type: 'name',
         link: '/cards/name'
     },
     {
         name: 'By Rating',
+        type: 'rating',
         link: '/cards/rating'
     },
     {
         name: 'By Team',
+        type: 'team',
         link: '/cards/team'
     },
     {
         name: 'By Sport',
+        type: 'sport',
         link: '/cards/sport'
     },
     {
         name: 'By Price',
+        type: 'price',
         link: '/cards/price'
     }
 ]

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { BiShow, BiHide } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
+import { Loader } from '../../components'
 
-const LoginForm = ({ handleLogin, handleLoginChange, authStatus }) => {
+const LoginForm = ({ handleLogin, handleLoginChange, authStatus, loading }) => {
   const [showPword, setShowPword] = useState(false);
 
   const handleClick = () => {
@@ -11,7 +12,11 @@ const LoginForm = ({ handleLogin, handleLoginChange, authStatus }) => {
 
 
   return (
-      <form onSubmit={handleLogin} className="login full-w">
+      <form onSubmit={handleLogin} className="login full-w relative">
+      {
+        loading && 
+        <div className="form_loading absolute flex-row full-w full-h align-items-center justify-content-center"><Loader text="Please Wait..." /></div>
+      }
         <div className="flex-row form-quest align-items-center full-w">
             <p className="form-text">Don't have an account? <span className="form-link"><Link to="/register">Register</Link></span></p>
             <h1 className="logo">cardStore</h1>

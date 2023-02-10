@@ -1,4 +1,91 @@
+import { Link } from "react-router-dom";
 import { SportFilter, NameFilter, PriceFilter, RatingFilter, TeamFilter } from "../../components/filters"
+import { fetchPlayers, fetchSports, fetchTeams } from "./card";
+
+
+export const getMenu = async (type = 'name') => {
+  let res = [];
+  let players;
+
+  switch(type) {
+    case 'name':
+      players = await fetchPlayers();
+
+      res.push({
+        name: 'Recently Uploaded',
+        links: players.map( elem => <Link to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> ).slice(0, 5)
+      })
+
+      res.push({
+        name: 'Most Popular',
+        links: players.sort( (a, b) => a.price > b.price ? -1 : 1 )
+          .slice(0, 10)
+          .map( elem => <Link to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+      })
+      break;
+    case 'rating':
+      players = await fetchPlayers();
+      console.log(players)
+      let i = 0;
+
+      for(i; i <= 100; i++) {
+        res.push({
+          name: `From ${i} to ${i+=25}`,
+          links: players.filter( elem => elem.rating <= i )
+            .sort( a, b => a.rating > b.rating ? -1 : 1 )
+            .slice(0, 10)
+            .map( elem => <Link to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+        })
+      }
+      break;
+    case 'team':
+      let teams = await fetchTeams()
+      console.log(teams)
+
+      res.push({
+        name: 'Popular Teams',
+        links: teams.slice(0, 20).map( elem => <Link to={`/cards/team/${elem.name.replace(' ', '+')}`}>{elem.name}</Link>)
+      })
+      break;
+    case 'sport':
+      let sports = await fetchSports()
+
+      res.push({
+        name: 'Popular Sports',
+        links: sports.map( sport => <Link to={`/cards/sport/${sport}`}>{sport}</Link> )
+      })
+      break;
+    case 'price':
+      players = await fetchPlayers()
+
+      res.push({
+        name: 'Cheaper Cards',
+        links: players.filter( elem => elem.price <= 5000 )
+          .sort( (a, b) => a.price > b.price ? -1 : 1 )
+          .slice(0, 10)
+          .map( (elem, i) => <Link key={i} to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+      })
+
+      res.push({
+        name: 'Mid-Range Cards',
+        links: players.filter( elem => elem.price <= 10000 && elem.price > 5000 )
+          .sort( (a, b) => a.price > b.price ? -1 : 1 )
+          .slice(0, 10)
+          .map( (elem, i) => <Link key={i} to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+      })
+
+      res.push({
+        name: 'Premium Cards',
+        links: players.filter( elem => elem.price > 100000 )
+          .sort( (a, b) => a.price > b.price ? -1 : 1 )
+          .slice(0, 10)
+          .map( (elem, i) => <Link key={i} to={`/card/${elem.id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+      })
+      break;
+  }
+  return res;
+}
+
 
 export const getPathInfo = (setState, location) => {
     const siteTitle = document.getElementById('title')
@@ -33,16 +120,16 @@ export const getPrice = (val) => {
 
 
 
-export const showFilter = (type, op, navigate, location) => {
+export const showFilter = (type, op, val, navigate, location) => {
   switch (type) {
     case 'team':
-      return <TeamFilter navigate={navigate} />;
+      return <TeamFilter navigate={navigate} val={val} />;
     case 'sport':
-      return <SportFilter op={op} navigate={navigate} location={location} />;
+      return <SportFilter navigate={navigate} val={val} />;
     case 'price':
-      return <PriceFilter op={op} navigate={navigate} location={location} />;
+      return <PriceFilter navigate={navigate} val={val} location={location} />;
     case 'rating':
-      return <RatingFilter op={op} navigate={navigate} location={location} />;
+      return <RatingFilter navigate={navigate} val={val} location={location} />;
     default:
       return <NameFilter op={op} navigate={navigate} location={location} />;
   }
@@ -60,5 +147,20 @@ export const getText = (type) => {
       return "By Player Rating";
     default:
       return "By Player Name";
+  }
+}
+
+export const getFilterText = (type) => {
+  switch (type) {
+    case 'team':
+      return "Team";
+    case 'sport':
+      return "Sport";
+    case 'price':
+      return "Price";
+    case 'rating':
+      return "Rating";
+    default:
+      return "Name";
   }
 }
