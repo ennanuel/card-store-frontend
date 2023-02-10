@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
+import { imageURL } from '../assets/data'
 import { getPrice } from '../assets/functions/site'
 
 const Card = ({ card }) => {
-  const imgURL = 'http://localhost:5000/images/' + card.image
+  const imgURL = imageURL + card.image
 
   return (
     <div className="card flex-row align-items-center full-border">

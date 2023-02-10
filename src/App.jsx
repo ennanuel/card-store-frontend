@@ -3,7 +3,7 @@ import { Cart, Home, ViewCard, Login, Register, EditUser, Cards, Search } from '
 import { Header, Notification, Footer, } from './components'
 import AddCard from './pages/AddCard'
 import './styles/App.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { fetchCards } from './assets/functions/card'
 import { getPathInfo } from './assets/functions/site'
 
@@ -13,17 +13,21 @@ const App = () => {
   const [cards, setCards] = useState([])
   const [error, setError] = useState(false)
   const [empty, setEmpty] = useState(false)
+  
+  const divRef = useRef()
 
   const location = useLocation()
 
   useEffect( () => {
     getPathInfo(setPage, location)
+    
+    divRef.current.scrollIntoView({ behavior: "smooth"})
 
     fetchCards(setCards, setError, setEmpty)
   }, [location] )
 
   return (
-    <>
+    <div id="App" ref={divRef}>
       {
         !user ? 
         <Routes>
@@ -48,7 +52,7 @@ const App = () => {
           <Footer />
         </>
       }
-    </>
+    </div>
   )
 }
 

@@ -1,3 +1,5 @@
+import { imageURL } from "../data"
+
 import { apiURL } from "../data"
 
 export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError) => {
@@ -8,7 +10,7 @@ export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError
       .then(data => {
         const result = JSON.parse(data)
         setPlayer(result)
-        setImgURL('http://localhost:5000/images/' + result.image)
+        setImgURL(imageURL + result.image)
         setPrice(getPrice(result.price))
       })
       .catch(err => {
