@@ -1,0 +1,93 @@
+.cards_page {
+    
+
+    .filter {
+        margin: 15px auto;
+
+        h3 {
+            padding: 5px 10px;
+            background-color: var(--text-color1);
+            color: white;
+
+        }
+
+        .filter_btn {
+            min-width: max-content;
+            flex: 1;
+        }
+        
+        .filter_btns {
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 0 10px;
+
+            .active-name-filter {
+                background-color: var(--search-button-bg);
+                color: white;
+            }
+        }
+
+        .sport_filter {
+            padding: 15px;
+
+            * {
+                flex: 1;
+            }
+
+            select {
+                max-width: 400px;
+                padding: 10px;
+                outline: none;
+                border: 2px solid var(--border);
+
+                &:focus {
+                    border-color: var(--notification-bg)
+                }
+            }
+        }
+
+        .price_filter {
+            padding: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            label {
+                font-size: 0.8em;
+                padding: 0 5px;
+                background-color: white;
+                top: 0;
+                left: 19px;
+                transform: translateY(-50%);
+                color: var(--notification-bg)
+            }
+
+            .bad {
+                color: red;
+            }
+
+            input {
+                display: block;
+                outline: none;
+                padding: 10px;
+                
+                &:focus {
+                    border-color: var(--notification-bg);
+                    box-shadow: 0 0 2px var(--notification-bg)
+                }
+            }
+
+            .input-container {
+                flex: 2;
+            }
+
+            button {
+                flex: 1
+            }
+        }
+    }
+
+    .cards-container {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+}

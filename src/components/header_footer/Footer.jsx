@@ -1,6 +1,6 @@
-import { footerNavigate } from '../assets/data'
+import { footerNavigate } from '../../assets/data'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
-import '../styles/footer/footer.css'
+import '../../styles/footer/footer.css'
 
 const Footer = () => {
   return (

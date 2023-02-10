@@ -49,18 +49,22 @@ export const navList = [
     },
     {
         name: 'By Player',
-        link: '/'
+        link: '/cards/name'
     },
     {
-        name: 'By Ranking',
-        link: '/'
+        name: 'By Rating',
+        link: '/cards/rating'
     },
     {
         name: 'By Team',
-        link: '/'
+        link: '/cards/team'
     },
     {
         name: 'By Sport',
-        link: '/'
+        link: '/cards/sport'
+    },
+    {
+        name: 'By Price',
+        link: '/cards/price'
     }
 ]

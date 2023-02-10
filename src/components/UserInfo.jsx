@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserInfo = ({user}) => {
+const UserInfo = ({user, handleClick}) => {
   return (
     <div className="user_info flex-col">
         <h2 className="title full-border">User Info</h2>
@@ -15,6 +15,7 @@ const UserInfo = ({user}) => {
         <p className="profile_data relative full-border"><span className="profile_field absolute">date of birth</span>{user.dob}</p>
         <p className="profile_data relative full-border"><span className="profile_field absolute">bank</span>{user.bank}</p>
         <p className="profile_data relative full-border"><span className="profile_field absolute">account number</span>{user.account_number}</p>
+        <button className="sell-btn action-btn relative" onClick={handleClick}>EDIT INFO</button>
     </div>
   )
 }

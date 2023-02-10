@@ -6,6 +6,11 @@
   gap: 20px;
 }
 
+.edit_user .user_info p {
+  word-break: break-all;
+  color: var(--text-color2);
+}
+
 .edit_user .user_info .names {
   gap: 15px;
 }

@@ -36,29 +36,6 @@
     .main-content {
         grid-area: main-content;
 
-        .alph-cat {
-            gap: 10px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            margin: 20px;
-            flex-wrap: wrap;
-
-            li {
-                padding: 2px 7px;
-                cursor: pointer;
-                background-color: transparent;
-                transition: background-color 0.3s ease;
-
-                &:hover {
-                    color: white;
-                    background-color: var(--search-button-bg);
-                    border-color: none;
-                }
-            }
-        }
-
-        
-
         .intro {
 
             p {
@@ -80,9 +57,14 @@
     .card {
         padding: 10px;
         gap: 10px;
+        height: 100%;
 
         .small-card-info{
             width: 100%;
+
+            *:not(:last-child) {
+                margin-bottom: 10px;
+            }
 
             .card-title {
                 border-bottom: 1px solid var(--text-color1);

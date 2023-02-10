@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.20833in" height="5.20833in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 5208 5208"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#848688;stroke-width:55.5551}
+    .str1 {stroke:#848688;stroke-width:27.7756}
+    .fil3 {fill:none}
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:#FEFEFE}
+    .fil2 {fill:#E6E7E8}
+    .fil5 {fill:#D2D3D5}
+    .fil4 {fill:#BDBFC1}
+    .fil6 {fill:#96989A}
+    .fil7 {fill:#F06277}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <polygon class="fil0 str0" points="1021,247 4051,247 4051,1894 3745,1976 1312,2628 1021,2706 "/>
+  <polygon class="fil1 str0" points="4051,2195 4051,4654 1021,4654 1021,3007 1312,2929 3745,2277 "/>
+  <polygon class="fil2 str1" points="3745,2277 3745,3200 1312,3200 1312,2929 "/>
+  <polygon class="fil2 str1" points="1312,476 3745,476 3745,1976 1312,2628 "/>
+  <polygon class="fil3 str1" points="1312,3445 2062,3445 2062,4379 1312,4379 "/>
+  <polygon class="fil3 str1" points="3745,3430 2215,3430 2215,3767 3745,3767 "/>
+  <polygon class="fil3 str1" points="3745,4379 2230,4379 2230,3935 3745,3935 "/>
+  <rect class="fil4 str1" x="1312" y="3445" width="750" height="934"/>
+  <rect class="fil5 str1" x="2215" y="3430" width="1530" height="337"/>
+  <rect class="fil6 str1" x="2230" y="3935" width="1515" height="444"/>
+  <g id="_440290272">
+   <circle class="fil7" cx="3912" cy="4418" r="575"/>
+   <path class="fil0" d="M3576 4081l0 0c27,-27 72,-27 99,0l237 237 236 -237c28,-27 73,-27 100,0l0 0c27,28 27,73 0,100l-236 237 236 236c27,28 27,72 0,100l0 0c-27,27 -72,27 -100,0l-236 -237 -237 237c-27,27 -72,27 -99,0l0 0c-28,-28 -28,-72 0,-100l236 -236 -236 -237c-28,-27 -28,-72 0,-100z"/>
+  </g>
+ </g>
+</svg>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { registerAuth, passwordAuth, registerReq } from '../assets/auth/register';
+import { registerAuth, passwordAuth, registerReq } from '../assets/functions/register';
 import { RegisterForm } from '../components';
 import '../styles/login/login.css'
 
 const Register = () => {
-  const [register, setRegister] = useState({names: { first: '', middle: '', last: '' }, email: '', username: '', password: '', phone: undefined, address: '', dob: undefined, account_number: undefined, bank: '', confirmPword: '', image: ''});
+  const [register, setRegister] = useState({first_name: '', middle_name: '', last_name: '', email: '', phone: '', age: '', address: '', bank: '', account_number: '', username: '', password: '', confirmPword: ''});
   const [pwordCheck, setPwordCheck] = useState('')
   const [authStatus, setAuthStatus] = useState('')
   const [fetchStatus, setFetchStatus] = useState('')
@@ -14,12 +14,8 @@ const Register = () => {
 
   const handleRegisterChange = (e) => {
     const inputName = e.target.getAttribute('name');
-
-    if(inputName === 'first_name' || inputName === 'middle_name' || inputName === 'last_name') {
-      setRegister( prev => ({ names: {...prev.names, [inputName]: e.target.value}, ...prev}))
-    } else {
-      setRegister(prev => ({...prev, [inputName]: e.target.value}))
-    }
+      
+    setRegister(prev => ({...prev, [inputName]: e.target.value}))
   }
   
   const handleRegister = (e) => {
@@ -35,7 +31,7 @@ const Register = () => {
     <div className="login-register full-w flex-col align-items-center justify-content-center">
         <RegisterForm 
           handleRegisterChange={handleRegisterChange} 
-          handleRegister={handleRegister} register={register} 
+          handleRegister={handleRegister}
           pwordCheck={pwordCheck} authStatus={authStatus} 
         />
     </div>

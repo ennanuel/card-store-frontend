@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { MdCancel } from 'react-icons/md'
-import '../styles/notification/notification.css'
+import '../../styles/notification/notification.css'
 
 const Notification = () => {
   const [show, setShow] = useState(true)

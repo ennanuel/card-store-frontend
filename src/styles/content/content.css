@@ -40,29 +40,6 @@
   grid-area: main-content;
 }
 
-.content .main-content .alph-cat {
-  gap: 10px;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  margin: 20px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.content .main-content .alph-cat li {
-  padding: 2px 7px;
-  cursor: pointer;
-  background-color: transparent;
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
-}
-
-.content .main-content .alph-cat li:hover {
-  color: white;
-  background-color: var(--search-button-bg);
-  border-color: none;
-}
-
 .content .main-content .intro p {
   margin: 20px 0;
   font-size: 0.9rem;
@@ -82,10 +59,15 @@
 .cards .card {
   padding: 10px;
   gap: 10px;
+  height: 100%;
 }
 
 .cards .card .small-card-info {
   width: 100%;
+}
+
+.cards .card .small-card-info *:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .cards .card .small-card-info .card-title {

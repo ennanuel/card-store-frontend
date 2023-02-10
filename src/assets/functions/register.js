@@ -1,6 +1,6 @@
 export const registerAuth = ({...inputs}) => {
     for(let [input, value] of Object.entries(inputs)) {
-        if(!value) return `${input} field can't be left empty`;
+        if(!value) return `${input.split('_').join('')} field can't be left empty`;
     }
     return 'All good'
 }
@@ -18,19 +18,29 @@ export const registerReq = async (data, setAuthStatus, navigate) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    const body = JSON.stringify(others)
+
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,
-      body: JSON.stringify(others),
+      body: body,
       redirect: 'follow'
     };
 
+    console.log(body)
+
     fetch("http://localhost:5000/api/auth/register", requestOptions)
-      .then(response => response.json())
+      .then(response => {
+        if(response.status !== 200) {
+            throw 'Registeration failed!'
+        } else {
+            return response.text()
+        }
+      })
       .then(result => {
         navigate('/login')
       })
-      .catch(error => console.log('error', error));
+      .catch(error => console.error('error', error));
 }
 
 
@@ -39,7 +49,7 @@ export const passwordAuth = (pword, confirmPword) => {
     let judgement = ''
     let verdict = true;
 
-    if(!pword && !confirmPword) return judgement;
+    if(!pword || !confirmPword) return judgement;
 
     if(pword !== confirmPword) {
         judgement = 'Passwords do not match \n'

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { LoginForm } from "../components"
-import { checkLogin } from "../assets/auth/login"
+import { checkLogin } from "../assets/functions/login"
 
 const Login = ({setUser}) => {
     const [login, setLogin] = useState({username: '', password: ''})

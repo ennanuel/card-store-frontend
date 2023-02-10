@@ -225,8 +225,8 @@
 .header .profile img {
   height: 100%;
   aspect-ratio: 1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 50%;
   border: 1px solid var(--search-button-bg);
 }

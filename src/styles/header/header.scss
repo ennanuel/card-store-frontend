@@ -200,7 +200,7 @@
             img {
                 height: 100%;
                 aspect-ratio: 1;
-                object-fit: cover;
+                object-fit: contain;
                 border-radius: 50%;
                 border: 1px solid var(--search-button-bg);
             }

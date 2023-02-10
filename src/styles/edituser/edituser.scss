@@ -4,6 +4,11 @@
     .user_info {
         gap: 20px;
 
+        p {
+            word-break: break-all;
+            color: var(--text-color2)
+        }
+
         .names {
             gap: 15px;
         }

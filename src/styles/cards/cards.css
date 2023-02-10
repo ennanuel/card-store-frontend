@@ -1,0 +1,103 @@
+.cards_page .filter {
+  margin: 15px auto;
+}
+
+.cards_page .filter h3 {
+  padding: 5px 10px;
+  background-color: var(--text-color1);
+  color: white;
+}
+
+.cards_page .filter .filter_btn {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.cards_page .filter .filter_btns {
+  gap: 15px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 10px;
+}
+
+.cards_page .filter .filter_btns .active-name-filter {
+  background-color: var(--search-button-bg);
+  color: white;
+}
+
+.cards_page .filter .sport_filter {
+  padding: 15px;
+}
+
+.cards_page .filter .sport_filter * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.cards_page .filter .sport_filter select {
+  max-width: 400px;
+  padding: 10px;
+  outline: none;
+  border: 2px solid var(--border);
+}
+
+.cards_page .filter .sport_filter select:focus {
+  border-color: var(--notification-bg);
+}
+
+.cards_page .filter .price_filter {
+  padding: 15px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cards_page .filter .price_filter label {
+  font-size: 0.8em;
+  padding: 0 5px;
+  background-color: white;
+  top: 0;
+  left: 19px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: var(--notification-bg);
+}
+
+.cards_page .filter .price_filter .bad {
+  color: red;
+}
+
+.cards_page .filter .price_filter input {
+  display: block;
+  outline: none;
+  padding: 10px;
+}
+
+.cards_page .filter .price_filter input:focus {
+  border-color: var(--notification-bg);
+  -webkit-box-shadow: 0 0 2px var(--notification-bg);
+          box-shadow: 0 0 2px var(--notification-bg);
+}
+
+.cards_page .filter .price_filter .input-container {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.cards_page .filter .price_filter button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.cards_page .cards-container {
+  padding: 15px;
+  font-size: 0.9em;
+}
+/*# sourceMappingURL=cards.css.map */

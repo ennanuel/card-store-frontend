@@ -1,0 +1,15 @@
+.no_result {
+    min-height: 30vh;
+    padding-bottom: 15px;
+
+    img {
+        width: 100%;
+        max-width: 200px;
+        flex: 1;
+        display: block;
+    }
+
+    p {
+        color: var(--text-color2);
+    }
+}

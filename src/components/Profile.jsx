@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import image from '../assets/card-images/91UKzod+lkL._AC_SL1500_.jpg'
+import image from '../assets/card-images/Sample_User_Icon.png'
 
 const Profile = ({user, setUser}) => {
     const logOut = () => {

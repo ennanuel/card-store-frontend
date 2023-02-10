@@ -4,7 +4,7 @@ import { MdCancel } from "react-icons/md"
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { BiShow, BiHide } from 'react-icons/bi'
 
-const RegisterForm = ({ register, handleRegisterChange, handleRegister, pwordCheck, authStatus }) => {
+const RegisterForm = ({ handleRegisterChange, handleRegister, pwordCheck, authStatus }) => {
   const [showPword, setShowPword] = useState(false)
   const handleClick = () => {
     setShowPword(prev => !prev)
@@ -34,8 +34,8 @@ const RegisterForm = ({ register, handleRegisterChange, handleRegister, pwordChe
             </div>
 
             <div className="bio relative flex-row align-items-center">
-              <label htmlFor="dob">Date of Birth</label>
-              <input type="date" name="dob" id="dob" placeholder="Date of Birth" className="full-w" onChange={handleRegisterChange} />
+              <label htmlFor="age">Date of Birth</label>
+              <input type="date" name="age" id="age" placeholder="Date of Birth" className="full-w" onChange={handleRegisterChange} />
               <input type="text" name="address" id="address" placeholder="Address" onChange={handleRegisterChange} />
             </div>
 

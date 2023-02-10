@@ -5,5 +5,6 @@ import Login from "./Login";
 import Register from "./Register"
 import EditUser from "./EditUser"
 import Search from "./Search";
+import Cards from "./Cards";
 
-export { Home, ViewCard, Cart, Login, Register, EditUser, Search };
+export { Home, ViewCard, Cart, Login, Register, EditUser, Search, Cards };
