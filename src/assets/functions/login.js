@@ -19,7 +19,7 @@ export const checkLogin = (data, setUser, setAuthStatus, navigate, setLoading) =
     .then(response => {
         if(response.status !== 200) {
             setAuthStatus('Incorrect username or password')
-            throw new Error(response);
+            throw 'Could not log in.'
         } else { 
             return response.text()     
         }
@@ -32,6 +32,6 @@ export const checkLogin = (data, setUser, setAuthStatus, navigate, setLoading) =
     })
     .catch(error => {
         setLoading(false)
-        console.log(error)
+        console.error(error)
     });
 }
