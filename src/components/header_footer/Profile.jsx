@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import image from '../assets/card-images/Sample_User_Icon.png'
+import image from '../../assets/card-images/Sample_User_Icon.png'
 
 const Profile = ({user, setUser}) => {
     const logOut = () => {
@@ -9,7 +9,7 @@ const Profile = ({user, setUser}) => {
 
     return (
         <div className="profile relative">
-        <Link to="/user"><img src={image} alt="" /></Link>
+        <img src={image} alt="" />
         <div className="profile_info full-border flex-col justify-content-center align-items-center">
             <span className="uid">{user.username}</span>
             <span className="names flex-row full-w">

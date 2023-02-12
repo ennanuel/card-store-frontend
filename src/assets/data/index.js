@@ -1,6 +1,10 @@
-export const apiURL = 'https://cardstore-api.onrender.com/api'
+// export const apiURL = 'https://cardstore-api.onrender.com/api'
 
-export const imageURL = 'https://cardstore-api.onrender.com/images/'
+// export const imageURL = 'https://cardstore-api.onrender.com/images/'
+
+export const apiURL = 'http://localhost:5000/api'
+
+export const imageURL = 'http://localhost:5000/images/'
 
 export const footerNavigate = [
     {
@@ -76,4 +80,20 @@ export const navList = [
         type: 'price',
         link: '/cards/price'
     }
+]
+
+
+export const searchFilters = [
+    {
+        name: 'player',
+        type: 'name'
+    },
+    {
+        name: 'team',
+        type: 'team'
+    },
+    {
+        name: 'sport',
+        type: 'sport'
+    },
 ]

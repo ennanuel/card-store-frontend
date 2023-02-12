@@ -1,6 +1,5 @@
 .header {
-    max-width: 90%;
-    margin: 10px auto;
+    margin: 15px 5% 20px;
     border-radius: 5px;
     background-color: white;
 
@@ -117,12 +116,16 @@
         ul {
             font-weight: 700;
 
-            a {
+            p, .menu_link a {
                 cursor: pointer;
                 padding: 15px 10px;
                 background-color: transparent;
                 text-decoration: none;
                 color: var(--text-color1);
+
+                a {
+                    color: inherit;
+                }
 
                 &:hover {
                     background-color: var(--link-hover-bg);
@@ -215,18 +218,37 @@
     }
 }
 
-.sub_menu {
-    background-color: var(--search-button-bg);
-    min-width: 350px;
+.sub_menu_links {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    flex-wrap: wrap;
+}
+
+.sub_menu {
+    background-color: var(--search-button-bg);
+    min-width: 350px;
     opacity: 0;
     pointer-events: none;
     top: 100%;
     z-index: 1000;
     max-height: 0;
+
+    button {
+        outline: none;
+        padding: 5px 10px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.33);
+        border: 2px solid rgb(97, 185, 215);
+        margin: 15px;
+        margin-bottom: 0;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+    }
 
     * {
         word-break:normal;
@@ -234,8 +256,8 @@
         text-align: left !important;
     }
 
-    ul, h6 {
-        margin: 15px;
+    ul,li {
+        margin: 10px;
     }
 
     li {
@@ -247,6 +269,8 @@
         font-size: 0.9em;
         font-weight: 500;
         color: rgb(26, 255, 0);
+        margin: 10px;
+        margin-bottom: 0;
     }
 
     a {
@@ -265,7 +289,7 @@
 
 
 .right_sub_menu {
-    right: 0;
+    right: 0 !important;
 }
 
 .menu_link {

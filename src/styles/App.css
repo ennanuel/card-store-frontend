@@ -1,4 +1,23 @@
 @media (max-width: 720px) {
+    .content {
+        padding: 10px !important;
+        margin: 10px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .header {
+        margin: 10px !important;
+    }
+
+    .footer {
+        margin: 0 10px 20px !important;
+    }
+
+    .add_card_btn {
+        margin: 5px;
+        justify-content: flex-start !important;
+    }
+    
     .notification {
         font-size: 0.9em !important;
     }

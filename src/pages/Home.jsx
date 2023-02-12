@@ -2,11 +2,10 @@ import '../styles/content/content.css'
 import { About, Sidebar, AlphabetList, CardsList } from '../components'
 
 const Home = ({ cards, error, empty }) => {
-    const cat = ['Cards by Player', 'Cards by Team', 'Cards by Sport', 'Card by Rating', 'Recent Cards']
 
     return (
         <div className="home-content">
-            <Sidebar cat={cat} />
+            <Sidebar />
             <article className="main-content">
                 <h2 className="title full-border">Browse Sports Cards (By Player First Letter of First Name)</h2>
                 <AlphabetList />

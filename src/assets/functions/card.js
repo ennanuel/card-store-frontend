@@ -6,7 +6,13 @@ export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError
     setError(false)
 
     fetch(`${apiURL}/player/find/${id}`)
-      .then(res => res.text())
+      .then(res => {
+        if(res.status !== 200) {
+          throw 'Could not fetch card details.'
+        } else {
+          return res.text()
+        }
+      })
       .then(data => {
         const result = JSON.parse(data)
         setPlayer(result)
@@ -22,6 +28,7 @@ export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError
 
 
 export const fetchCards = (setState, setError, setEmpty, type, val, op) => {
+  setState([])
   setEmpty(false)
   setError(false)
 
@@ -60,7 +67,7 @@ export const fetchSports = (setSports) => {
     
     setSports(value)
   })
-  .then( err => console.error(err) )
+  .catch( err => console.error(err) )
 }
 
 
@@ -79,7 +86,7 @@ export const fetchTeams = (setTeams) => {
 
     setTeams(value)
   })
-  .then( err => console.error(err) )
+  .catch( err => console.error(err) )
 }
 
 
@@ -97,7 +104,7 @@ export const fetchPlayers = (setPlayers) => {
     
     setPlayers(result)
   })
-  .then( err => console.error(err) )
+  .catch( err => console.error(err) )
 }
 
 
@@ -124,10 +131,42 @@ export const addCard = async (data, navigate, setError, setLoading) => {
     };
     
     fetch(`${apiURL}/player/create`, requestOptions)
-      .then(response => response.text())
+      .then(response => {
+        if(response.status !== 200) {
+            throw "Could not Create Card!";
+          }
+        return response.text()
+      })
       .then(result => {
         setLoading(false)
         navigate('/')
+      })
+      .catch(error => {
+        setLoading(false)
+        setError(true)
+        console.error('error: ', error)
+      });
+}
+
+
+export const searchCard = (val, setCards, setLoading, setError, setEmpty) => {
+  setCards({player: [], team: [], sport: []})
+  setError(false)
+  setEmpty(false)
+
+  fetch(`${apiURL}/search?val=${val}`)
+      .then(response => {
+        if(response.status !== 200) {
+            throw "Search failed!";
+          }
+        return response.text()
+      })
+      .then(result => {
+        const data = JSON.parse(result)
+
+        setCards(data)
+        setLoading(false)
+        setEmpty(data.lenght > 0)
       })
       .catch(error => {
         setLoading(false)

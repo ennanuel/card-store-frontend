@@ -10,7 +10,10 @@ const CardsList = ({cards, error, empty}) => {
             {
                 error ?
                 <Error text="Something went wrong!" /> :
-                ( empty ? <NoResult text="No such cards." /> : <Loader text="Loading cards..." /> )
+                ( empty ?
+                  <NoResult text="No such cards." /> :
+                  <Loader text="Loading cards..." />
+                )
             } 
             </>
         }

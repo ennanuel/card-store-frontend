@@ -11,7 +11,7 @@ export const getMenu = (type, players, teams, sports) => {
     case 'name':
       res.push({
         name: 'Recently Uploaded',
-        links: players.map( elem => <Link to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> ).slice(0, 5)
+        links: players.map( elem => <Link to={`/card/${elem._id}/${elem.names.first}+${elem.names.last}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> ).slice(0, 5)
       })
 
       res.push({
@@ -19,7 +19,7 @@ export const getMenu = (type, players, teams, sports) => {
         links: players
           .slice(0, 10)
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
-          .map( elem => <Link to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( elem => <Link to={`/card/${elem._id}/${elem.names.first}+${elem.names.last}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
       break;
     case 'rating':
@@ -28,7 +28,7 @@ export const getMenu = (type, players, teams, sports) => {
           name: `From ${i} - ${i+25}`,
           links: players.filter( elem => elem.rating <= i + 25 && elem.rating > i )
             .slice(0, 10)
-            .map( elem => <Link to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+            .map( elem => <Link to={`/card/${elem._id}/${elem.names.first}+${elem.names.last}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
         })
       }
       break;
@@ -50,7 +50,7 @@ export const getMenu = (type, players, teams, sports) => {
         links: players.filter( elem => elem.price <= 5000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
-          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}/${elem.names.first}+${elem.names.last}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
 
       res.push({
@@ -58,7 +58,7 @@ export const getMenu = (type, players, teams, sports) => {
         links: players.filter( elem => elem.price <= 10000 && elem.price > 5000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
-          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}/${elem.names.first}+${elem.names.last}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
 
       res.push({
@@ -66,7 +66,7 @@ export const getMenu = (type, players, teams, sports) => {
         links: players.filter( elem => elem.price > 10000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
-          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
+          .map( (elem, i) => <Link key={i} to={`/card/${elem._id}/${elem.names.first}+${elem.names.last}`}>{elem.names.first} {elem.names.middle} {elem.names.last}</Link> )
       })
       break;
   }
@@ -77,7 +77,7 @@ export const getMenu = (type, players, teams, sports) => {
 export const getPathInfo = (setState, location) => {
     const siteTitle = document.getElementById('title')
 
-    const currLoc = location.pathname.split('/')
+    const currLoc = location.pathname.split('/').map( path => path.substring(0, 1).toUpperCase() + path.substring(1, ) )
 
     const newLoc = currLoc
       .filter( elem => /^[a-z][a-z|\W]+[a-z]$/i.test(elem) )

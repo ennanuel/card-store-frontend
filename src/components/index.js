@@ -7,7 +7,6 @@ import PageInfo from "./PageInfo";
 import SellCard from "./SellCard";
 import RegisterForm from "./forms/RegisterForm";
 import LoginForm from "./forms/LoginForm";
-import Profile from "./Profile"
 import UserInfo from "./UserInfo";
 import EditInfo from "./forms/EditInfo";
 import Sidebar from "./Sidebar";
@@ -17,6 +16,8 @@ import Loader from "./fetch_components/Loader";
 import Error from "./fetch_components/Error";
 import NoResult from "./fetch_components/NoResult";
 import Filter from "./Filter"
+import FilterSearch from "./FilterSearch";
 import CardsList from "./CardsList";
+import SearchResult from "./SearchResult";
 
-export { Notification, Header, Card, Footer, CardInfo, PageInfo, SellCard, RegisterForm, LoginForm, Profile, UserInfo, EditInfo, Sidebar, About, AlphabetList, Error, Loader, NoResult, Filter, CardsList, };
+export { Notification, Header, Card, Footer, CardInfo, PageInfo, SellCard, RegisterForm, LoginForm, UserInfo, EditInfo, Sidebar, FilterSearch, About, AlphabetList, Error, Loader, NoResult, Filter, CardsList, SearchResult };

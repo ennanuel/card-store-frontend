@@ -4,29 +4,6 @@
     .filter {
         margin: 15px auto;
 
-        h3 {
-            padding: 5px 10px;
-            background-color: var(--text-color1);
-            color: white;
-
-        }
-
-        .filter_btn {
-            min-width: max-content;
-            flex: 1;
-        }
-        
-        .filter_btns {
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 0 10px;
-
-            .active-name-filter {
-                background-color: var(--search-button-bg);
-                color: white;
-            }
-        }
-
         .sport_filter {
             padding: 15px;
 
@@ -103,5 +80,27 @@
     .cards-container {
         padding: 15px;
         font-size: 0.9em;
+    }
+}
+
+.dark_title {
+    padding: 5px 10px;
+    background-color: var(--text-color1);
+    color: white;
+}
+
+.filter_btn {
+    min-width: max-content;
+    flex: 1;
+}
+
+.filter_btns {
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 0 10px;
+
+    .active-name-filter {
+        background-color: var(--search-button-bg);
+        color: white;
     }
 }

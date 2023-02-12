@@ -2,33 +2,6 @@
   margin: 15px auto;
 }
 
-.cards_page .filter h3 {
-  padding: 5px 10px;
-  background-color: var(--text-color1);
-  color: white;
-}
-
-.cards_page .filter .filter_btn {
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.cards_page .filter .filter_btns {
-  gap: 15px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0 10px;
-}
-
-.cards_page .filter .filter_btns .active-name-filter {
-  background-color: var(--search-button-bg);
-  color: white;
-}
-
 .cards_page .filter .sport_filter {
   padding: 15px;
 }
@@ -113,5 +86,32 @@
 .cards_page .cards-container {
   padding: 15px;
   font-size: 0.9em;
+}
+
+.dark_title {
+  padding: 5px 10px;
+  background-color: var(--text-color1);
+  color: white;
+}
+
+.filter_btn {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.filter_btns {
+  gap: 15px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 10px;
+}
+
+.filter_btns .active-name-filter {
+  background-color: var(--search-button-bg);
+  color: white;
 }
 /*# sourceMappingURL=cards.css.map */

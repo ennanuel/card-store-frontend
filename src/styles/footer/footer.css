@@ -1,6 +1,5 @@
 .footer {
-  max-width: 90%;
-  margin: 0 auto 50px;
+  margin: 0 5% 50px;
   background-color: #eee;
   -webkit-box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.4);
           box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.4);

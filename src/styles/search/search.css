@@ -15,4 +15,28 @@
 .no_result p {
   color: var(--text-color2);
 }
+
+.search_results .dark_title {
+  margin-top: 20px;
+}
+
+.search_results .search_result {
+  padding: 20px;
+}
+
+.search_results .search_result .cards {
+  margin: 0;
+}
+
+.search_results .give_margin {
+  margin-top: 20px;
+}
+
+.search_results .search_filter_text {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: var(--text-color2);
+}
 /*# sourceMappingURL=search.css.map */

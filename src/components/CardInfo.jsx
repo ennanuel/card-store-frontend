@@ -58,7 +58,7 @@ const CardInfo = () => {
           <>
           {
             error ?
-            <Error text="Something went wrong!" /> :
+            <Error text="Error fetching card details!" /> :
             <Loader text="Loading card..." />
           }
           </>

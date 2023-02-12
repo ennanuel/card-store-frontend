@@ -9,7 +9,7 @@ const Filter = () => {
 
     return (
         <article className="filter full-border">
-            <h3>
+            <h3 className="dark_title">
                 {getFilterText(type)} Filter
             </h3>
             {

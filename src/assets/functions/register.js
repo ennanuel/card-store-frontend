@@ -16,7 +16,8 @@ export const registerReq = async (data, setAuthStatus, navigate, setLoading) => 
     const check = registerAuth(others)
     
     if(check !== 'All good') {
-      return setAuthStatus(check)
+        setLoading(false)
+        return setAuthStatus(check)
     }
 
     const myHeaders = new Headers();
