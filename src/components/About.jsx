@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="intro">
         <h2 className="title full-border">
-            Welcome to Card Store
+            About Us
         </h2>
         <p>
         At Card Store we specialize in Sports Cards, Rookie Cards and Football team sets. We pride ourselves in maintaining the most organized modern era football card inventory on the web. You can easily find the football cards you are looking for with our customer friendly and easily searchable website. Not only is it easy to find the cards you need, but you will find them at great prices. Most stars and rookies are listed at 25%-50% off the listed book price.

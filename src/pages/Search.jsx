@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { searchCard } from "../assets/functions/card"
 import '../styles/search/search.css'
-import { FilterSearch, Loader, NoResult, SearchResult } from "../components"
+import { FilterSearch, Loader, NoResult, SearchResult, Error } from "../components"
 import { searchFilters } from "../assets/data"
 
 const Search = () => {
@@ -40,7 +40,9 @@ const Search = () => {
             )) : 
             (
               loading ?
-              <Loader text={`Searching for ${val.replace('+', ' ')}`} /> :
+              <Loader text={`Searching for ${val.replace('+', ' ')}...`} /> :
+              error ?
+              <Error text="Something went wrong!" /> :
               <NoResult text="Nothing was found" />
             )
           }

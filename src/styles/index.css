@@ -12,7 +12,7 @@
   --text-color2: rgb(76, 76, 76);
   --text-color3: rgb(37, 98, 204);
   --notification-bg: rgb(87, 200, 0);
-  --add-to-cart: rgb(0, 171, 3);
+  --add-to-cart: rgb(87, 200, 0);
   --buy-now: rgb(22, 55, 91);
   --bg-color: rgb(48, 57, 88);
   --search-button-bg: rgb(50, 89, 161);
@@ -213,6 +213,15 @@ a {
   border: 10px solid var(--notification-bg);
   border-left-color: transparent;
   animation: rotate 0.6s linear infinite;
+}
+
+.bad {
+  color: red;
+}
+
+.bad_input {
+  border-color: red !important;
+  box-shadow: 0 0 3px red !important;
 }
 
 .truncate {

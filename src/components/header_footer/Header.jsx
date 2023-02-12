@@ -10,14 +10,14 @@ import Search from './Search'
 import '../../styles/header/header.css'
 
 
-const Header = ({user, setUser, players, teams, sports, links}) => {
+const Header = ({user, setUser, players, teams, sports}) => {
     const [menuLinks, setMenuLinks] = useState([])
     const [showMenu, setShowMenu] = useState(false);
     const location = useLocation()
 
     const handleClick = () => {
       const menu = document.getElementById('menu');
-      menu.style.maxHeight = showMenu ? null : menu.scrollHeight + 'px'
+      menu.style.maxHeight = showMenu ? null : `${menu.scrollHeight}px`
       setShowMenu(prev => !prev)
     }
 

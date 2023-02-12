@@ -9,9 +9,12 @@ const Filter = () => {
 
     return (
         <article className="filter full-border">
-            <h3 className="dark_title">
-                {getFilterText(type)} Filter
-            </h3>
+            {
+                getFilterText(type) &&
+                <h3 className="dark_title">
+                    {getFilterText(type)} Filter
+                </h3>
+            }
             {
                 showFilter(type, op, val, navigate, location)
             }

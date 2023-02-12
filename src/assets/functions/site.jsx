@@ -117,8 +117,10 @@ export const showFilter = (type, op, val, navigate, location) => {
       return <PriceFilter navigate={navigate} val={val} location={location} />;
     case 'rating':
       return <RatingFilter navigate={navigate} val={val} location={location} />;
-    default:
+    case 'name':
       return <NameFilter op={op} navigate={navigate} location={location} />;
+    default: 
+      return null;
   }
 }
 
@@ -132,8 +134,10 @@ export const getText = (type) => {
       return "By Price";
     case 'rating':
       return "By Player Rating";
-    default:
+    case 'name':
       return "By Player Name";
+    default: 
+      return "Recent Releases"
   }
 }
 
@@ -147,7 +151,9 @@ export const getFilterText = (type) => {
       return "Price";
     case 'rating':
       return "Rating";
-    default:
+    case 'name':
       return "Name";
+    default: 
+      return null;
   }
 }

@@ -19,7 +19,7 @@ const RatingFilter = ({ navigate, val }) => {
       setError('Please fill in filter values')
     } 
     else if (gt > 100 || lt > 100 || gt < 0 || lt < 0) {
-      setError('Values must be on range 0 - 100')
+      setError('Values must range from 0 - 100')
     }
     else {
       setError(false)
