@@ -74,7 +74,7 @@ export const getMenu = (type, players, teams, sports) => {
 }
 
 
-export const getPathInfo = (setState, location) => {
+export const getPathInfo = (setState, location, name, val) => {
     const siteTitle = document.getElementById('title')
 
     const currLoc = location.pathname.split('/').map( path => path.substring(0, 1).toUpperCase() + path.substring(1, ) )
@@ -84,6 +84,8 @@ export const getPathInfo = (setState, location) => {
       .map( elem => elem.includes('+') ? elem.replace('+', ' ') : elem )
       .join(" | ")
       .replace("-", " ")
+      .replace(`| ${val}`, `: ${val}`)
+      .replce(`| ${name}`, `: ${name}`)
 
     setState("Home | " + newLoc)
     

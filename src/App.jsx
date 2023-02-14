@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useParams } from 'react-router-dom'
 import { Cart, Home, ViewCard, Login, Register, EditUser, Cards, Search } from './pages'
 import { Header, Notification, Footer, } from './components'
 import AddCard from './pages/AddCard'
@@ -16,13 +16,15 @@ const App = () => {
   const [cards, setCards] = useState([])
   const [error, setError] = useState(false)
   const [empty, setEmpty] = useState(false)
+
+  const { name, val, ...others } = useParams()
   
   const divRef = useRef()
 
   const location = useLocation()
 
   useEffect( () => {
-    getPathInfo(setPage, location)
+    getPathInfo(setPage, location, name, val)
     fetchPlayers(setPlayers)
     fetchTeams(setTeams);
     fetchSports(setSports);
