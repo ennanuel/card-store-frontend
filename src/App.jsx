@@ -16,15 +16,13 @@ const App = () => {
   const [cards, setCards] = useState([])
   const [error, setError] = useState(false)
   const [empty, setEmpty] = useState(false)
-
-  const { name, val, ...others } = useParams()
   
   const divRef = useRef()
 
   const location = useLocation()
 
   useEffect( () => {
-    getPathInfo(setPage, location, name, val)
+    getPathInfo(setPage, location)
     fetchPlayers(setPlayers)
     fetchTeams(setTeams);
     fetchSports(setSports);
