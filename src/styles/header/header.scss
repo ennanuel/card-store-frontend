@@ -170,6 +170,7 @@
             transition: 0.5s opacity ease;
             pointer-events: none;
             opacity: 0;
+            z-index: 11111;
 
             .uid {
                 font-size: 0.8em;

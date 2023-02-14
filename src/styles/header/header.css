@@ -195,6 +195,7 @@
   transition: 0.5s opacity ease;
   pointer-events: none;
   opacity: 0;
+  z-index: 11111;
 }
 
 .header .profile .profile_info .uid {
