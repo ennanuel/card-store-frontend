@@ -5,6 +5,10 @@
         margin-bottom: 0 !important;
     }
 
+    h2, .meter_text {
+        font-size: 0.9em !important;
+    }
+
     .header {
         margin: 10px !important;
     }
@@ -49,6 +53,14 @@
 
     .nav-links li p {
         padding-left: 15px;
+    }
+
+    .categories {
+        padding: 10px !important;
+    }
+
+    .link a span {
+        font-size: 0.9em;
     }
 
     .menu-icon span {

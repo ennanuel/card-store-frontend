@@ -9,6 +9,11 @@
         grid-gap: 20px;
         grid-template-columns: 25% calc(75% - 20px);
         grid-template-areas: "sidebar main-content";
+
+        .welcome_text {
+            font-size: 0.9em;
+            margin: 15px 0;
+        }
     }
 
     .sidebar {
@@ -106,5 +111,67 @@
         }
 
         
+    }
+}
+
+.meter_container {
+    margin: 15px 0 0;
+    gap: 5px;
+    padding: 15px;
+
+    .meter_text {
+        top: 0;
+        left: 2%;
+        background-color: white;
+        color: var(--notification-bg);
+        padding: 0 15px;
+        transform: translateY(-50%);
+    }
+
+    .meter {
+        border-radius: 3px;
+        overflow: hidden;
+        background-color: var(--text-color2);
+        gap: 2px;
+        border: 2px solid var(--text-color2);
+        max-width: 500px;
+
+        li {
+            padding: 7px 10px;
+            color: var(--border);
+            font-weight: bold;
+            text-align: center;
+            border-right: 2px solid var(--text-color2);
+            border-radius: 2px;
+
+            &:last-child, &.active {
+                border: none;
+            }
+
+            &.active {
+                background-color: var(--notification-bg);
+                color: var(--text-color1);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent, rgba(0, 0, 0, 0.3));
+                }
+            }
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), transparent, rgba(255, 255, 255, 0.2));
+        }
     }
 }

@@ -20,5 +20,30 @@ import FilterSearch from "./FilterSearch";
 import CardsList from "./CardsList";
 import SearchResult from "./SearchResult";
 import AddCardForm from "./forms/AddCardForm";
+import Meter from "./Meter"
 
-export { AddCardForm, Notification, Header, Card, Footer, CardInfo, PageInfo, SellCard, RegisterForm, LoginForm, UserInfo, EditInfo, Sidebar, FilterSearch, About, AlphabetList, Error, Loader, NoResult, Filter, CardsList, SearchResult };
+export { 
+    AddCardForm,
+    Notification, 
+    Header, 
+    Card, 
+    Footer, 
+    CardInfo, 
+    PageInfo, 
+    SellCard,
+    RegisterForm, 
+    LoginForm, 
+    UserInfo, 
+    EditInfo, 
+    Sidebar, 
+    FilterSearch, 
+    About, 
+    AlphabetList, 
+    Error, 
+    Loader, 
+    NoResult, 
+    Filter, 
+    CardsList, 
+    SearchResult,
+    Meter
+};

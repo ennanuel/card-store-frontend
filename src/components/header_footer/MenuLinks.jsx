@@ -28,7 +28,9 @@ const MenuLinks = ({ menuLinks, closeMenu }) => {
                                             <h6 className="links_name">{elem.name}</h6>
                                             <ul className="flex-col nav_links">
                                                 {
-                                                    elem.links.map( (link, i) => <li className="a_link" key={i} onClick={closeMenu}>{link}</li> )
+                                                    elem.links.map( (item, i) => <li className="a_link" key={i} onClick={closeMenu}>
+                                                        <Link to={item.link}>{item.name}</Link>
+                                                    </li> )
                                                 }
                                             </ul>
                                         </li>

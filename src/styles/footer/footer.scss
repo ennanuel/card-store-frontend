@@ -7,9 +7,13 @@
     
 
     .navigate {
-        justify-content: space-between;
+        justify-content: space-evenly;
         padding: 30px 20px;
         flex-wrap: wrap;
+
+        ul {
+            gap: 20px;
+        }
 
         h3 {
             border-bottom: 1px dashed black;

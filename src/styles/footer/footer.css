@@ -8,12 +8,16 @@
 }
 
 .footer .navigate {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   padding: 30px 20px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.footer .navigate ul {
+  gap: 20px;
 }
 
 .footer .navigate h3 {

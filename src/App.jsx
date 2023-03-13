@@ -55,7 +55,7 @@ const App = () => {
               <Route path="/Search/:val?" element={<Search />} />
             </Routes>
           </section>
-          <Footer />
+          <Footer players={players} teams={teams} />
         </>
       }
     </div>
