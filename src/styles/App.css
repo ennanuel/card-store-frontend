@@ -55,8 +55,18 @@
         padding-left: 15px;
     }
 
-    .categories {
+    .categories { 
         padding: 10px !important;
+    }
+
+    .search {
+        gap: 5px !important;
+        height: 30px !important;
+    }
+
+    .search input {
+        padding: 0 5px !important;
+        font-size: 0.8em;
     }
 
     .link a span {

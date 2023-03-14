@@ -7,7 +7,7 @@ const Meter = () => {
         <ul className="meter relative full-w full-border flex-row">
             {   
                 ['a', 'b', 'c', 'd', 'e', 'f'].map( (elem, i) => (
-                    <li key={i} className={`${i < 1 && 'active'} full-w meter_box relative`}>{i + 1}</li>
+                    <li key={i} className={`${i < 0 && 'active'} full-w meter_box relative`}>{i + 1}</li>
                 ))
             }
         </ul>

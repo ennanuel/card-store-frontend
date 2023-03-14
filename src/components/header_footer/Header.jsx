@@ -34,7 +34,7 @@ const Header = ({user, setUser, players, teams, sports}) => {
 
   return (
     <header className="header">
-      <div className="top flex-row align-items-center">
+      <div className="top full-w flex-row align-items-center">
         <h2 className="logo"><Link to="/">cardStore</Link></h2>
         <div className="search flex-row">
             <Search />

@@ -12,7 +12,24 @@
 
         .welcome_text {
             font-size: 0.9em;
-            margin: 15px 0;
+            margin: 10px 0;
+        }
+
+        .title {
+            justify-content: space-between;
+
+            .prem_pkg_link {
+                cursor: pointer;
+                font-size: 0.7em;
+                color: var(--notification-bg);
+                transform: scale(0.95);
+                transition: transform 0.4s ease;
+
+                &:hover {
+                    text-decoration: underline;
+                    transform: scale(1);
+                }
+            }
         }
     }
 
@@ -115,7 +132,7 @@
 }
 
 .meter_container {
-    margin: 15px 0 0;
+    margin: 15px 0;
     gap: 5px;
     padding: 15px;
 

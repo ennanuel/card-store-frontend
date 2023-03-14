@@ -50,6 +50,7 @@
 .header .top .search .search-input button {
   height: 100%;
   border-radius: 0;
+  padding: 0 5px;
   outline: none;
   border: 1px solid var(--search-button-bg);
   background-color: var(--search-button-bg);
