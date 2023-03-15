@@ -6,12 +6,17 @@
 
         .sport_filter {
             padding: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: space-between;
 
-            * {
-                flex: 1;
+            label {
+                min-width: 150px;
+                text-align: center;
             }
 
             select {
+                flex: 1;
                 max-width: 400px;
                 padding: 10px;
                 outline: none;

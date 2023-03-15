@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 const Home = ({ premium, setPremium, cards, error, empty }) => {
     const navigate = useNavigate()
 
-    const handleClick = () => {
+    const handleClick = (arg) => {
         navigate('/')
-        setPremium(true)
+        setPremium(arg === 'premium')
     }
 
     return (
@@ -17,15 +17,16 @@ const Home = ({ premium, setPremium, cards, error, empty }) => {
                 {
                     premium ?
                     <>
-                    <h2 className="title full-border">
-                        Premium Package
+                    <h2 className="title full-border flex-row align-items-center">
+                        <span>Premium Package</span>
+                        <span className="prem_pkg_link" onClick={() => handleClick('')}>Back to normal page</span>
                     </h2>
                     <Meter />
                     </> :
                     <>
                     <h2 className="title full-border flex-row align-items-center">
                         <span>Welcome to Card Store</span>
-                        <span className="prem_pkg_link" onClick={handleClick}>View premium page</span>
+                        <span className="prem_pkg_link" onClick={() => handleClick('premium')}>View premium page</span>
                     </h2>
                     <p className='welcome_text'> 
                         We have amazing offers for you to sell and earn big from the card store giveaway season. <br />
