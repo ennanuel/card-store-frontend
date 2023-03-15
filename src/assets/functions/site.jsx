@@ -3,7 +3,7 @@ import { SportFilter, NameFilter, PriceFilter, RatingFilter, TeamFilter } from "
 import { navList } from '../data'
 
 
-export const getMenu = (type, cardPlayers, cardTeams, cardSports) => {
+export const getMenu = (type, premium, cardPlayers, cardTeams, cardSports) => {
   const players = [...cardPlayers]
   const teams = [...cardTeams]
   const sports = [...cardSports]
@@ -72,7 +72,7 @@ export const getMenu = (type, cardPlayers, cardTeams, cardSports) => {
     case 'price':
       res.push({
         name: 'Cheaper Cards',
-        links: players.filter( elem => elem.price <= 40000 )
+        links: players.filter( elem => premium ? elem.premPrice <= 40000 : elem.price <= 5000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
           .map( (elem, i) => ({
@@ -84,7 +84,7 @@ export const getMenu = (type, cardPlayers, cardTeams, cardSports) => {
 
       res.push({
         name: 'Mid-Range Cards',
-        links: players.filter( elem => elem.price <= 50000 && elem.price > 40000 )
+        links: players.filter( elem => premium ? elem.premPrice <= 50000 && elem.premPrice > 40000 : elem.price <= 10000 && elem.price > 5000  )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
           .map( (elem, i) => ({
@@ -96,7 +96,7 @@ export const getMenu = (type, cardPlayers, cardTeams, cardSports) => {
 
       res.push({
         name: 'Premium Cards',
-        links: players.filter( elem => elem.price > 50000 )
+        links: players.filter( elem => premium ? elem.premPrice > 50000 : elem.price > 10000 )
           .sort( (a, b) => a.price > b.price ? -1 : 1 )
           .slice(0, 10)
           .map( (elem, i) => ({
@@ -109,7 +109,7 @@ export const getMenu = (type, cardPlayers, cardTeams, cardSports) => {
   }
   return res;
 }
-export const getFooterLinks = (type, playerCards, teams) => {
+export const getFooterLinks = (type, premium, playerCards, teams) => {
   let res;
   const players = [...playerCards]
 
@@ -147,7 +147,7 @@ export const getFooterLinks = (type, playerCards, teams) => {
       res = {
         title: "Premium Cards",
         links: players
-          .filter( player => player.price > 40000 )
+          .filter( player => premium ? player.premPrice > 40000 : player.price > 15000 )
           .slice(0, 8)
           .map( elem => ({
             link: `/card/${elem._id}/${elem.names.first}+${elem.names.last}`,

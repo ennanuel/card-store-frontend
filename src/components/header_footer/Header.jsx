@@ -10,7 +10,7 @@ import Search from './Search'
 import '../../styles/header/header.css'
 
 
-const Header = ({user, setUser, players, teams, sports}) => {
+const Header = ({user, premium, setUser, players, teams, sports}) => {
     const [menuLinks, setMenuLinks] = useState([])
     const [showMenu, setShowMenu] = useState(false);
     const location = useLocation()
@@ -28,9 +28,9 @@ const Header = ({user, setUser, players, teams, sports}) => {
     }
 
     useEffect( () => {
-      const navLinks = navList.map( list => ({ ...list, sub: getMenu(list.type, players, teams, sports) }) )
+      const navLinks = navList.map( list => ({ ...list, sub: getMenu(list.type, premium, players, teams, sports) }) )
       setMenuLinks(navLinks)
-    }, [players, teams, sports])
+    }, [players, teams, sports, premium])
 
   return (
     <header className="header">
@@ -47,7 +47,7 @@ const Header = ({user, setUser, players, teams, sports}) => {
               <span>{showMenu ? <GrClose /> : <AiOutlineMenu />}</span>
             </div>
           </div>
-          <MenuLinks menuLinks={menuLinks} closeMenu={closeMenu} />
+          <MenuLinks premium={premium} menuLinks={menuLinks} closeMenu={closeMenu} />
       </nav>
     </header>
   )

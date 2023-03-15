@@ -5,37 +5,38 @@ import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import '../../styles/footer/footer.css'
 import { getFooterLinks } from '../../assets/functions/site'
 
-const Footer = ({ players, teams }) => {
+const Footer = ({ premium, players, teams }) => {
     const [footerLinks, setFooterLinks] = useState([])
 
     useEffect( () => {
-        setFooterLinks( footerNavigate.map( (elem, i) => getFooterLinks(elem, players, teams) ))
-        console.log(footerNavigate.map( (elem, i) => getFooterLinks(elem, players, teams) ))
-    }, [players])
+        setFooterLinks( footerNavigate.map( (elem, i) => getFooterLinks(elem, premium, players, teams) ))
+    }, [players, premium])
   return (
     <footer className="footer">
         <div className="navigate flex-row">
             {
                 footerLinks.map(
                     (navItem, i) => (
-                        <ul key={i}>
+                        <div className="footer_nav">
                             <h3>{navItem.title}</h3>
-                            {
-                                navItem.links.map(
-                                    (item, i) => (
-                                        <li key={i} className="flex-row align-items-center"><MdOutlineKeyboardArrowRight />
-                                            <span className="link">
-                                                {
-                                                    item.link !== null ?
-                                                    <Link to={item.link}>{item.name}</Link> :
-                                                    item.name
-                                                }
-                                            </span>
-                                        </li>
+                            <ul key={i} className="footer_links flex-row">
+                                {
+                                    navItem.links.map(
+                                        (item, i) => (
+                                            <li key={i} className="flex-row align-items-center"><MdOutlineKeyboardArrowRight />
+                                                <span className="link">
+                                                    {
+                                                        item.link !== null ?
+                                                        <Link to={item.link}>{item.name}</Link> :
+                                                        item.name
+                                                    }
+                                                </span>
+                                            </li>
+                                        )
                                     )
-                                )
-                            }
-                        </ul>
+                                }
+                            </ul>
+                        </div>
                     )
                 )
             }

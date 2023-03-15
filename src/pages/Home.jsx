@@ -1,16 +1,13 @@
 import '../styles/content/content.css'
 import { About, Sidebar, AlphabetList, CardsList, Meter } from '../components'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Home = ({ cards, error, empty }) => {
-    const [clicked, setClicked] = useState(false)
+const Home = ({ premium, setPremium, cards, error, empty }) => {
     const navigate = useNavigate()
-    const location = useLocation()
 
     const handleClick = () => {
-        navigate('/premium')
-        setClicked(true)
+        navigate('/')
+        setPremium(true)
     }
 
     return (
@@ -18,7 +15,7 @@ const Home = ({ cards, error, empty }) => {
             <Sidebar />
             <article className="main-content"><div className="intro">
                 {
-                    location.pathname === '/premium' && clicked ?
+                    premium ?
                     <>
                     <h2 className="title full-border">
                         Premium Package
@@ -41,7 +38,7 @@ const Home = ({ cards, error, empty }) => {
                 <AlphabetList />
 
                 <h2 className="title full-border">Newest Sport Card Releases</h2>
-                <CardsList cards={cards.sort( (a, b) => /soccer/i.test(b.sport) ? 1 : -1 ).slice(0, 6)} error={error} empty={empty} />
+                <CardsList premium={premium} cards={cards.sort( (a, b) => /soccer/i.test(b.sport) ? 1 : -1 ).slice(0, 6)} error={error} empty={empty} />
 
                 <About />
             </article>

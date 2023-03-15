@@ -14,21 +14,31 @@
   padding: 30px 20px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 10px;
 }
 
-.footer .navigate ul {
-  gap: 20px;
+.footer .navigate .footer_nav {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .footer .navigate h3 {
   border-bottom: 1px dashed black;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .footer .navigate li {
   font-size: 0.9rem;
   color: var(--text-color2);
   margin-top: 10px;
+}
+
+.footer .navigate .footer_links {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
 }
 
 .footer .copyright {

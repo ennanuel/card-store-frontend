@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 import { imageURL } from '../assets/data'
 import { getPrice } from '../assets/functions/site'
 
-const Card = ({ card }) => {
+const Card = ({ card, premium }) => {
   const imgURL = imageURL + card.image
 
   return (
-    <div className="card flex-row align-items-center full-border">
+    <div className={`card relative flex-row align-items-center full-border ${premium ? 'prem_card' : 'norm_prem_card'} ${(!premium && card.price > 15000) || (premium && card.premPrice) > 50000 ? 'premium_card' : ''}`}>
       <div className="card-img">
         <Link to={`/card/${card._id}/${card.names?.first}+${card.names?.last}`}>
           <img src={imgURL} alt="card image" />
@@ -18,7 +18,7 @@ const Card = ({ card }) => {
         <p className="card-desc"> 
           { card.desc.length > 200 ? card.desc.substring(0, 200) : card.desc } {card.desc.length > 200 && <span className="truncate">...</span>} 
         </p>
-        <h4 className="card-price"><span className='relative'>$</span> { getPrice(card.price) } </h4>
+        <h4 className="card-price"><span className='relative'>$</span> { getPrice(premium? card.premPrice : card.price) } </h4>
       </div>
       
     </div>

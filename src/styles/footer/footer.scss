@@ -10,20 +10,26 @@
         justify-content: space-evenly;
         padding: 30px 20px;
         flex-wrap: wrap;
+        gap: 10px;
 
-        ul {
-            gap: 20px;
+        .footer_nav {
+            flex: 1;
         }
 
         h3 {
             border-bottom: 1px dashed black;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
         li {
             font-size: 0.9rem;
             color: var(--text-color2);
             margin-top: 10px;
+        }
+
+        .footer_links {
+            flex-wrap: wrap;
+            column-gap: 15px;
         }
     }
 

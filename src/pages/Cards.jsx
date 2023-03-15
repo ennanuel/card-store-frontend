@@ -5,7 +5,7 @@ import { getText } from '../assets/functions/site'
 import { AlphabetList, PageInfo, Filter, CardsList } from '../components'
 import '../styles/cards/cards.css'
 
-const Cards = ({ page }) => {
+const Cards = ({ premium, page }) => {
     const { type, val, op } = useParams()
     const [cards, setCards] = useState([])
     const [error, setError] = useState(false)
@@ -22,7 +22,7 @@ const Cards = ({ page }) => {
             <PageInfo page={page} />
             <h2 className="title full-w full-border">Cards - {getText(type)}</h2>
             <Filter />
-            <CardsList cards={cards} error={error} empty={empty} />
+            <CardsList premium={premium} cards={cards} error={error} empty={empty} />
         </section>
     )
 }

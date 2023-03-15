@@ -2,8 +2,11 @@ import { imageURL } from "../data"
 
 import { apiURL } from "../data"
 
-export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError) => {
+export const fetchCard = (id, premium, setPlayer, setImgURL, setPrice, getPrice, setError) => {
     setError(false)
+    setPlayer(null)
+    setPrice(null)
+    setImgURL(false)
 
     fetch(`${apiURL}/player/find/${id}`)
       .then(res => {
@@ -17,7 +20,7 @@ export const fetchCard = (id, setPlayer, setImgURL, setPrice, getPrice, setError
         const result = JSON.parse(data)
         setPlayer(result)
         setImgURL(imageURL + result.image)
-        setPrice(getPrice(result.price))
+        setPrice(getPrice(premium ? result.premPrice : result.price))
       })
       .catch(err => {
         setError(true)

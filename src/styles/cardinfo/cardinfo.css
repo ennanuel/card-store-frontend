@@ -29,6 +29,12 @@
 .card-info .player-info .player-name {
   font-size: 2rem;
   color: var(--text-color1);
+  gap: 15px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .card-info .player-info .player-card-desc {
@@ -64,5 +70,90 @@
 .card-info .payment p {
   margin: 5px 0;
   color: var(--text-color1);
+}
+
+.card-info .loading_names, .card-info .loading_desc, .card-info .loading_info, .card-info .price_loading {
+  display: block;
+  background-color: var(--border);
+  border-radius: 5px;
+  -webkit-animation-name: throb;
+          animation-name: throb;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.card-info .loading_names {
+  height: 50px;
+  width: 70%;
+}
+
+.card-info .loading_desc {
+  height: 150px;
+}
+
+.card-info .loading_info {
+  height: 30px;
+  width: 80px;
+  margin-top: -10px;
+  margin-left: 20px;
+}
+
+.card-info .price_loading {
+  height: 40px;
+  width: 40%;
+}
+
+.card-info .premium_box {
+  --background: linear-gradient(-70deg, rgb(173, 173, 173), rgb(230, 230, 230), rgb(173, 173, 173));
+  gap: 5px;
+  color: var(--text-color1);
+  padding: 3px;
+  border-radius: 3px;
+  background: var(--background);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.5em;
+  font-weight: 600;
+}
+
+.card-info .premium_box.premium_text {
+  --background: linear-gradient(-70deg, rgb(139, 117, 75), rgb(255, 240, 154), rgb(139, 117, 75));
+}
+
+.card-info .premium_box span:not(.prem_icon) {
+  font-size: 0.8em;
+}
+
+.card-info .premium_box .prem_icon {
+  font-size: 1.2em;
+}
+
+@-webkit-keyframes throb {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes throb {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=cardinfo.css.map */

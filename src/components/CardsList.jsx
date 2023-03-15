@@ -1,11 +1,11 @@
 import { Card, Error, Loader, NoResult } from '../components'
 
-const CardsList = ({cards, error, empty}) => {
+const CardsList = ({cards, premium, error, empty}) => {
   return (
     <ul className={`${cards.length > 0 && 'cards'}`}>
         {
             cards.length > 0 ?
-            cards.map((card, i) => <li key={i} ><Card card={card} /></li>) : 
+            cards.map((card, i) => <li key={i} ><Card premium={premium} card={card} /></li>) : 
             <>
             {
                 error ?
