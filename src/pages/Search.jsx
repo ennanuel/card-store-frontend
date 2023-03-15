@@ -5,7 +5,7 @@ import '../styles/search/search.css'
 import { FilterSearch, Loader, NoResult, SearchResult, Error } from "../components"
 import { searchFilters } from "../assets/data"
 
-const Search = () => {
+const Search = ({ premium }) => {
   const { val } = useParams()
   const [cards, setCards] = useState({player: [], team: [], sport: []})
   const [loading, setLoading] = useState(false)
@@ -31,6 +31,7 @@ const Search = () => {
             cards.player.length > 0 || cards.team.length > 0 || cards.sport.length > 0 ?
             searchFilters.map( (searchFilter, i) => (
               <SearchResult 
+                premium={premium}
                 cards={cards[searchFilter.name]} 
                 error={error} 
                 type={searchFilter.type} 

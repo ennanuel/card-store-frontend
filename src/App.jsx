@@ -77,7 +77,7 @@ const App = () => {
               <Route path="/Add-Card" element={<AddCard />} />
               <Route path="/User" element={<EditUser user={user} />} />
               <Route path="/Cards/:type?/:val?/:op?" element={<Cards premium={premium} page={page} />} />
-              <Route path="/Search/:val?" element={<Search />} />
+              <Route path="/Search/:val?" element={<Search premium={premium} />} />
             </Routes>
           </section>
           <Footer premium={premium} players={players} teams={teams} />
