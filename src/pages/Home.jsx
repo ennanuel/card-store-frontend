@@ -19,7 +19,7 @@ const Home = ({ premium, setPremium, cards, error, empty }) => {
                     <>
                     <h2 className="title full-border flex-row align-items-center">
                         <span>Premium Package</span>
-                        <span className="prem_pkg_link" onClick={() => handleClick('')}>Back to normal page</span>
+                        <span className="prem_pkg_link" onClick={() => handleClick('')}>Back to home page</span>
                     </h2>
                     <Meter />
                     </> :
