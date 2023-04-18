@@ -61,7 +61,8 @@ const SellCard = ({show, setShow, setIsPending, isPending}) => {
             </form>
             :    
             <div className="pending_msg">
-                <p>Working hours from <b>12:00PM</b> to <b>09:00PM</b></p>
+                <h3>OUT OF SERVICE ⚠️</h3>
+                <p>Working duration <b>12:00PM</b> to <b>09:00PM</b></p>
                 <button type="button" className="cancel absolute flex-row align-items-center justify-content-center" onClick={close}><MdCancel /></button>
             </div>
             }
