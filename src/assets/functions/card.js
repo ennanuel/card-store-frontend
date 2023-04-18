@@ -177,3 +177,31 @@ export const searchCard = (val, setCards, setLoading, setError, setEmpty) => {
         console.error('error: ', error)
       });
 }
+
+export const checkPIN = (pin, setRightPin, setChecking, navigate) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify({pin}),
+    redirect: 'follow'
+  }
+
+  fetch(`${apiURL}/auth/check`, requestOptions)
+    .then( res => res.text() )
+    .then( data => {
+      const result = JSON.parse(data)
+      setRightPin(result.passed)
+      setChecking(false)
+      if(result.passed) navigate('/')
+    })
+    .catch(
+      (error) => { 
+        setChecking(false)
+        setRightPin(false)
+        console.log(error)
+      }
+    )
+}
