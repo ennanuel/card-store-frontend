@@ -98,7 +98,7 @@ const CardInfo = ({ premium, isPending, setIsPending }) => {
           <Error text="Error fetching card details!" />
         }
       
-      <SellCard setIsPending={setIsPending} show={show} setShow={setShow} />
+      <SellCard setIsPending={setIsPending} isPending={isPending} show={show} setShow={setShow} />
     </article>
   )
 }
