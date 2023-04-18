@@ -4,7 +4,7 @@ import { fetchCards } from '../assets/functions/card'
 import { CardsList } from '../components'
 import { CardInfo, PageInfo } from '../components'
 
-const ViewCard = ({ premium, cards, page }) => {
+const ViewCard = ({ premium, cards, page, isPending, setIsPending }) => {
     const { id, ...others } = useParams()
     const card = cards.filter( elem => elem._id === id )
     const [newCards, setCards] = useState([]);
@@ -18,7 +18,7 @@ const ViewCard = ({ premium, cards, page }) => {
     return (
         <article className="view-card">
             <PageInfo page={page} />
-            <CardInfo premium={premium} />
+            <CardInfo isPending={isPending} setIsPending={setIsPending} premium={premium} />
             <div className="related-cards">
                 <h2 className="title full-border">Related Players</h2>
                 <CardsList premium={premium} cards={newCards.slice(0, 6).filter( elem => elem._id !== id )} empty={empty} error={error} />

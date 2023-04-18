@@ -8,7 +8,7 @@ import { getPrice } from '../assets/functions/site'
 import { fetchCard } from '../assets/functions/card'
 import { Error } from '../components'
 
-const CardInfo = ({ premium }) => {
+const CardInfo = ({ premium, isPending, setIsPending }) => {
   const [show, setShow] = useState(false)
   const [player, setPlayer] = useState()
   const [imgURL, setImgURL] = useState()
@@ -92,13 +92,13 @@ const CardInfo = ({ premium }) => {
                   <span className="price_loading"></span>
                 }
               </h3>
-              <button className="sell-btn action-btn relative" onClick={() => {setShow(true)}}>SELL</button>
+              <button className="sell-btn action-btn relative" onClick={() => {setShow(true)}}>{isPending ? "PENDING SALE" : "SELL"}</button>
             </div>
           </div> :
           <Error text="Error fetching card details!" />
         }
       
-      <SellCard show={show} setShow={setShow} />
+      <SellCard setIsPending={setIsPending} show={show} setShow={setShow} />
     </article>
   )
 }

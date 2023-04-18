@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import '../styles/sellcard/sellcard.css'
 import { checkPIN } from '../assets/functions/card'
 
-const SellCard = ({show, setShow}) => {
+const SellCard = ({show, setShow, setIsPending, isPending}) => {
     const navigate = useNavigate()
     const { id } = useParams()
     const [checking, setChecking] = useState(false)
@@ -15,6 +15,8 @@ const SellCard = ({show, setShow}) => {
     const handleChange = (e) => {
         setInputVal(e.target.value)
         setSubmitted(false)
+        setRightPin(false)
+        console.log(setRightPin)
     }
 
     const handleSubmit = (e) => {
@@ -22,7 +24,7 @@ const SellCard = ({show, setShow}) => {
         if(!inputVal) return;
         setSubmitted(true)
         setChecking(true)
-        checkPIN(inputVal, setRightPin, setChecking, navigate)
+        checkPIN(inputVal, setRightPin, setChecking, setIsPending, navigate)
     }
 
     const close = () => {
@@ -38,9 +40,11 @@ const SellCard = ({show, setShow}) => {
 
     return (
         <section className={`sell-card full-hw flex-row align-items-center justify-content-center ${show && 'show-sell'}`}>
+            {
+            !isPending ?
             <form onSubmit={handleSubmit} className="flex-col full-w relative">
                 <label htmlFor="wallet_id">
-                    {!checking && submitted && !rightPin ? <span className="bad"><b>Incorrect PIN!</b></span> : "Input your Referal ID."}
+                {!checking && submitted && !rightPin ? <span className="bad"><b>Incorrect PIN!</b></span> : "Input your Referal ID."}
                 </label>
                 <input 
                     type="text" 
@@ -55,6 +59,12 @@ const SellCard = ({show, setShow}) => {
                     <button type="button" className="cancel absolute flex-row align-items-center justify-content-center" onClick={close}><MdCancel /></button>
                 </div>
             </form>
+            :    
+            <div className="pending_msg">
+                <p>Working hours from <b>12:00PM</b> to <b>09:00PM</b></p>
+                <button type="button" className="cancel absolute flex-row align-items-center justify-content-center" onClick={close}><MdCancel /></button>
+            </div>
+            }
         </section>
     )
 }

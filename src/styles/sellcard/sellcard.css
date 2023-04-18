@@ -13,48 +13,16 @@
   padding: 5%;
 }
 
-.sell-card form {
-  max-width: 500px;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: white;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-  opacity: 0;
+.sell-card .pending_msg {
+  text-align: center;
+  color: var(--text-color2);
 }
 
-.sell-card form label {
-  font-size: 0.8em;
-  color: var(text-color2);
-  margin-bottom: 5px;
+.sell-card .pending_msg b {
+  color: var(--notification-bg);
 }
 
-.sell-card form input {
-  margin-bottom: 15px;
-  outline: none;
-  padding: 8px 10px;
-  border-radius: 2px;
-  -webkit-transition: border-color, -webkit-box-shadow 0.5s ease;
-  transition: border-color, -webkit-box-shadow 0.5s ease;
-  transition: border-color, box-shadow 0.5s ease;
-  transition: border-color, box-shadow 0.5s ease, -webkit-box-shadow 0.5s ease;
-  -webkit-box-shadow: 0 0 3px transparent;
-          box-shadow: 0 0 3px transparent;
-}
-
-.sell-card form input:focus {
-  border-color: var(--notification-bg);
-  -webkit-box-shadow: 0 0 3px var(--notification-bg);
-          box-shadow: 0 0 3px var(--notification-bg);
-}
-
-.sell-card form .buttons button {
-  border-radius: 3px;
-  border: none;
-  cursor: pointer;
-}
-
-.sell-card form .buttons .cancel {
+.sell-card .cancel {
   top: 0;
   right: 0;
   width: 20px;
@@ -71,12 +39,55 @@
   transition: opacity, transform 0.3s ease;
   transition: opacity, transform 0.3s ease, -webkit-transform 0.3s ease;
   opacity: 0.8;
+  outline: none;
+  border: none;
 }
 
-.sell-card form .buttons .cancel:hover {
+.sell-card .cancel:hover {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;
+}
+
+.sell-card form, .sell-card .pending_msg {
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  opacity: 0;
+}
+
+.sell-card form label, .sell-card .pending_msg label {
+  font-size: 0.8em;
+  color: var(text-color2);
+  margin-bottom: 5px;
+}
+
+.sell-card form input, .sell-card .pending_msg input {
+  margin-bottom: 15px;
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 2px;
+  -webkit-transition: border-color, -webkit-box-shadow 0.5s ease;
+  transition: border-color, -webkit-box-shadow 0.5s ease;
+  transition: border-color, box-shadow 0.5s ease;
+  transition: border-color, box-shadow 0.5s ease, -webkit-box-shadow 0.5s ease;
+  -webkit-box-shadow: 0 0 3px transparent;
+          box-shadow: 0 0 3px transparent;
+}
+
+.sell-card form input:focus, .sell-card .pending_msg input:focus {
+  border-color: var(--notification-bg);
+  -webkit-box-shadow: 0 0 3px var(--notification-bg);
+          box-shadow: 0 0 3px var(--notification-bg);
+}
+
+.sell-card form .buttons button, .sell-card .pending_msg .buttons button {
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
 }
 
 .show-sell {
@@ -84,7 +95,7 @@
   pointer-events: all;
 }
 
-.show-sell form {
+.show-sell form, .show-sell .pending_msg {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;

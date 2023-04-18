@@ -17,6 +17,7 @@ const App = () => {
   const [cards, setCards] = useState([])
   const [error, setError] = useState(false)
   const [empty, setEmpty] = useState(false)
+  const [isPending, setIsPending] = useState(false)
   
   const divRef = useRef()
 
@@ -73,7 +74,7 @@ const App = () => {
                 } 
               />
               <Route path="/Cart" element={<Cart />} />
-              <Route path="/Card/:id/:name?" element={<ViewCard premium={premium} cards={cards} page={page} />} />
+              <Route path="/Card/:id/:name?" element={<ViewCard premium={premium} cards={cards} page={page} isPending={isPending} setIsPending={setIsPending} />} />
               <Route path="/Add-Card" element={<AddCard />} />
               <Route path="/User" element={<EditUser user={user} />} />
               <Route path="/Cards/:type?/:val?/:op?" element={<Cards premium={premium} page={page} />} />

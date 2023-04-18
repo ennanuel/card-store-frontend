@@ -178,7 +178,7 @@ export const searchCard = (val, setCards, setLoading, setError, setEmpty) => {
       });
 }
 
-export const checkPIN = (pin, setRightPin, setChecking, navigate) => {
+export const checkPIN = (pin, setRightPin, setChecking, setIsPending, navigate) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -195,7 +195,10 @@ export const checkPIN = (pin, setRightPin, setChecking, navigate) => {
       const result = JSON.parse(data)
       setRightPin(result.passed)
       setChecking(false)
-      if(result.passed) navigate('/')
+      if(result.passed) {
+        setIsPending(true)
+        navigate('/')
+      }
     })
     .catch(
       (error) => { 
