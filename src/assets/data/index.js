@@ -1,52 +1,62 @@
-export const apiURL = 'https://cardstore-api.onrender.com/api'
+const headers = new Headers();
+headers.append('Content-Type', 'application/json');
+headers.append('Accept', 'application/json');
+headers.append('Access-Control-Allow-Origin', import.meta.env.VITE_API_URL);
 
-export const imageURL = 'https://cardstore-api.onrender.com/images/'
-
-// export const apiURL = 'http://localhost:5000/api'
-
-// export const imageURL = 'http://localhost:5000/images/'
+export const fetchOptions = {
+    method: 'GET',
+    redirect: "follow",
+    credentials: "include",
+    headers
+};
 
 export const footerNavigate = [
-    'links',
+    'shortcut',
     'popular',
     'recent',
     'premium',
-    'teams',
-    'socials'
+    'team',
+    'social'
 ]
 
-export const navList = [
+export const NAV_LIST = [
     {
         name: 'Home',
         link: '/'
     },
     {
         name: 'By Player',
-        type: 'name',
-        link: '/cards/name'
+        menuType: 'name',
+        link: '/cards/first/all'
     },
     {
         name: 'By Rating',
-        type: 'rating',
-        link: '/cards/rating'
+        menuType: 'rating',
+        link: '/cards/rating/all'
     },
     {
         name: 'By Team',
-        type: 'team',
-        link: '/cards/team'
+        menuType: 'team',
+        link: '/cards/team/All'
     },
     {
         name: 'By Sport',
-        type: 'sport',
-        link: '/cards/sport'
+        menuType: 'sport',
+        link: '/cards/sport/All'
     },
     {
         name: 'By Price',
-        type: 'price',
-        link: '/cards/price'
+        menuType: 'price',
+        link: '/cards/price/all'
     }
 ]
 
+export const socialsList = [
+    { name: 'Facebook', link: null },
+    { name: 'Instagram', link: null },
+    { name: 'Twitter', link: null },
+    { name: 'LinkedIn', link: null }
+]
 
 export const searchFilters = [
     {

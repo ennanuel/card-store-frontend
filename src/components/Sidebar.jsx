@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
-import { navList } from '../assets/data'
+import { NAV_LIST } from '../assets/data'
 
 const Sidebar = () => {
   return (
@@ -9,19 +9,15 @@ const Sidebar = () => {
             <h2 className="title">Category</h2>
             <ul className="categories">
                 {
-                    navList.slice(1, ).map( (category, i) => 
+                    NAV_LIST.slice(1, ).map( (category, i) => 
                     <li key={i}>
-                        <p className="flex-row align-items-center link">
-                            <Link to={category.link}><span className="flex-row align-items-center justify-content-center">
+                        <p className="flex-row ai-center link">
+                            <Link to={category.link}><span className="flex-row ai-center jc-center">
                                 <MdOutlineKeyboardArrowRight />Cards {category.name}</span>
                             </Link>
                         </p>
                     </li> )
                 }
-                <li className="flex-row align-items-center link">
-                    <span className="flex-row align-items-center justify-content-center"><MdOutlineKeyboardArrowRight />
-                    <Link to="/cards/">Recent Cards</Link></span>
-                </li>
             </ul>
         </div>
     </article>

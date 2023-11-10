@@ -1,54 +1,55 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { searchCard } from "../assets/functions/card"
-import '../styles/search/search.css'
-import { FilterSearch, Loader, NoResult, SearchResult, Error } from "../components"
-import { searchFilters } from "../assets/data"
+import { useEffect, useMemo, useState } from "react";
+import { useParams } from "react-router-dom";
+import { FilterSearch, SearchResult } from "../components"
+import { Loading, Error } from "../components/fetch_states";
+import { searchCard } from "../utils/card";
+import { searchFilters } from "../assets/data";
+import '../styles/search.scss';
 
-const Search = ({ premium }) => {
-  const { val } = useParams()
-  const [cards, setCards] = useState({player: [], team: [], sport: []})
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [empty, setEmpty] = useState(false)
-  const [filter, setFilter] = useState('')
+const Search = () => {
+  const { searchValue } = useParams();
+  const searchWithoutPlusSign = useMemo(() => searchValue.replace('+', ' '), [searchValue]);
+  const [cards, setCards] = useState({ player: [], team: [], sport: [] });
+  const [{ loading, error }, setFetchState] = useState({ loading: false, error: false });
+  const [filter, setFilter] = useState('');
 
   const handleClick = (e) => {
     setFilter(e.target.value)
   }
+  function start() { setFetchState({ loading: true, error: false }) };
+  function handleFetch(res) {
+    setFetchState({ loading: false, error: false });
+    setCards(res);
+  }
+  function handleError() { setFetchState({ loading: false, error: true }) };
 
-  useEffect( () => {
-    setLoading(true)
-    searchCard(val, setCards, setLoading, setError, setEmpty)
-  }, [val])
+  useEffect(() => {
+    start();
+    searchCard(searchValue)
+      .then(handleFetch)
+      .error(handleError);
+  }, [searchValue])
 
   return (
-      <section className="search_page">
-        <h1 className="full-border title">Search result for <span className="highlight">{val.replace('+', ' ')}</span></h1>
-        <article className="search_results">
-          <FilterSearch filter={filter} handleClick={handleClick} />
-          {
-            cards.player.length > 0 || cards.team.length > 0 || cards.sport.length > 0 ?
-            searchFilters.map( (searchFilter, i) => (
-              <SearchResult 
-                premium={premium}
-                cards={cards[searchFilter.name]} 
-                error={error} 
-                type={searchFilter.type} 
-                filter={filter} 
-                empty={empty} 
-              />
-            )) : 
-            (
-              loading ?
-              <Loader text={`Searching for ${val.replace('+', ' ')}...`} /> :
-              error ?
+    <section className="search_page">
+      <h1 className="full-border title">Search result for <span className="highlight">{searchWithoutPlusSign}</span></h1>
+      <article className="search_results">
+        <FilterSearch filter={filter} handleClick={handleClick} />
+        {
+          loading ?
+            <Loading text={`Searching for ${searchWithoutPlusSign}...`} /> :
+            error ?
               <Error text="Something went wrong!" /> :
-              <NoResult text="Nothing was found" />
-            )
-          }
-        </article>
-      </section>
+              searchFilters.map(({ name, type }, i) => (
+                <SearchResult
+                  cards={cards[name]}
+                  filterType={type}
+                  filter={filter}
+                />
+              ))
+        }
+      </article>
+    </section>
   )
 }
 

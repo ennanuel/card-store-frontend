@@ -1,0 +1,119 @@
+.cart {
+
+
+    table {
+        margin-top: 20px;
+        padding: 0;
+        border-collapse: collapse;
+        
+        tr {
+            padding: 0;
+
+            th {
+                padding: 15px;
+                font-size: 1.3em;
+                color: var(--text-color1)
+            }
+
+            td {
+                padding: 12px;
+                color: var(--text-color2);
+                text-align: center;
+
+                .names {
+                    color: var(--notification-bg);
+                }
+            }
+
+            .first-row {
+                text-align: left;
+            }
+        }
+
+            .items { 
+                font-size: 0.9em;
+            }
+
+            .total {
+                font-weight: bold;
+                border-top: 1px solid var(--border);
+
+                tr {
+                    border-bottom: 1px solid var(--border)
+                }
+
+                td {
+                    color: var(--text-color1);
+                    text-align: left;
+                }
+
+                .total-title {
+                    text-align: right;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+        .grey-col {
+            background-color: #ddd;
+        }
+    }
+
+    .quantity {
+
+        span {
+            font-size: 1.2rem;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid var(--text-color1);
+            outline: none;
+            color: var(--text-color1);
+            margin-left: 5px;
+            padding: 0 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--text-color1);
+                color: white;
+            }
+        }
+    }
+
+    .cart_btn {
+        padding: 5px 15px;
+        border-radius: 3px;
+        background-color: var(--text-color1);
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        &.remove {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: red;
+            border: 1px solid transparent;
+
+            &:hover {
+                border-color: red;
+            }
+        }
+
+        &.check_out_btn {
+            padding: 15px 20px;
+            gap: 10px;
+            
+            svg {
+                color: white;
+            }
+        }
+    }
+
+    .checkout-btn {
+        padding: 20px;
+        justify-content: flex-end;
+    }
+}

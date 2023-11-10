@@ -1,27 +1,25 @@
-import { CardsList, NoResult } from '../components'
+import { useMemo } from 'react';
+import CardsList from './CardsList';
+import { NothingFound } from './fetch_states';
 
-const SearchResult = ({ premium, type, filter, cards, error, empty }) => {
-    const capText = type && type.substring(0, 1).toUpperCase()
+const SearchResult = ({ filterType, filter, cards }) => {
+    const showCards = useMemo(() => cards.length > 0 && (filter === filterType || !filter), [cards, filterType, filter]);
 
     return (
         <div className="search_type">
             {
-                cards?.length > 0 && (filter === type || filter === '') ?
-                <>
-                {filter === '' && <h3 className="dark_title">Result for Player {type.length > 1 ? capText + type.substring(1, ) : type}</h3>}
-                <div className={`search_result full-border ${type !== '' && 'give_margin'}`}>
-                    <CardsList premium={premium} cards={cards} error={error} empty={empty} />
-                </div>
-                </> : 
-                ( 
-                    filter === type ?
-                    <NoResult text="No results found." /> :
-                    null
-                )
+                showCards ?
+                    <>
+                        { !filter && <h3 className="dark_title">Result for Player {filterType}</h3> }
+                        <div className={`search_result full-border ${type !== '' && 'give_margin'}`}>
+                            <CardsList cards={cards} />
+                        </div>
+                    </> :
+                    filter === filterType ? <NothingFound text="No results found." /> : null
             }
         </div>
     
-  )
-}
+    )
+};
 
 export default SearchResult

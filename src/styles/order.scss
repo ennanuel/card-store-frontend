@@ -1,0 +1,190 @@
+.orders {
+
+
+    .container {
+        padding: 15px;
+
+        .filters {
+            gap: 10px;
+            text-transform: capitalize;
+
+            .action-btn {
+                padding: 10px 15px;
+            }
+        }
+        
+        .orders-list {
+            gap: 15px;
+            margin-top: 15px;
+
+            li a {
+                padding: 15px;
+                padding-left: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+                color: var(--text-color1);
+                overflow: hidden;
+                gap: 5px;
+                transition: transform .2s ease, box-shadow .2s ease;
+
+                .top {
+                    gap: 15px;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .order-date {
+                        font-size: .9rem;
+                    }
+                }
+
+                .bottom {
+                    padding: 10px;
+                    padding-bottom: 0;
+                    border-top: 1px dashed var(--border);
+                    gap: 15px;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                }
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    height: calc(100% - 10px);
+                    width: 6px;
+                    border-radius: 6px;
+                    background-color: var(--text-color1);
+                }
+
+                &:hover {
+                    transform: scale(1.01);
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+                }
+                
+                &.pending {
+                    &:before {
+                        background-color: orange;
+                    }
+                    .status {
+                        color: var(--text-color2);
+                    }
+                }
+                &.success {
+                    &:before {
+                        background-color: var(--notification-bg);
+                    }
+                    .status {
+                        color: var(--notification-bg);
+                    }
+                }
+                &.cancelled {
+                    &:before {
+                        background-color: var(--text-color2);
+                    }
+                    .status {
+                        color: rgb(131, 27, 27);
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+            
+            .page {
+                width: 45px;
+                height: 45px;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                border-color: var(--notification-bg);
+                color: var(--text-color2);
+                cursor: pointer;
+
+                &:hover,
+                &.current-page {
+                    background-color: var(--notification-bg);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.order {
+
+
+    .order-details {
+        background-color: var(--border);
+
+        .top {
+            padding: 10px 15px;
+            margin: 20px auto 10px;
+            background-color: var(--text-color1);
+            color: white;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            .order-id {
+                font-size: .9rem;
+            }
+
+            .date {
+                color: white;
+            }
+        }
+        
+        .order-title {
+            padding: 0 10px;
+        }
+        
+        ul {
+            margin-top: 8px;
+
+            li {
+                padding: 10px;
+                justify-content: space-between;
+                align-items: center;
+                gap: 15px;
+                border-top: 1px dashed var(--text-color1);
+
+                .names {
+                    font-size: .9rem;
+                }
+            }
+        }
+
+        .bottom {
+            justify-content: space-between;
+            padding: 10px;
+            background-color: var(--text-color1);
+            color: white;
+            gap: 15px;
+            flex-wrap: wrap;
+
+            .left {
+                gap: 10px;
+                font-size: .9rem;
+            }
+
+            .right {
+                gap: 5px;
+                p {
+                    font-size: .8rem;
+                }
+                h3 {
+                    color: var(--white);
+                }
+            }
+        }
+    }
+
+    
+}

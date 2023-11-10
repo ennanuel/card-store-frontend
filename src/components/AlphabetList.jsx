@@ -1,13 +1,17 @@
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const AlphabetList = () => {
-    const alph = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    const {type, val, op} = useParams();
-
+const ALPHABETS_ARRAY = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const AlphabetList = ({ alphabet = '' }) => {
     return (
-        <ul className="alph-cat flex-row align-items-center justify-content-center">
+        <ul className="alph-cat flex-row ai-center jc-center">
             {
-                alph.map( (letter, i) => <li className={`full-border ${ val === letter && 'active-alph'}`} key={i}><Link to={`/cards/name/${letter}/first`}>{letter}</Link></li> )
+                ALPHABETS_ARRAY.map((letter, i) => (
+                    <li className={`full-border ${alphabet === letter && 'active-alph'}`} key={i}>
+                        <Link to={`/cards/first/${letter}`}>
+                            {letter}
+                        </Link>
+                    </li>
+                ))
             }
         </ul>
     )

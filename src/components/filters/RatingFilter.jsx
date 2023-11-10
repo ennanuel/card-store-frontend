@@ -1,57 +1,67 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const RatingFilter = ({ navigate, val }) => {
-  const [{lt, gt}, setValues] = useState({lt: 0, gt: 0})
-  const [error, setError] = useState('')
+const RatingFilter = ({ searchValue }) => {
+  const [from, to] = useMemo(() => searchValue.split('+').slice(0, 2), [searchValue]);
+  const [{ lessThan, greaterThan }, setValues] = useState({ lessThan: 0, greaterThan: 0 });
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const value = e.target.value
-
-    setError(false)
-    setValues( prev => ({...prev, [e.target.getAttribute('name')]: parseInt(value || 0)}) )
+    const value = parseInt(e.target.value || 0);
+    const valuesKey = e.target.name;
+    setValues( prev => ({...prev, [valuesKey]: value}) )
+    setError(null)
   }
 
-  const handleClick = () => {
-    if(gt > lt) {
-      setError('"FROM" must be less than "TO"')
-    } 
-    else if (!gt && !lt) {
-      setError('Please fill in filter values')
-    } 
-    else if (gt > 100 || lt > 100 || gt < 0 || lt < 0) {
-      setError('Values must range from 0 - 100')
-    }
-    else {
-      setError(false)
-      navigate(`/cards/rating/${gt}+${lt}`)
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const valuesAreWithinRange = greaterThan <= 100 && lessThan <= 100 && greaterThan >= 0 && lessThan >= 0;
+    if (greaterThan > lessThan) return setError('"FROM" must be less than "TO"');
+    else if (!greaterThan && !lessThan) return setError('Please fill in filter values');
+    else if (!valuesAreWithinRange) return setError('Values must range from 0 - 100');
+    setError(null);
+    navigate(`/cards/rating/${greaterThan}+${lessThan}`);
   }
 
   return (
-    <article className="price_filter">
-      <div className="filters flex-row align-items-center justify-content-center">
+    <form className="price_filter" onSubmit={handleSubmit}>
+      <div className="filters flex-row ai-center jc-center">
         <div className="input-container relative">
-        <label htmlFor="lt" className={`absolute ${error && 'bad'}`}>
-          FROM
-        </label>
-        <input type="number" id="gt" name="gt" min="0" max="100" className="full-w full-border" onChange={handleChange} />
+          <label htmlFor="graterThan" className={`absolute ${error && 'bad'}`}>
+            FROM
+          </label>
+          <input
+            type="number"
+            id="greaterThan"
+            name="greaterThan"
+            min={0} max={100}
+            className="full-w full-border"
+            onChange={handleChange}
+          />
       </div>
       <div className="input-container relative">
-        <label htmlFor="lt" className={`absolute ${error && 'bad'}`}>
+        <label htmlFor="lessThan" className={`absolute ${error && 'bad'}`}>
           TO
         </label>
-        <input type="number" id="lt" name="lt" min="0" max="100" className="full-w full-border" onChange={handleChange} />
+          <input
+            type="number"
+            id="lessThan"
+            name="lessThan"
+            min={0} max={100}
+            className="full-w full-border"
+            onChange={handleChange}
+          />
       </div>
-      <button className="action-btn relative sell-btn filter_btn" onClick={handleClick}>SUBMIT</button>
+      <button className="action-btn relative sell-btn filter_btn">SUBMIT</button>
       </div>
+      { error && <p className="filter_err_msg bad">{error}</p>}
       {
-        error && <p className="filter_err_msg bad">{error}</p>
+        (from && to) ?
+          <p>From <b className="highlight">{from}</b> to <b className="highlight">{to}</b></p> :
+          <p><b className="highlight">Showing all cards</b></p>
       }
-      {
-        val &&
-        <p>From <b className="highlight">{val.split('+')[0]}</b> to <b className="highlight">{val.split('+')[1]}</b></p>
-      }
-    </article>
+    </form>
   )
 }
 

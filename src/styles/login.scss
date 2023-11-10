@@ -1,0 +1,134 @@
+.login-register {
+  min-height: 100vh;
+  padding: 5%;
+
+  .pword_input {
+    flex: 1;
+    padding: 0;
+
+    button {
+      background-color: transparent;
+      color: var(--text-color1);
+      font-size: 1.2em;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background-color: white;
+      padding: 0 15px;
+    }
+  }
+
+  form {
+    max-width: 600px;
+    padding: 5%;
+    background-color: white;
+    border-radius: 5px;
+
+    .bad {
+      color: red;
+      gap: 5px;
+    }
+
+    label {
+      font-size: 0.7em;
+      color: var(--notification-bg);
+      margin-left: 15px;
+    }
+
+    #error {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.7em;
+    }
+
+    .inputs,
+    .bank_info,
+    .passwords,
+    .bio,
+    .contact {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .bio {
+      label {
+        position: absolute;
+        top: -4px;
+        left: 10px;
+        background-color: white;
+        z-index: 1;
+        padding: 5px;
+      }
+    }
+
+    .names {
+      flex-wrap: wrap;
+
+      input {
+        width: 33.3% !important;
+        flex: 1;
+      }
+    }
+
+    .form-quest {
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .good {
+      color: var(--notification-bg);
+      gap: 3px;
+    }
+
+    .form-text {
+        font-size: .9rem;
+        color: var(--text-color2);
+
+        .form-link {
+            color: var(--text-color3);
+            font-weight: bold;
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+}
+
+  input {
+    padding: 10px 5px 5px;
+    margin: 10px;
+    flex: 1;
+    display: block;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    transition: max-width 0.3s ease;
+
+    &:focus {
+      border-color: var(--notification-bg);
+    }
+  }
+
+  input[type="date"] {
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  button {
+    padding: 14px;
+    max-width: 400px;
+    display: block;
+    margin: 20px auto 0;
+    border: none;
+    outline: none;
+    background-color: var(--notification-bg);
+    color: white;
+    cursor: pointer;
+  }
+}

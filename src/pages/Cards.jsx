@@ -1,28 +1,35 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { fetchCards } from '../assets/functions/card'
-import { getText } from '../assets/functions/site'
-import { AlphabetList, PageInfo, Filter, CardsList } from '../components'
-import '../styles/cards/cards.css'
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { PageInfo, Filter, CardsList } from '../components';
+import { TEXT_DISPLAY_TYPES } from '../utils/site';
+import { fetchCards } from '../utils/card';
+import '../styles/cards.scss';
 
-const Cards = ({ premium, page }) => {
-    const { type, val, op } = useParams()
-    const [cards, setCards] = useState([])
-    const [error, setError] = useState(false)
-    const [empty, setEmpty] = useState(false)
+const Cards = () => {
+    const { fetchType, searchValue } = useParams();
+    const textDisplayType = useMemo(() => TEXT_DISPLAY_TYPES[fetchType] || TEXT_DISPLAY_TYPES['name'], [fetchType]);
+    const [cardState, setCardState] = useState({ cards: [], error: false, loading: false });
+
+    function start() { setCardState({ cards: [], error: false, loading: true }) };
+    function handleFetch(res) { setCardState({ cards: res, error: false, loading: false }) };
+    function handleError(error) {
+        console.error(error);
+        setCardState({ loading: false, error: true, cards: [] });
+    }
 
     useEffect(() => {
-        setCards([])
-
-        fetchCards(setCards, setError, setEmpty, type, val, op)
-    }, [type, val, op])
+        start();
+        fetchCards({ fetchType, searchValue })
+            .then(handleFetch)
+            .catch(handleError);
+    }, [fetchType, searchValue])
     
     return (
         <section className="cards_page">
-            <PageInfo page={page} />
-            <h2 className="title full-w full-border">Cards - {getText(type)}</h2>
+            <PageInfo />
+            <h2 className="title full-w full-border">Cards - {textDisplayType}</h2>
             <Filter />
-            <CardsList premium={premium} cards={cards} error={error} empty={empty} />
+            <CardsList { ...cardState } />
         </section>
     )
 }

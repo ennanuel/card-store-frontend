@@ -1,23 +1,29 @@
-import { useState, useEffect } from 'react'
-import { fetchSports } from '../../assets/functions/card'
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchSports } from '../../utils/card';
 
-const SportFilter = ({ val, navigate, location }) => {
-    const [sports, setSports] = useState([])
+const SportFilter = ({ searchValue = 'All' }) => {
+    const [sports, setSports] = useState([]);
+    const sportName = useMemo(() => searchValue.replace('+', ' '), [searchValue])
+    const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        navigate(`/cards/sport/${e.target.value}`)
+    const navigateToSport = (e) => {
+        const sportName = e.target.value;
+        navigate(`/cards/sport/${sportName.replace(' ', '+')}`);
     }
 
     useEffect( () => {
-        fetchSports(setSports)
+        fetchSports()
+            .then(res => setSports(res))
+            .catch(error => console.error(error));
     }, [])
     
     return (
-        <article className="sport_filter flex-row align-items-center">
-            <label htmlFor="select_team">Showing <b className="highlight">{val ? val.replace('+', ' ') : 'All'}</b> Cards</label>
-            <select name="select_team" className="full-w" id="select_team" onChange={handleChange}>
-                <option value=""> All Sports </option>
-                { sports.map( (sport, i) => <option key={i} value={sport}>{sport}</option>) }
+        <article className="sport_filter flex-row ai-center">
+            <label htmlFor="select_team">Showing <b className="highlight">{sportName}</b> Cards</label>
+            <select name="select_team" className="full-w" id="select_team" onChange={navigateToSport}>
+                <option value="all"> All Sports </option>
+                { sports.map( ({ name }, i) => <option key={i} value={name}>{name}</option>) }
             </select>
         </article>
     )

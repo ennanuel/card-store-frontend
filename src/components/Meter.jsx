@@ -2,7 +2,7 @@ import React from 'react'
 
 const Meter = () => {
   return (
-    <div className='meter_container flex-col full-border relative justify-content-center align-items-center'>
+    <div className='meter_container flex-col full-border relative jc-center ai-center'>
         <h3 className='absolute meter_text'>Pending Payment</h3>
         <ul className="meter relative full-w full-border flex-row">
             {   

@@ -1,27 +1,28 @@
-import { Link } from 'react-router-dom'
-import { imageURL } from '../assets/data'
-import { getPrice } from '../assets/functions/site'
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { convertNumberToPriceFormat } from '../utils/site';
 
-const Card = ({ card, premium }) => {
-  const imgURL = imageURL + card.image
+const Card = ({ _id, names = {}, desc, price, image }) => {
+  const formattedPrice = useMemo(() => convertNumberToPriceFormat(price), []);
 
   return (
-    <div className={`card relative flex-row align-items-center full-border ${premium ? 'prem_card' : 'norm_prem_card'} ${(!premium && card.price > 15000) || (premium && card.premPrice) > 50000 ? 'premium_card' : ''}`}>
+    <Link  to={`/card/${_id}/${names.first}+${names.last}`}className={`card relative flex-row ai-center full-border prem_card ${price > 40000 && 'premium_card'}`}>
       <div className="card-img">
-        <Link to={`/card/${card._id}/${card.names?.first}+${card.names?.last}`}>
-          <img src={imgURL} alt="card image" />
-        </Link>
+        <img src={image} alt="card image" />
       </div>
-      
       <div className="small-card-info">
-        <h3 className="card-title link"><Link to={`/card/${card._id}/${card.names?.first}+${card.names?.last}`}>{card.names?.first} {card.names?.middle || ''} {card.names?.last || ''}</Link></h3>
+        <h3 className="card-title link">
+          {names.first} {names.middle || ''} {names.last || ''}
+        </h3>
         <p className="card-desc"> 
-          { card.desc.length > 200 ? card.desc.substring(0, 200) : card.desc } {card.desc.length > 200 && <span className="truncate">...</span>} 
+          { desc.length > 200 ? desc?.substring(0, 200) : desc } {desc.length > 200 && <span className="truncate">...</span>} 
         </p>
-        <h4 className="card-price"><span className='relative'>$</span> { getPrice(premium? card.premPrice : card.price) } </h4>
+        <h4 className="card-price">
+          <span className='relative'>$</span>
+          <span>{formattedPrice}</span>
+        </h4>
       </div>
-      
-    </div>
+    </Link>
   )
 }
 

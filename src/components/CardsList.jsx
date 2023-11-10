@@ -1,24 +1,20 @@
-import { Card, Error, Loader, NoResult } from '../components'
+import Card from './Card';
+import { Loading, Error, NothingFound } from './fetch_states';
 
-const CardsList = ({cards, premium, error, empty}) => {
+const CardsList = ({ cards, loading, error }) => {
   return (
     <ul className={`${cards.length > 0 && 'cards'}`}>
-        {
-            cards.length > 0 ?
-            cards.map((card, i) => <li key={i} ><Card premium={premium} card={card} /></li>) : 
-            <>
-            {
-                error ?
-                <Error text="Something went wrong!" /> :
-                ( empty ?
-                  <NoResult text="No such cards." /> :
-                  <Loader text="Loading cards..." />
-                )
-            } 
-            </>
-        }
+      {
+        cards.length > 0 ?
+          cards.map((card, i) => <li key={i} ><Card {...card} /></li>) :
+          error ?
+            <Error text="Something went wrong!" /> :
+            loading ?
+              <Loading text="Loading cards..." /> :
+              <NothingFound text="No cards found." />
+      }
     </ul>
   )
-}
+};
 
 export default CardsList

@@ -1,39 +1,41 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { registerAuth, passwordAuth, registerReq } from '../assets/functions/register';
-import { RegisterForm } from '../components';
-import '../styles/login/login.css'
+import { RegisterForm } from '../components/forms';
+import { register } from '../utils/register';
+import '../styles/login.scss';
 
 const Register = () => {
-  const [register, setRegister] = useState({first_name: '', middle_name: '', last_name: '', email: '', phone: '', age: '', address: '', bank: '', account_number: '', username: '', password: '', confirmPword: ''});
-  const [pwordCheck, setPwordCheck] = useState('')
-  const [authStatus, setAuthStatus] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [registerValues, setRegisterValues] = useState({first: '', middle: '', last: '', email: '', phone: '', dob: '', address: '', bank: '', account_number: '', username: '', password: '', confirm_password: ''});
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleRegisterChange = (e) => {
-    const inputName = e.target.getAttribute('name');
-      
-    setRegister(prev => ({...prev, [inputName]: e.target.value}))
-  }
-  
-  const handleRegister = (e) => {
-    e.preventDefault()
-    registerReq(register, setAuthStatus, navigate, setLoading)
-  }
-
-  useEffect( () => {
-    setPwordCheck(passwordAuth(register.password, register.confirmPword))
-  }, [register])
+  const handleChange = (e) => {
+    if (!e.target) return;
+    const { name, value } = e.target;
+    setRegisterValues(prev => ({ ...prev, [name]: value }));
+  };
+  const handleRegister = async (e) => {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      await register(registerValues);
+      navigate('/login');
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      setError(error);
+    }
+  };
 
   return (
-    <div className="login-register full-w flex-col align-items-center justify-content-center">
+    <div className="login-register full-w flex-col ai-center jc-center">
       <RegisterForm 
-        handleRegisterChange={handleRegisterChange} 
-        handleRegister={handleRegister}
-        pwordCheck={pwordCheck} 
-        authStatus={authStatus} 
+        {...registerValues}
+        handleChange={handleChange} 
+        handleSubmit={handleRegister}
+        error={error} 
         loading={loading}
        />
     </div>

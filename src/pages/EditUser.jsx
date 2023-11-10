@@ -1,31 +1,14 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { EditInfo, UserInfo } from '../components'
-import '../styles/edituser/edituser.css'
+import { EditUserInfo } from '../components/forms';
+import { UserProvider } from '../context/UserContext';
+import '../styles/edituser.scss';
 
-const EditUser = ({user}) => {
-  const [edit, setEdit] = useState(false)
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    setEdit(true)
-  }
-  
-  const handleSubmit = (e) => {
-    e.preventDefalut();
-    setEdit(false)
-    navigate('/')
-  }
-
+const EditUser = () => {
   return (
-    <div className="edit_user">
-      {
-        edit ?
-        <EditInfo user={user} handleSubmit={handleSubmit} /> :
-        <UserInfo user={user} handleClick={handleClick} />
-      }
-    </div>
+    <UserProvider>
+      <EditUserInfo />
+    </UserProvider>
   )
 }
 
 export default EditUser
+

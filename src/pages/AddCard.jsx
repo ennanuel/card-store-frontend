@@ -1,49 +1,66 @@
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { Error, AddCardForm } from '../components'
-import { addCard } from '../assets/functions/card'
-import '../styles/addcard/addcard.css'
+import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { AddCardForm } from '../components/forms'
+import { addCard } from '../utils/card';
+import { getImageSrc } from '../utils';
+import '../styles/addcard.scss';
+import emptyImage from '../assets/card-images/empty.jpg';
+import { useSelector } from 'react-redux';
+
+const INITIAL_VALUES = { first: '', middle: '', last: '', desc: '', team: '', rating: 0, sport: '', price: 0, quantity: 0, image: undefined };
 
 const AddCard = () => {
-    const [playerData, setPlayerData] = useState({})
-    const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [img, setImg] = useState()
-
-    const navigate = useNavigate()
+    const user = useSelector(state => state.user);
+    const [cardValues, setCardValues] = useState(INITIAL_VALUES);
+    const [{ loading, error, errorMsg }, setFetchState] = useState({ loading: false, error: false });
+    const [imgSrc, setImgSrc] = useState(emptyImage);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
-        if(e.target.getAttribute('name') === 'image') {
+        if (!e.target) return;
+        const { name, value } = e.target;
+        setCardValues(prev => ({ ...prev, [name]: value }));
+    };
+    const handleFileChange = async (e) => {
+        try {
+            if (!e.target.files) return;
             const file = e.target.files[0];
-            const reader = new FileReader()
-
-            reader.readAsDataURL(file)
-            reader.onload = () => {
-                setImg(reader.result);
-            }
-            setPlayerData(prev => ({...prev, image: file}))
-        } 
-        else {
-           setPlayerData(prev => ({...prev, [e.target.getAttribute('name')]: e.target.value})); 
+            const imgSrc = await getImageSrc(file);
+            setCardValues(prev => ({ ...prev, image: file }));
+            setImgSrc(imgSrc);
+        } catch (error) {
+            console.error(error);
         }
-    }
-
+    };
     const handleSubmit = (e) => {
+        setFetchState({ loading: true, error: false, errorMsg: '' });
         e.preventDefault();
-        addCard(playerData, navigate, setError, setLoading);
-    }
+        addCard(cardValues, user._id)
+            .then(handleSuccess)
+            .catch(handleError);
+    };
+
+    function handleSuccess() { navigate('/') };
+    function handleError(error) {
+        console.error(error);
+        setFetchState({ loading: false, error: true, errorMsg: String(error) });
+    };
+    function reset() { setFetchState({ loading: false, error: false, }) };
 
     return (
         <section className="add_card">
             <h2 className="title full-border">Create Player Card</h2>
-                {
-                    error ?
-                    <div className="error full-w flex-col justify-content-center align-items-center">
-                        <Error text="Could not add card!" />
-                        <button className="error_btn" onClick={() => {setError(false)}}>Retry</button>
-                    </div> :
-                    <AddCardForm handleSubmit={handleSubmit} img={img} handleChange={handleChange} loading={loading} />
-                }
+            <AddCardForm
+                {...cardValues}
+                imgSrc={imgSrc}
+                error={error}
+                errorMsg={errorMsg}
+                loading={loading}
+                reset={reset}
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                handleFileChange={handleFileChange}
+            />
         </section>
         
     )
