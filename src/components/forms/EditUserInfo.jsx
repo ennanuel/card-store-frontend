@@ -1,46 +1,24 @@
-import { useContext, useEffect, useState } from "react";
-import { editUserInfo } from "../../utils/user";
-import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import Loading from "../fetch_states/Loading";
 import Error from "../fetch_states/Error";
-import { UserContext } from "../../context/UserContext";
+import { HiXMark } from "react-icons/hi2";
+import { MdCheck } from "react-icons/md";
 
-const EditUserInfo = () => {
-    const { userDetails, loading: fetchLoading, error: fetchError } = useContext(UserContext);
-    const [{ first, middle, last, username, email, phone, dob, bank, account_number }, setValues] = useState({});
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    const navigate = useNavigate();
+const EditUserInfo = ({ userDetails = {}, loading, error, handleChange, handleSubmit, retry }) => {
+    const { first, middle, last, username, email, phone, dob, bank, account_number } = useMemo(() => userDetails, [userDetails]);
 
-    const handleChange = (e) => {
-        if (!e.target) return;
-        const { name, value } = e.target;
-        setValues(prev => ({ ...prev, [name]: value }))
-    };
-    const handleSubmit = async (e) => { 
-        try {
-            e.preventDefault();
-            setLoading(true);
-            const editValues = { user_id: userDetails.id, first, middle, last, username, email, phone, dob, bank, account_number };
-            await editUserInfo(editValues);
-            navigate('/');
-        } catch (error) {
-            setError(true);
-            setLoading(false);
-            console.error(error);
-        }
-    };
-    
-    useEffect(() => {
-        const { names = {}, ...otherValues } = userDetails;
-        setValues({ ...otherValues, ...names });
-    }, [userDetails]);
+    if (loading) return <Loading text="Please wait..." />;
+    if (error) return (
+        <div className="flex-col jc-center">
+            <Error text="Something went wrong!" />
+            <button className="retry-btn" onClick={retry}>Retry</button>
+        </div>
+    );
 
-    if (loading || fetchLoading) return <Loading text="Loading..." />;
-    if (error || fetchError) return <Error text="Something went wrong!" />;
     return (
         <form onSubmit={handleSubmit}>
-            <div className="user_info flex-col">
+            <div className="user_info edit flex-col">
                 <h2 className="title full-border">Edit User Info</h2>
                 <div className="names flex-row">
                     <div className="profile_data relative full-border">
@@ -86,7 +64,16 @@ const EditUserInfo = () => {
                     <label className="profile_field absolute">account number</label>
                     <input type="number" name="account_number" value={account_number} onChange={handleChange} />
                 </div>
-                <button type="submit" className="sell-btn action-btn relative">SAVE</button>
+            </div>
+            <div className="action-btns flex-row ai-center">
+                <Link to="/user/details" className="sell-btn action-btn remove-btn relative">
+                    <HiXMark size={20} />
+                    <span>Cancel</span>
+                </Link>
+                <button type="submit" className="sell-btn action-btn relative">
+                    <MdCheck size={20} />
+                    <span>Save</span>
+                </button>
             </div>
         </form>
     )

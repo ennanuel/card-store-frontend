@@ -1,10 +1,11 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Cart, Home, ViewCard, AddCard, Login, Register, UserDetails, Cards, Search, EditUser, Pay, Success, Orders, Order } from './pages';
+import { Cart, Home, ViewCard, AddCard, Login, Register, UserDetails, Cards, Search, EditUser, Pay, Success, Orders, Order, ChooseUser } from './pages';
 import { Layout } from './components';
 import { authenticateUser } from './state/features/userSlice';
 import { Loading } from './components/fetch_states';
+import handlePath, { getPathTitle } from './utils/pathhandler';
 import './styles/App.scss';
 
 const App = () => {
@@ -12,10 +13,13 @@ const App = () => {
   const { loading, noUser } = useSelector(state => state.user);
   const { pathname } = useLocation();
   const divRef = useRef(null);
+  const siteTitleRef = useRef(document.getElementById('title'));
 
   useEffect(() => {
     divRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [pathname]);
+    const siteTitle = getPathTitle(pathname)
+    siteTitleRef.current.innerText = siteTitle;
+  }, [pathname, siteTitleRef]);
 
   useEffect(() => { 
     if (!noUser) return;
@@ -34,23 +38,24 @@ const App = () => {
         noUser ?
           <Routes>
             <Route path="/register" element={<Register />} />
-            <Route path="/*" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<ChooseUser />} />
           </Routes>
           :
           <Routes>
             <Route element={<Layout />}>
               <Route path="/*" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
+              <Route path="/search/:searchValue" element={<Search />} />
+              <Route path="/cards/:fetchType/:searchValue" element={<Cards />} />
               <Route path="/card/:card_id/:name" element={<ViewCard />} />
               <Route path="/add-card" element={<AddCard />} />
-              <Route path="/user/:user_id" element={<UserDetails />} />
-              <Route path="/edit_user/:user_id" element={<EditUser />} />
-              <Route path="/cards/:fetchType/:searchValue" element={<Cards />} />
-              <Route path="/search/:searchValue" element={<Search />} />
-              <Route path="/pay" element={<Pay />} />
-              <Route path="/success" element={<Success />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/orders/:filter/:page" element={<Orders />} />
               <Route path="/order/:id" element={<Order />} />
+              <Route path="/pay" element={<Pay />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/user/details" element={<UserDetails />} />
+              <Route path="/user/edit" element={<EditUser />} />
             </Route>
           </Routes>
       }

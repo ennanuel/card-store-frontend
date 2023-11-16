@@ -7,11 +7,10 @@ export const register = (data) => new Promise(
             const requestOptions = { ...fetchOptions, method: "POST", body };
             const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, requestOptions);
             const res = await response.json();
-            if (response.status !== 200) throw new Error(res.message);
-            resolve();
+            resolve({ ...res, status: response.status });
         } catch (error) {
             console.error(error);
-            reject(error.message);
+            reject();
         }
     }
 );

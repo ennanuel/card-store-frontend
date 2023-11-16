@@ -45,6 +45,7 @@ const AddToCart = ({ quantity, price, isInCart, outOfStock, isYours, card_id }) 
             {
                 outOfStock ?
                     <p>Out of Stock</p> :
+                    !isYours &&
                     <div className={`relative add-to-cart flex-col ${loading && 'disable'}`}>
                         <div className="quantity flex-row">
                             <input

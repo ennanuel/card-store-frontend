@@ -58,7 +58,7 @@ export const socialsList = [
     { name: 'LinkedIn', link: null }
 ]
 
-export const searchFilters = [
+export const SEARCH_FILTERS = [
     {
         name: 'player',
         type: 'name'

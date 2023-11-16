@@ -1,21 +1,27 @@
 import { Link, useLocation } from "react-router-dom";
-import { getNavigation } from "../utils/site";
 import { useMemo } from "react";
+import handlePath from "../utils/pathhandler";
+import { HiChevronDoubleRight } from "react-icons/hi2";
 
 const PageInfo = () => {
   const { pathname } = useLocation();
-  const pageNavigation = useMemo(() => getNavigation(pathname), [pathname]);
+  const pageNavigation = useMemo(() => handlePath(pathname), [pathname]);
 
   return (
     <div className="page-info full-w full-border flex-row ai-center">
-      <ul className="page flex items-center">
+      <ul className="flex-row ai-center">
         {
-          pageNavigation.map(({ link, name }, i) => (
-            <Link key={i} to={link}>{name}</Link>
+          pageNavigation.map(({ link, title }, i, arr) => (
+            <>
+              <Link key={i} to={link} className="flex-row ai-center jc-center">
+                <span>{title}</span>
+              </Link>
+              {i !== (arr.length - 1) && <HiChevronDoubleRight />}
+            </>
           ))
         }
       </ul>
-      <div className="cards-sold">OVER 1,000 SOLD!</div>
+      <p className="cards-sold">OVER 1,000 SOLD!</p>
     </div>
   )
 }

@@ -80,11 +80,6 @@
         gap: 10px;
         height: 100%;
 
-        &.norm_prem_card {
-            --background: linear-gradient(-70deg, rgb(118, 118, 118), rgb(230, 230, 230), rgb(118, 118, 118));
-            --border-clr: var(--border)
-        }
-
         &.prem_card {
             --background: linear-gradient(-70deg, rgb(139, 117, 75), rgb(255, 240, 154), rgb(139, 117, 75));
             --border-clr: rgb(255, 240, 154);
@@ -92,10 +87,6 @@
 
         &.premium_card {
             border-color: var(--border-clr);
-
-            .card-title, .card-price {
-                font-weight: bold !important;
-            }
 
             .card-desc {
                 color: black !important;
@@ -120,6 +111,7 @@
 
         .small-card-info{
             width: 100%;
+            gap: 5px;
 
             *:not(:last-child) {
                 margin-bottom: 10px;
@@ -127,7 +119,7 @@
 
             .card-title {
                 border-bottom: 1px solid var(--text-color1);
-                font-weight: 400;
+                font-weight: bold;
                 font-size: 1.1rem;
                 color: var(--text-color1);
 
@@ -140,19 +132,12 @@
             .card-desc {
                 font-size: 0.8rem;
                 color: var(--text-color2);
+                flex: 1;
             }
 
             .card-price {
-                font-size: 1.2rem;
-                font-weight: 500;
-                margin: 10px;
-
-                span {
-                    color: var(--text-color2);
-                    font-size: 0.8rem;
-                    font-weight: bold;
-                    top: -5px;
-                }
+                font-size: 1.4rem;
+                font-weight: bold;
             }
         }
 
@@ -162,7 +147,7 @@
             align-items: center;
 
             img {
-                width: 100%;
+                object-fit: cover;
             } 
         }
 

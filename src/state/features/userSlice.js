@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchUser } from '../../utils/user';
+import { fetchUser, logout } from '../../utils/user';
 
 const initialState = {
     _id: null,
@@ -9,17 +9,23 @@ const initialState = {
         middle: null,
         last: null
     },
+    username: null,
+    notification: null,
     isAdmin: false,
     loading: true,
     noUser: true,
 };
 
-export const authenticateUser = createAsyncThunk('auth', fetchUser)
+export const authenticateUser = createAsyncThunk('auth', fetchUser);
+export const logUserOut = createAsyncThunk('auth/logout', logout);
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        clearNotification: (state) => {
+            state.notification = null;
+        },
         clearUser: (state) => {
             state._id = null;
             state.profilePic = null;
@@ -36,19 +42,28 @@ const userSlice = createSlice({
             })
             .addCase(authenticateUser.fulfilled, (state, action) => {
                 const userData = action.payload;
-                state._id = userData._id;
-                state.names = userData.names;
-                state.profilePic = userData.profilePic;
-                state.loading = false;
-                state.noUser = false
+                userData.loading = false;
+                userData.noUsser = false;
+                return userData;
             })
             .addCase(authenticateUser.rejected, (state) => {
                 state.loading = false;
                 state.noUser = true;
             })
+            .addCase(logUserOut.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(logUserOut.fulfilled, () => {
+                const clearState = { ...initialState };
+                clearState.loading = false;
+                return initialState
+            })
+            .addCase(logUserOut.rejected, (state) => {
+                state.loading = false;
+            })
     }
 });
 
-export const { clearUser } = userSlice.actions;
+export const { clearUser, clearNotification } = userSlice.actions;
 
 export default userSlice.reducer;

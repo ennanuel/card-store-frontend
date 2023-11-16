@@ -106,10 +106,6 @@ a {
   position: fixed;
 }
 
-.page-info {
-  margin-bottom: 15px;
-}
-
 .title {
   border-left: 4px solid var(--notification-bg);
   padding: 10px;
@@ -118,12 +114,6 @@ a {
 
 .link:hover {
   color: var(--text-color3);
-}
-
-.page-info {
-  justify-content: space-between;
-  padding: 10px;
-  color: var(--text-color2);
 }
 
 .sell-btn {
@@ -163,6 +153,26 @@ a {
   left: 0;
   background: linear-gradient(rgba(255, 255, 255, 0.2), transparent, rgba(0, 0, 0, 0.2));
   border-radius: 3px;
+}
+
+.page-info {
+  gap: 15px;
+  font-size: .85rem;
+  min-height: 40px;
+  padding: 10px 15px;
+  justify-content: space-between;
+
+  ul {
+    gap: 5px;
+
+    a {
+      color: var(--text-color3);
+    }
+
+    svg {
+      color: var(--text-color2);
+    }
+  }
 }
 
 .alph-cat {

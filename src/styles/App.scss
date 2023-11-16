@@ -90,10 +90,6 @@
         padding: 10px 5px !important;
     }
 
-    .page-info {
-        font-size: 0.7em;
-    }
-
     .card-info {
         flex-direction: column !important;
     }
@@ -119,6 +115,22 @@
         top: 0 !important;
         left: 0 !important;
         min-width: 0 !important;
+    }
+
+    .quantity button {
+        padding: 0 !important;
+        &:last-child {
+            margin-top: 5px;
+        }
+    }
+
+    .cards-sold {
+        display: none;
+    }
+
+    .cart_btn.remove {
+        padding: 0 !important;
+        background-color: transparent !important;
     }
 }
 

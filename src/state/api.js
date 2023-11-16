@@ -15,8 +15,12 @@ export const cardStoreApi = createApi({
     }),
     endpoints: (builder) => ({
         getUserInfo: builder.query({
-            query: (user_id) => `/user/${user_id}`,
+            query: (user_id) => `/user/single/${user_id}`,
             providesTags: ["User"]
+        }),
+        getUsersToChoose: builder.query({
+            query: () => '/auth/demos',
+            providesTags: ["Users"]
         }),
         getCart: builder.query({
             query: (user_id) => `/cart/${user_id}`,
@@ -63,6 +67,7 @@ export const cardStoreApi = createApi({
 
 export const {
     useGetUserInfoQuery,
+    useGetUsersToChooseQuery,
     useGetCartQuery,
     useGetCardQuery,
     useGetAllCardsQuery,

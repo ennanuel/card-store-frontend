@@ -29,7 +29,23 @@ export const fetchUser = () => new Promise(
     }
 )
 
-export const editUserInfo = (values) => new Promise(
+export const logout = () => new Promise(
+    async function (resolve, reject) {
+        try {
+            const URL = `${import.meta.env.VITE_API_URL}/auth/logout`;
+            const options = { ...fetchOptions, method: 'POST' };
+            const response = await fetch(URL, options);
+            const res = await response.json();
+            if (response.status !== 200) throw new Error(res.message);
+            resolve();
+        } catch (error) {
+            console.error(error);
+            reject(error.message);
+        }
+    }
+)
+
+export const editUserInfo = (values, user_id) => new Promise(
     async function (resolve, reject) {
         const headers = new Headers();
         const body = new FormData();
@@ -39,7 +55,7 @@ export const editUserInfo = (values) => new Promise(
         };
         headers.append('Access-Control-Allow-Origin', import.meta.env.VITE_API_URL);
         const requestOptions = { ...fetchOptions, method: 'PUT', headers, body };
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/edit`, requestOptions);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/${user_id}`, requestOptions);
         const res = await response.json();
         if (response.status !== 200) reject(res);
         resolve();

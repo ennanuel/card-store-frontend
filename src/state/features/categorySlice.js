@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCards, fetchPlayers, fetchSports, fetchTeams } from '../../utils/card';
+import { fetchPlayers, fetchSports, fetchTeams } from '../../utils/card';
 
 const initialState = {
     players: [],

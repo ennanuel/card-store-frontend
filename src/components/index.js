@@ -1,7 +1,6 @@
 import Layout from "./Layout";
 import CardInfo from "./cardinfo";
 import PageInfo from "./PageInfo";
-import UserInfo from "./UserInfo";
 import Sidebar from "./Sidebar";
 import About from "./About"
 import AlphabetList from "./AlphabetList";
@@ -15,7 +14,6 @@ export {
     Layout,
     CardInfo, 
     PageInfo, 
-    UserInfo, 
     Sidebar, 
     FilterSearch, 
     About, 

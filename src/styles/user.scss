@@ -1,0 +1,84 @@
+.user {
+    padding: 15px;
+
+    .retry-btn {
+        padding: 6px 20px;
+        height: 40px;
+        border-radius: 3px;
+        background-color: rgb(237, 169, 169);
+        color: rgb(173, 55, 55);
+        max-width: 150px;
+        margin: auto;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        
+        &:hover {
+            background-color: rgb(255, 158, 158);
+        }
+    }
+
+    .action-btns {
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .sell-btn {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin: 0;
+    }
+
+    .user_info {
+        gap: 20px;
+
+        p {
+            word-break: break-all;
+            color: var(--text-color2)
+        }
+
+        .names {
+            gap: 15px;
+        }
+
+        .profile_data {
+            padding: 15px 20px;
+            min-height: 40px;
+            flex: 1;
+
+            input {
+                border: none;
+                outline: none;
+                width: 100%;
+            }
+        }
+
+        &.edit {
+            .profile_data {
+                padding: 0;
+                min-height: auto;
+
+                input {
+                    padding: 15px 20px;
+                }
+            }
+        }
+
+        .profile_field {
+            top: 0;
+            left: 0;
+            font-size: 0.9rem;
+            color: var(--notification-bg);
+            background-color: white;
+            padding: 0 5px;
+            transform: translateY(-50%);
+            z-index: 1;
+            margin-left: 15px;
+        }
+    }
+}

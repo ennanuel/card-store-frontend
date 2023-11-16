@@ -159,37 +159,6 @@ export function convertFooterNavToMenu({ players, teams }) {
   return menus;
 };
 
-function filterPath(path) { return PATH_REGEX.test(path) };
-function replaceSignWithSpace(path) { return path.replace(/(\+|-)/, ' ') };
-function getNewPath(paths, fullPath) {
-  const filteredPaths = paths.filter(filterPath)
-  const createdPaths = filteredPaths.map(path => createNewPath(path, fullPath));
-  return createdPaths;
-}
-function createNewPath(path, fullPath) {
-  const pathRegExp = new RegExp(`/(\w|[^\w])*${path}`, 'i');
-  const pathFound = fullPath.match(pathRegExp) || [];
-  const newPath = pathFound[0];
-  const pathName = replaceSignWithSpace(path);
-  return { name: pathName, link: newPath };
-};
-function joinPaths(paths) {
-  return paths.map(({ name }) => name).join(' | ');
-}
-function setSiteTitle(navigations) {
-  const siteTitleElement = document.getElementById('title');
-  const siteTitle = joinPaths(navigations);
-  siteTitleElement.innerText = siteTitle;
-}
-export function getNavigation (pathname) {
-  const splitPath = pathname.split('/');
-  const pathIsHome = pathname !== '/';
-  const navigations = getNewPath(splitPath, pathname);
-  const siteNavigation = pathIsHome ? [DEFAULT_PATHNAME] : navigations;
-  setSiteTitle(siteNavigation);
-  return navigations;
-}
-
 function separateDecimal(num) {
   const splitNumber = num.toString().split('.')
   return splitNumber.length !== 2 ? [...splitNumber, '00']: splitNumber;
@@ -213,7 +182,7 @@ export const convertNumberToPriceFormat = (num) => {
   return price;
 }
 
-export function convertToDateFormat(date) {
+export function convertToDateFormat(date, noTime = false) {
   if (!date) return '';
   const newDate = new Date(date);
   const minute = newDate.getMinutes() < 10 ? '0' + newDate.getMinutes() : newDate.getMinutes();
@@ -221,8 +190,10 @@ export function convertToDateFormat(date) {
   const day = newDate.getDate() < 9 ? '0' + (newDate.getDate() + 1): (newDate.getDate() + 1);
   const month = MONTHS_ARRAY[newDate.getMonth()];
   const year = newDate.getFullYear();
-  const dateFormat = `${day} ${month}, ${year} - ${hour}:${minute}`
-  return dateFormat;
+  const dateWithoutTime = `${day} ${month}, ${year}`
+  if (noTime) return dateWithoutTime;
+  const dateAndTime = `${dateWithoutTime} - ${hour}:${minute}`;
+  return dateAndTime;
 }
 
 export function createPagination(num) {

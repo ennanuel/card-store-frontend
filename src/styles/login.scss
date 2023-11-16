@@ -1,6 +1,6 @@
 .login-register {
   min-height: 100vh;
-  padding: 5%;
+  padding: 10px;
 
   .pword_input {
     flex: 1;
@@ -9,7 +9,7 @@
     button {
       background-color: transparent;
       color: var(--text-color1);
-      font-size: 1.2em;
+      font-size: 1.2rem;
       margin: 0;
       padding: 0;
       height: 100%;
@@ -22,13 +22,15 @@
 
   form {
     max-width: 600px;
-    padding: 5%;
+    padding: 15px;
     background-color: white;
     border-radius: 5px;
 
     .bad {
       color: red;
       gap: 5px;
+      font-size: .9rem !important;
+      font-weight: bold;
     }
 
     label {
@@ -74,12 +76,13 @@
 
     .form-quest {
       justify-content: space-between;
+      align-items: flex-end;
       margin-bottom: 15px;
-    }
 
-    .good {
-      color: var(--notification-bg);
-      gap: 3px;
+      img {
+        height: 30px;
+        margin: 0 10px;
+      }
     }
 
     .form-text {
@@ -109,6 +112,15 @@
     border-bottom: 1px solid var(--border);
     background: transparent;
     transition: max-width 0.3s ease;
+    
+    &.error-input {
+      border-color: red !important;
+      color: red !important;
+    
+      &::placeholder {
+          color: red;
+      }
+    }
 
     &:focus {
       border-color: var(--notification-bg);

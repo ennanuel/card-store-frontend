@@ -6,21 +6,6 @@ export function resolveCardImage(card) {
   return resolvedCard;
 }
 
-export const fetchCard = (card_id) => new Promise(
-  async function (resolve, reject) {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/player/single/${card_id}`, fetchOptions);
-      const res = await response.json();
-      if (response.status !== 200) throw new Error(res.message);
-      const card = resolveCardImage(res);
-      resolve(card);
-    } catch (error) {
-      console.error(error);
-      reject(error.message);
-    }
-  }
-);
-
 export const fetchCards = ({ fetchType, searchValue }) => new Promise(
   async function (resolve, reject) {
     try {
@@ -35,21 +20,6 @@ export const fetchCards = ({ fetchType, searchValue }) => new Promise(
     }
   }
 );
-
-export const fetchRelatedCards = (card_id) => new Promise(
-  async function (resolve, reject) {
-    try{
-      const fetchURL = `${import.meta.env.VITE_API_URL}/player/related/${card_id}`;
-      const response = await fetch(fetchURL, fetchOptions);
-      const res = await response.json();
-      if (response.status !== 200) throw res;
-      const cards = res.map(resolveCardImage);
-      resolve(cards);
-    } catch (error) {
-      reject(error);
-    }
-  }
-)
 
 export const fetchSports = () => new Promise(
   async function (resolve, reject) {
@@ -106,20 +76,6 @@ export const addCard = (values, user_id) => new Promise(
       const res = await response.json();
       if (response.status !== 200) throw new Error(res.message);
       resolve();
-    } catch (error) {
-      console.error(error.message);
-      reject(error.message);
-    }
-  }
-);
-
-export const searchCard = (searchValue) => new Promise(
-  async function (resolve, reject) {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/search?searchValue=${searchValue}`, fetchOptions);
-      const res = response.json();
-      if (response.status !== 200) throw new Error(res.message);
-      resolve(res);
     } catch (error) {
       console.error(error.message);
       reject(error.message);

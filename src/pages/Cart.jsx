@@ -37,12 +37,12 @@ const Cart = () => {
       <PageInfo />
       <table className="full-w full-border">
         <colgroup>
-          <col style={{ width: '40%' }} />
-          <col style={{ width: '5%' }} />
-          <col style={{ width: '15%' }} />
-          <col style={{ width: '16.67%' }} />
-          <col style={{ width: '16.67%' }} />
-          <col style={{ width: '6.67%' }} />
+          <col className="title-col"/>
+          <col className="qty-col" />
+          <col className="actions-col remove-for-mobile" />
+          <col className="price-col" />
+          <col className="total-col" />
+          <col className="remove-col" />
         </colgroup>
         <thead>
           <tr className="grey-col">
@@ -79,13 +79,13 @@ const Cart = () => {
                     <td className="quantity">
                       <button
                         onClick={() => increaseQuantity(item)}
-                        className="flex flex-center"
+                        className="flex-row ai-center jc-center"
                       >
                         <MdKeyboardArrowUp size={25} />
                       </button>
                       <button
                         onClick={() => decreaseQuantity(item)}
-                        className="flex flex-center"
+                        className="flex-row ai-center jc-center"
                       >
                         <MdKeyboardArrowDown size={25} />
                       </button>

@@ -1,0 +1,95 @@
+.choose-users {
+    min-height: 100vh;
+    min-width: 100vh;
+
+    .container {
+        background-color: white;
+        max-width: 550px;
+        padding: 15px;
+        margin: 10px auto;
+        border-radius: 10px;
+
+        .not-interested {
+            color: var(--text-color1);
+            font-size: .9rem;
+        }
+
+        ul {
+            gap: 10px;
+            margin: 20px auto;
+
+            li {
+                min-width: 200px;
+                max-width: 300px;
+                padding: 5px;
+                flex: 1;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+                border-radius: 5px;
+                overflow: hidden;
+                transition: transform 0.2s ease;
+                color: var(--text-color1);
+                cursor: pointer;
+
+                .top {
+
+                    img {
+                        aspect-ratio: 1;
+                        border-radius: 5px;
+                        border-color: var(--notification-bg)
+                    }
+                }
+
+                .bottom {
+                    gap: 5px;
+                    padding: 5px;
+
+                    .role {
+                        --color: var(--text-color3);
+                        &.admin {
+                            --color: var(--notification-bg);
+                        }
+
+                        font-size: .85rem;
+                        font-weight: bold;
+                        color: var(--color);
+                        padding-left: 10px;
+
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            height: 5px;
+                            aspect-ratio: 1;
+                            border-radius: 50%;
+                            background-color: var(--color);
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: rgb(245, 245, 245);
+                    transform: translateY(-5px);
+                    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+
+        .others {
+            gap: 15px;
+            margin-top: 10px;
+
+            a {
+                padding: 10px 20px;
+                background-color: var(--text-color1);
+                border-radius: 3px;
+                color: white;
+
+                &:last-child {
+                    background-color: var(--text-color3);
+                }
+            }
+        }
+    }
+}

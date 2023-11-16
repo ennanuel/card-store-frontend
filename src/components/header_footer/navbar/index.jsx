@@ -19,13 +19,13 @@ const NavBar = () => {
   const { pathname } = useLocation();
 
   function displayMenu() {
-    if (menuRef?.current) return;
+    if (!menuRef?.current) return;
     menuRef.current.style.maxHeight = `${menuRef.current.scrollHeight}px`;
     setShowMenu(true);
   };
 
   function closeMenu() {
-    if (menuRef?.current) return;
+    if (!menuRef?.current) return;
     menuRef.current.style.maxHeight = null;
     setShowMenu(false);
   };
@@ -42,9 +42,9 @@ const NavBar = () => {
       </div>
       <nav className="bottom">
         <div className="flex-col">
-          <div onClick={showMenu ? closeMenu : displayMenu} className="menu-icon flex-row ai-center">
+          <button onClick={showMenu ? closeMenu : displayMenu} className="menu-icon flex-row ai-center">
             <span>{showMenu ? <GrClose /> : <AiOutlineMenu />}</span>
-          </div>
+          </button>
         </div>
         <MenuLinks
           menuLinks={menuLinks}

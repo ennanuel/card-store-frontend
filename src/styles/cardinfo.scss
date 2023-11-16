@@ -105,7 +105,8 @@
 
             .item-btn {
                 width: 40px;
-                aspect-ratio: square;
+                height: 40px;
+                margin: 0;
                 background-color: transparent;
                 transition: transform 0.1s ease;
                 outline: none;
