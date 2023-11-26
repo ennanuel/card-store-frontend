@@ -5,8 +5,8 @@ import { convertNumberToPriceFormat } from '../../utils/site'
 import { resolveCardImage } from '../../utils/card'
 import Details from './Details';
 import AddToCart from './AddToCart';
-import '../../styles/cardinfo.scss';
 import { useGetCardQuery } from '../../state/api';
+import '../../styles/cardinfo.scss';
 
 const CardInfo = ({ card_id }) => {
   const { data: card = {}, isFetching, error } = useGetCardQuery(card_id);
