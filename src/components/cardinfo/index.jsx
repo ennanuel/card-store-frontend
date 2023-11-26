@@ -19,7 +19,8 @@ const CardInfo = ({ card_id }) => {
         <img src={image} alt="Player Image" />
       </div>
       {
-        !error ?
+        error ?
+          <Error text="Error fetching card details!" /> :
           isFetching ?
             <LoadingCardDetails /> :
             <div className="player-info flex-col">
@@ -41,8 +42,8 @@ const CardInfo = ({ card_id }) => {
                 outOfStock={outOfStock}
                 isYours={isYours}
               />
-            </div> :
-          <Error text="Error fetching card details!" />
+            </div>
+          
       }
     </article>
   )
