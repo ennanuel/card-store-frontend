@@ -2,11 +2,13 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { convertNumberToPriceFormat } from '../utils/site';
 
-const Card = ({ _id, names = {}, desc, price, image }) => {
-  const formattedPrice = useMemo(() => convertNumberToPriceFormat(price), []);
+const Card = ({ _id, names = {}, desc, price, premium, image }) => {
+  const formattedPrice = useMemo(() => convertNumberToPriceFormat(price.toFixed(2)), []);
 
   return (
-    <Link  to={`/card/${_id}/${names.first}+${names.last}`}className={`card relative flex-row ai-center full-border prem_card ${price > 40000 && 'premium_card'}`}>
+    <Link
+      to={`/card/${_id}/${names.first}+${names.last}`}
+      className={`card relative flex-row ai-center full-border prem_card ${premium && 'premium_card'}`}>
       <div className="card-img full-h">
         <img src={image} alt="card image" className="full-w" />
       </div>
