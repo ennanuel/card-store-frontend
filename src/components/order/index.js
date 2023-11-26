@@ -1,6 +1,6 @@
 import OrderCard from "./OrderCard";
 import OrdersFilters from "./OrdersFilters";
-import Pagination from "./Pagination";
+import Pagination from "../Pagination";
 
 export { 
     OrderCard,
