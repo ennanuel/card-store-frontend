@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { Link, useNavigate } from 'react-router-dom';
-import { GrClose } from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createOrder } from '../../utils/payment';
 import { fetchUserCart } from '../../state/features/cartSlice';
@@ -49,10 +48,7 @@ const CheckoutForm = () => {
 
     return (
         <form id="payment-form" className="payment-form" onSubmit={handleSubmit}>
-            <div className="flex-row top">
-                <h3>Pay With Card</h3>
-                <Link to="/cart" className="close-btn flex-center"><GrClose /></Link>
-            </div>
+            <h3 className="top">Pay With Card</h3>
             <PaymentElement />
             <p className="error-msg">{message}</p>
             <button className='pay-btn' disabled={isProcessing} id="submit">
