@@ -3,16 +3,13 @@ import React from 'react'
 const LoadingCardDetails = () => {
     return (
         <div style={{ padding: '10px' }} className="player-info">
-            <h3 className="player-name flex-row ai-center">
-                <span className="loading_names"></span>
-            </h3>
-            <p className="player-card-desc">
-                <span><b>Description:</b></span>
-                <br />
-                <span className="loading_desc"></span>
-            </p>
-            <table className="additional-info">
-            <table className="additional-det full-w">
+            <div className="player-name flex-row ai-center">
+                <p className="loading_names"></p>
+            </div>
+            <div className="player-card-desc">
+                <p className="loading_desc"></p>
+            </div>
+            <table className="additional-det loading-det full-w">
                 <colgroup>
                     <col style={{ width: '30%' }}></col>
                     <col style={{ width:'70%' }}></col>
@@ -36,12 +33,6 @@ const LoadingCardDetails = () => {
                     </tr>
                 </tbody>
             </table>
-            </table>
-            <div className="payment">
-                <h3 className="price">
-                    <span className="price_loading"></span>
-                </h3>
-            </div>
         </div>
     )
 };
