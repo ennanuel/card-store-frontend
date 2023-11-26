@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { convertNumberToPriceFormat } from '../../utils/site';
 
 const CartDetails = () => {
     const { items, total, shippingCost } = useSelector(state => state.cart);
-    const totalPrice = useMemo(() => convertNumberToPriceFormat(total.toFixed(2)), [total]);
+    const [showCard, setShowCard] = useState(false);
+    const [shippingPrice, totalPrice] = useMemo(() => [shippingCost, total].map(price => convertNumberToPriceFormat(price.toFixed(2))), [total, shippingCost]);
     const convertedItems = useMemo(() => items.map(item => ({
         ...item,
         total: convertNumberToPriceFormat((item.price * item.quantity).toFixed(2))
@@ -12,9 +13,21 @@ const CartDetails = () => {
 
     return (
         <div className="cart-details flex-col">
-            <p>
-                <span>You are about to pay for the following items </span>
-                <span className="warning">(Do not use your real card details, use this <b>demo card</b> instead).</span>
+            <p onClick={() => setShowCard(!showCard)}>
+                {
+                    showCard ?
+                        <p>
+                            <b>Demo Card</b><br />
+                            <span><b className="warning">Card Number: </b>4242 4242 4242 4242</span><br />
+                            <span><b className="warning">Expiration: </b>02/28</span><br />
+                            <span><b className="warning">CVC: </b>208</span><br />
+                            <span><b className="warning">Country: </b>Nigeria</span><br />
+                        </p> :
+                        <>
+                            <span>You are about to pay for the following items </span>
+                            <span className="warning">(Do not use your real card details, use this <b>demo card</b> instead).</span>
+                        </>
+                }
             </p>
             <ul className="flex-col">
                 {
@@ -33,7 +46,7 @@ const CartDetails = () => {
                         <p className="item-name"><b>Shipping Cost</b></p>
                         <p><b>--</b></p>
                      </div>
-                    <p><b>${shippingCost}</b></p>
+                    <p><b>${shippingPrice}</b></p>
                 </li>
             </ul>
             <div className="price flex-col">
