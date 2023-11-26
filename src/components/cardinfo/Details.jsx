@@ -39,7 +39,7 @@ const Details = ({ first, middle, last, desc, rating, team, sport, premium, quan
                         <td><Link to={`/cards/rating/${rating}+100`}>{rating}</Link></td>
                     </tr>
                     <tr className='det'>
-                        <th><b>Cards In Stock</b></th>
+                        <th><b>In Stock</b></th>
                         <td><b>{quantity}</b></td>
                     </tr>
                 </tbody>
