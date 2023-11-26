@@ -2,10 +2,10 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../fetch_states/Loading";
 import Error from "../fetch_states/Error";
-import { HiXMark } from "react-icons/hi2";
+import { HiCamera, HiXMark } from "react-icons/hi2";
 import { MdCheck } from "react-icons/md";
 
-const EditUserInfo = ({ userDetails = {}, loading, error, handleChange, handleSubmit, retry }) => {
+const EditUserInfo = ({ userDetails = {}, imageSrc, loading, error, handleChange, handleFileChange, handleSubmit, retry }) => {
     const { first, middle, last, username, email, phone, dob, bank, account_number } = useMemo(() => userDetails, [userDetails]);
 
     if (loading) return <Loading text="Please wait..." />;
@@ -20,6 +20,14 @@ const EditUserInfo = ({ userDetails = {}, loading, error, handleChange, handleSu
         <form onSubmit={handleSubmit}>
             <div className="user_info edit flex-col">
                 <h2 className="title full-border">Edit User Info</h2>
+                
+                <label htmlFor="profile_pic" className="image full-w flex-row">
+                    <img src={imageSrc} className="full-w" alt="" />
+                    <input onChange={handleFileChange} type="file" accept="image/jpg, image/png, image/jpeg" id="profile_pic" name="profilePic" />
+                    <span className="flex-row ai-center jc-center">
+                        <HiCamera />
+                    </span>
+                </label>
                 <div className="names flex-row">
                     <div className="profile_data relative full-border">
                         <label className="profile_field absolute">first name</label>
