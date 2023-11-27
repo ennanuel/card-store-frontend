@@ -1,28 +1,13 @@
-import '../styles/content.scss'
-import { About, Sidebar, AlphabetList, CardsList } from '../components'
-import { useState, useEffect } from 'react';
-import { fetchPlayers } from '../utils/card';
+import { About, Sidebar, AlphabetList, CardsList, Pagination } from '../components';
+import { useGetAllCardsQuery } from '../state/api';
+import { useParams } from 'react-router-dom';
+import '../styles/content.scss';
+import { useMemo } from 'react';
 
 const Home = () => {
-    const [cards, setCards] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-
-    function handleFetch(res) { 
-        setLoading(false);
-        setCards(res.slice(0, 15));
-    };
-    function handleError(error) {
-        setError(true);
-        setLoading(false);
-        console.error(error);
-    };
-    useEffect(() => {
-        setLoading(true);
-        fetchPlayers()
-            .then(handleFetch)
-            .catch(handleError);
-    }, []);
+    const { '*': page } = useParams();
+    const { data = {}, isFetching, error } = useGetAllCardsQuery({ page, limit: 10 });
+    const { cards = [], totalPages = 0 } = useMemo(() => data, [data]);
 
     return (
         <div className="home-content">
@@ -37,7 +22,8 @@ const Home = () => {
                 <h2 className="title full-border">Browse Sports Cards (By Player First Letter of First Name)</h2>
                 <AlphabetList />
                 <h2 className="title full-border">Newest Sport Card Releases</h2>
-                <CardsList loading={loading} error={error} cards={cards} />
+                <CardsList cards={cards} loading={isFetching} error={error} />
+                <Pagination to="" totalPages={totalPages} />
                 <About />
             </article>
         </div>
