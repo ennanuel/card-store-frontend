@@ -1,11 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PageInfo } from '../components';
-import { NothingFound } from '../components/fetch_states';
-import { Link } from 'react-router-dom';
-import { MdDelete, MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
-import { HiCreditCard } from 'react-icons/hi2';
-import { addQuantityToItem, addQuantityToUserCartItem, removeFromUserCart, removeItemFromCart, subtractQuantityFromItem, subtractQuantityFromUserCartItem } from '../state/features/cartSlice';
+import {
+  addQuantityToItem,
+  addQuantityToUserCartItem,
+  removeFromUserCart,
+  removeItemFromCart,
+  subtractQuantityFromItem,
+  subtractQuantityFromUserCartItem
+} from '../state/features/cartSlice';
+import { CartItems, CartHeader, PricingInfo, Checkout } from '../components/cart';
 import '../styles/cart.scss';
 
 const Cart = () => {
@@ -36,95 +40,19 @@ const Cart = () => {
     <div className="cart">
       <PageInfo />
       <table className="full-w full-border">
-        <colgroup>
-          <col className="title-col"/>
-          <col className="qty-col" />
-          <col className="actions-col remove-for-mobile" />
-          <col className="price-col" />
-          <col className="total-col" />
-          <col className="remove-col" />
-        </colgroup>
-        <thead>
-          <tr className="grey-col">
-            <th className="first-row"><b>ITEM</b></th>
-            <th><b>QTY</b></th>
-            <th></th>
-            <th><b>PRICE</b></th>
-            <th><b>TOTAL</b></th>
-            <th></th>
-          </tr>
-        </thead>
-        {
-          items.length < 1 ?
-            <tbody className="flex ai-center jc-center">
-              <tr>
-                <td colSpan={6}>
-                  <NothingFound text="Cart is empty" />
-                </td>
-              </tr>
-            </tbody> :
-            <tbody className="items">
-              {
-                items.map( (item, i) => (
-                  <tr key={i} className={`${ i % 2 > 0 && 'grey-col'}`}>
-                    <td className="first-row">
-                      <span>Card - </span>
-                      <Link to={`/card/${item.card_id}/${item.names.first}+${item.names.last}`} className="names">
-                        <b>{`${item.names.first} ${item.names.middle} ${item.names.last}`}</b>
-                      </Link>
-                    </td>
-                    <td className="quantity">
-                      <span>{item.quantity}</span>
-                    </td>
-                    <td className="quantity">
-                      <button
-                        onClick={() => increaseQuantity(item)}
-                        className="flex-row ai-center jc-center"
-                      >
-                        <MdKeyboardArrowUp size={25} />
-                      </button>
-                      <button
-                        onClick={() => decreaseQuantity(item)}
-                        className="flex-row ai-center jc-center"
-                      >
-                        <MdKeyboardArrowDown size={25} />
-                      </button>
-                    </td>
-                    <td>${item.price}</td>
-                    <td>${(item.price * item.quantity)?.toFixed(2)}</td>
-                    <td>
-                      <button
-                        onClick={() => removeItem(item)}
-                        className="cart_btn remove flex flex-center"
-                      >
-                        <MdDelete size={25} />
-                      </button>
-                    </td>
-                  </tr>
-                ) )
-              }
-            </tbody>
-        }
-        <tbody className="total">
-          <tr>
-            <td colSpan={4} className="total-title">Shipping Handling:</td>
-            <td colSpan={2}>${shippingCost?.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td colSpan={4} className="total-title">Order Total:</td>
-            <td colSpan={2}>${total?.toFixed(2)}</td>
-          </tr>
-        </tbody>
+        <CartHeader />
+        <CartItems
+          items={items}
+          increaseQuantity={increaseQuantity}
+          decreaseQuantity={decreaseQuantity}
+          removeItem={removeItem}
+        />
+        <PricingInfo
+          shippingCost={shippingCost}
+          total={total}
+        />
       </table>
-      <div className="checkout-btn flex">
-        {
-          items.length >= 1 &&
-            <button onClick={checkOut} className="cart_btn check_out_btn flex-row ai-center jc-center">
-              <HiCreditCard size={20} />
-              <b>Check Out</b>
-            </button>
-        }
-      </div>
+      <Checkout checkOut={checkOut} showBtn={items.length >= 1} />
     </div>
   )
 }
