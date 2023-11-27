@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Error, Loading, NothingFound } from '../components/fetch_states';
-import { OrderCard, OrdersFilters, Pagination } from '../components/order';
+import { OrderCard, OrdersFilters } from '../components/order';
+import { Pagination } from '../components'
 import { useGetOrdersQuery } from '../state/api';
 import '../styles/order.scss';
 
@@ -44,7 +45,7 @@ const Orders = () => {
                                     }
                                 </ul>
                 }
-                <Pagination totalPages={totalPages} pageFilter={pageFilter} />
+                <Pagination to={`/orders/${pageFilter}`} totalPages={totalPages} />
             </div>
         </section>
     )
