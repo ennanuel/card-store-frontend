@@ -27,7 +27,7 @@ function handlePathType(path) {
 };
 function handleSingleCardPath(path) { 
     const matchName = path.match(/\/(\w|\d)+(\+(\w|\d)+)*$/i);
-    const playerName = matchName[0].replace(/(\W)+/g, ' ');
+    const playerName = matchName ? matchName[0].replace(/(\W)+/g, ' ') : 'Player';
     const cardsPath = { title: 'Cards', link: `/cards/first/${playerName[1]}` };
     const cardPath = { title: `${playerName} Card`, link: path };
     const createdPaths = [cardsPath, cardPath]
