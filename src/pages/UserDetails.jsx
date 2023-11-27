@@ -5,12 +5,14 @@ import { useGetUserInfoQuery } from '../state/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { logUserOut } from '../state/features/userSlice';
 import { convertToDateFormat } from '../utils/site';
+import { getProfilePic } from '../utils/card';
 
 const UserInfo = () => {
   const { _id } = useSelector(state => state.user);
   const { data = {}, isFetching, error } = useGetUserInfoQuery(_id);
-  const { names, username, email, phone, dob, bank, account_number } = useMemo(() => data, [data]);
-  const dateOfBirth = useMemo(() => convertToDateFormat(dob, true), [dob])
+  const { names = {}, username, email, phone, bank, account_number } = useMemo(() => data, [data]);
+  const profilePic = useMemo(() => getProfilePic(data?.profilePic), [data]);
+  const dateOfBirth = useMemo(() => convertToDateFormat(data?.dob, true), [data]);
   const dispatch = useDispatch();
   
   function logout() {
@@ -25,6 +27,9 @@ const UserInfo = () => {
       <div className="user_info flex-col">
         <h2 className="title full-border">User Details</h2>
         <Link to="/user/edit" className="sell-btn action-btn relative">Edit Details</Link>
+        <div className="image full-w flex-row">
+          <img src={profilePic} className="full-w" alt="" />
+        </div>
         <div className="names flex-row">
           <p className="profile_data relative full-border">
             <span className="profile_field absolute">first name</span>
