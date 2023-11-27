@@ -1,95 +1,99 @@
 .add_card {
-    padding: 15px;
+  padding: 15px;
 
-    .add-card {
-        margin-top: 30px;
-        gap: 15px;
+  .add-card {
+    margin-top: 30px;
+    gap: 15px;
 
-        .price-quantity {
-            display: grid;
-            grid-gap: 10px;
-            grid-template-columns: 80% 1fr;
-        }
+    .price-quantity {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 80% 1fr;
     }
+  }
 
-    .player-info {
-        flex: 1;
+  .player-info {
+    flex: 1;
 
-        .names {
-            column-gap: 10px;
+    .names {
+      column-gap: 10px;
 
-            input {
-                width: 100%;
-            }
-        }
-    }
-
-    input, textarea {
-        padding: 10px 15px;
-        margin-bottom: 20px;
-        border: 1px solid var(--notification-bg);
-        outline: none;
-    } 
-
-    input[type="file"] {
-        display: none;
-    }
-
-    input, textarea, label {
+      input {
         width: 100%;
+      }
     }
+  }
 
-    label {
-        margin-bottom: 5px;
-        font-size: 0.8em;
-        color: var(--text-color2)
-    }
+  input,
+  textarea {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--notification-bg);
+    outline: none;
+  }
 
-    button {
-        padding: 10px;
-    }
-    
-    .input-img {
-        height: fit-content;
-        max-height: 90vh;
-        flex: 1;
-        overflow: hidden;
+  input[type="file"] {
+    display: none;
+  }
 
-        img {
-            width: 100%;
-            max-height: 100%;
-            display: block;
-            object-fit: contain;
-            margin: auto;
-        }
+  input,
+  textarea,
+  label {
+    width: 100%;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    color: var(--text-color2);
+    line-break: normal;
+  }
+
+  button {
+    padding: 10px;
+  }
+
+  .input-img {
+    height: fit-content;
+    max-height: 90vh;
+    flex: 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      max-height: 100%;
+      display: block;
+      object-fit: contain;
+      margin: auto;
     }
+  }
 }
 
 .form_loading {
-    top: 0;
-    left: 0;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.5);
-    z-index: 1;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1;
 }
 
 .error {
+  button {
+    width: 100%;
+    max-width: 100px;
+    font-weight: bold;
+    outline: none;
+    background-color: rgba(255, 0, 0, 0.15);
+    cursor: pointer;
+    border-radius: 3px;
+    border: 3px solid;
+    color: var(--text-color2);
+    opacity: 0.7;
 
-    button {
-        width: 100%;
-        max-width: 100px;
-        font-weight: bold;
-        outline: none;
-        background-color: rgba(255, 0, 0, 0.15);
-        cursor: pointer;
-        border-radius: 3px;
-        border: 3px solid;
-        color: var(--text-color2);
-        opacity: 0.7;
-
-        &:hover {
-            transition: opacity 0.3s ease;
-            opacity: 0.8;
-        }
+    &:hover {
+      transition: opacity 0.3s ease;
+      opacity: 0.8;
     }
+  }
 }

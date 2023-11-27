@@ -89,6 +89,7 @@ const cartSlice = createSlice({
                 state.total = total;
                 state.shippingCost = shippingCost;
                 state.loading = false;
+                console.log(action.payload);
             })
             .addCase(removeFromUserCart.rejected, (state, action) => {
                 const item = action.payload;

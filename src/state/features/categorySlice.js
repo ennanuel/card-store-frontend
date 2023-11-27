@@ -31,12 +31,13 @@ const categorySlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(fetchCategories.pending, (state) => {
-                state.loading = true
+                state.loading = true;
             })
             .addCase(fetchCategories.fulfilled, (state, action) => {
                 state.players = action.payload.players;
                 state.teams = action.payload.teams;
                 state.sports = action.payload.sports;
+                state.loading = false;
             })
     }
 });
