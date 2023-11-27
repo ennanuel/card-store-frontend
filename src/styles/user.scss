@@ -80,5 +80,40 @@
             z-index: 1;
             margin-left: 15px;
         }
+        
+        .image {
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 15px;
+            cursor: pointer;
+        
+            input {
+                display: none;
+            }
+        
+            img {
+                max-width: 200px;
+                aspect-ratio: 1;
+                border-radius: 10px;
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+                object-fit: cover;
+            }
+        
+            span {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                background-color: var(--text-color1);
+                color: white;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+                margin-left: -20px;
+            }
+
+            &:hover {
+                span {
+                    background-color: var(--text-color3);
+                }
+            }
+        }
     }
 }
