@@ -1,35 +1,23 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { PageInfo, Filter, CardsList } from '../components';
-import { TEXT_DISPLAY_TYPES } from '../utils/site';
-import { fetchCards } from '../utils/card';
+import { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { PageInfo, Filter, CardsList, Pagination } from '../components';
+import { getTextDisplayType } from '../utils/site';
+import { useGetCardsQuery } from '../state/api';
 import '../styles/cards.scss';
 
 const Cards = () => {
-    const { fetchType, searchValue } = useParams();
-    const textDisplayType = useMemo(() => TEXT_DISPLAY_TYPES[fetchType] || TEXT_DISPLAY_TYPES['name'], [fetchType]);
-    const [cardState, setCardState] = useState({ cards: [], error: false, loading: false });
-
-    function start() { setCardState({ cards: [], error: false, loading: true }) };
-    function handleFetch(res) { setCardState({ cards: res, error: false, loading: false }) };
-    function handleError(error) {
-        console.error(error);
-        setCardState({ loading: false, error: true, cards: [] });
-    }
-
-    useEffect(() => {
-        start();
-        fetchCards({ fetchType, searchValue })
-            .then(handleFetch)
-            .catch(handleError);
-    }, [fetchType, searchValue])
+    const { fetchType, searchValue, page = 0 } = useParams();
+    const { data = {}, isFetching, error } = useGetCardsQuery({ fetchType, searchValue, page, limit: 20 });
+    const { totalPages = 0, cards = [] } = useMemo(() => data, [data]);
+    const textDisplayType = useMemo(() => getTextDisplayType(fetchType), [fetchType]);
     
     return (
         <section className="cards_page">
             <PageInfo />
             <h2 className="title full-w full-border">Cards - {textDisplayType}</h2>
             <Filter />
-            <CardsList { ...cardState } />
+            <CardsList loading={isFetching} error={error} cards={cards} />
+            <Pagination totalPages={totalPages} to={`/cards/${fetchType}/${searchValue}`} />
         </section>
     )
 }
