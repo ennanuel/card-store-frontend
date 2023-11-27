@@ -13,14 +13,16 @@ export const cardStoreApi = createApi({
         credentials: "include",
         headers
     }),
+    tagTypes: ["User", "Card", "Users"],
     endpoints: (builder) => ({
         getUserInfo: builder.query({
             query: (user_id) => `/user/single/${user_id}`,
+            invalidatesTags: ["User"],
             providesTags: ["User"]
         }),
         getUsersToChoose: builder.query({
             query: () => '/auth/demos',
-            providesTags: ["Users"]
+            providesTags: ["User", "Users"]
         }),
         getCart: builder.query({
             query: (user_id) => `/cart/${user_id}`,
@@ -28,15 +30,15 @@ export const cardStoreApi = createApi({
         }),
         getCard: builder.query({
             query: (card_id) => `/player/single/${card_id}`,
-            providesTags: ["Cards", "Single"]
+            providesTags: ["Card", "Cards", "Single"]
         }),
         getAllCards: builder.query({
-            query: () => "/player",
-            providesTags: ["Cards", "All"]
+            query: ({ limit = 10, page = 0 }) => `/player?limit=${limit}&page=${page}`,
+            providesTags: ["Card", "Cards", "All"]
         }),
         getCards: builder.query({
-            query: ({ fetchType, searchValue }) => `/player/type/${fetchType}/${searchValue}`,
-            providesTags: ["Cards", "Based On Type"]
+            query: ({ fetchType, searchValue, limit = 10, page = 0 }) => `/player/type/${fetchType}/${searchValue}?limit=${limit}&page=${page}`,
+            providesTags: ["Card", "Cards", "Type"]
         }),
         getRelatedCards: builder.query({
             query: (card_id) => `/player/related/${card_id}`,
