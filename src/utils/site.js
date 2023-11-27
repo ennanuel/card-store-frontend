@@ -212,6 +212,10 @@ export const TEXT_DISPLAY_TYPES = {
     name: "By Player Name"
 }
 
+export function getTextDisplayType (type) {
+  return TEXT_DISPLAY_TYPES[type] || TEXT_DISPLAY_TYPES['name'];
+}
+
 export const FILTER_TEXT_OBJ = {
   team: 'Team',
   sport: 'Sport',
