@@ -66,11 +66,17 @@
     }
 
     .names {
-      flex-wrap: wrap;
 
       input {
-        width: 33.3% !important;
         flex: 1;
+        
+        &:first-child {
+          flex: 2;
+        }
+      }
+
+      @media (max-width: 720px) {
+        flex-wrap: wrap;
       }
     }
 
