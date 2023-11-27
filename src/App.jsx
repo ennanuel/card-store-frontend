@@ -44,9 +44,9 @@ const App = () => {
           :
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/*" element={<Home />} />
-              <Route path="/search/:searchValue" element={<Search />} />
-              <Route path="/cards/:fetchType/:searchValue" element={<Cards />} />
+              <Route path="/*/:page?" element={<Home />} />
+              <Route path="/search/:searchValue/:page?" element={<Search />} />
+              <Route path="/cards/:fetchType/:searchValue/:page?" element={<Cards />} />
               <Route path="/card/:card_id/:name" element={<ViewCard />} />
               <Route path="/add-card" element={<AddCard />} />
               <Route path="/cart" element={<Cart />} />
