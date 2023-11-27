@@ -1,17 +1,19 @@
+import { useMemo } from 'react';
 import Card from './Card';
 import { Loading, Error, NothingFound } from './fetch_states';
+import { resolveCardImage } from '../utils/card';
 
 const CardsList = ({ cards, loading, error }) => {
+  const cardsWithImages = useMemo(() => cards.map(resolveCardImage), [cards]);
+
+  if (loading) return <Loading text="Loading cards..." />;
+  if (error) return <Error text="Something went wrong!" />;
+  if (cards.length <= 0) return <NothingFound text="No cards found." />;
+  
   return (
-    <ul className={`${cards.length > 0 && 'cards'}`}>
+    <ul className="cards">
       {
-        cards.length > 0 ?
-          cards.map((card, i) => <li key={i} ><Card {...card} /></li>) :
-          error ?
-            <Error text="Something went wrong!" /> :
-            loading ?
-              <Loading text="Loading cards..." /> :
-              <NothingFound text="No cards found." />
+        cardsWithImages.map((card) => <li key={card._id}><Card {...card} /> </li>)
       }
     </ul>
   )
