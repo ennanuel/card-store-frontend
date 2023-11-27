@@ -1,9 +1,16 @@
 import { fetchOptions } from "../assets/data";
+import image from "../assets/card-images/empty.jpg";
+import userImage from "../assets/card-images/Sample_User_Icon.png";
 
 export function resolveCardImage(card) {
-  const cardImage = card.image ? `${import.meta.env.VITE_IMAGE_URL}/card/${card.image}`: null;
+  const cardImage = card.image ? `${import.meta.env.VITE_IMAGE_URL}/card/${card.image}`: image;
   const resolvedCard = { ...card, image: cardImage };
   return resolvedCard;
+}
+
+export function getProfilePic(imgPath) {
+  const profilePic = imgPath ? `${import.meta.env.VITE_IMAGE_URL}/profile/${imgPath}` : userImage;
+  return profilePic;
 }
 
 export const fetchCards = ({ fetchType, searchValue }) => new Promise(
@@ -24,7 +31,7 @@ export const fetchCards = ({ fetchType, searchValue }) => new Promise(
 export const fetchSports = () => new Promise(
   async function (resolve, reject) {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/sport`, fetchOptions);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/sport?limit=10`, fetchOptions);
       const res = await response.json();
       if (response.status !== 200) throw new Error(res);
       resolve(res);
@@ -37,7 +44,7 @@ export const fetchSports = () => new Promise(
 export const fetchTeams = () => new Promise(
   async function (resolve, reject) {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/team`, fetchOptions);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/team?limit=10`, fetchOptions);
       const res = await response.json();
       if (response.status !== 200) throw new Error(res.message);
       resolve(res);
@@ -50,10 +57,10 @@ export const fetchTeams = () => new Promise(
 export const fetchPlayers = () => new Promise(
   async function (resolve, reject) {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/player/`, fetchOptions);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/player`, fetchOptions);
       const res = await response.json();
       if (response.status !== 200) throw new Error(res.message);
-      const cards = res.map(resolveCardImage);
+      const { cards } = res;
       resolve(cards);
     } catch (error) {
       reject(error.message);
