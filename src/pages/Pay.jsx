@@ -1,12 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { GrClose } from 'react-icons/gr';
 import CheckoutForm from '../components/payment/CheckoutForm';
 import CartDetails from '../components/payment/CartDetails';
 import { Loading, Error } from '../components/fetch_states';
-import '../styles/checkout.scss';
 import { createPaymentIntent } from '../utils/payment';
 import { useSelector } from 'react-redux';
+import '../styles/checkout.scss';
 
 const Pay = () => {
     const { _id } = useSelector(state => state.user)
@@ -32,6 +34,7 @@ const Pay = () => {
                     <CartDetails />
                 </section>
                 <section>
+                    <Link to="/cart" className="close-btn absolute flex-center"><GrClose /></Link>
                     {
                         stripePromise && options.clientSecret ?
                             <Elements stripe={stripePromise} options={options}>
