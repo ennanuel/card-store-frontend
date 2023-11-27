@@ -12,6 +12,11 @@
     justify-content: center;
     animation: fadein 0.3s ease;
 
+    .close-btn {
+        padding: 5px;
+        right: 0;
+    }
+
     .container {
         width: 100%;
         max-width: 800px;
@@ -121,12 +126,16 @@
         }
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 720px) {
         .container {
-            flex-direction: column;
+            grid-template-columns: 1fr;
+            margin: 10px;
+            max-height: calc(100vh - 20px);
+            overflow-y: scroll;
 
             .cart-details {
                 border: none;
+                border-bottom: 1px solid var(--border);
             }
         }
     }
