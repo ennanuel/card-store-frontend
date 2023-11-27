@@ -7,8 +7,9 @@ import AlphabetList from "./AlphabetList";
 import Filter from "./Filter"
 import FilterSearch from "./FilterSearch";
 import CardsList from "./CardsList";
+import DemoUser from "./DemoUser";
 import SearchResult from "./SearchResult";
-import Meter from "./Meter";
+import Pagination from "./Pagination";
 
 export { 
     Layout,
@@ -20,6 +21,7 @@ export {
     AlphabetList, 
     Filter, 
     CardsList, 
+    DemoUser,
     SearchResult,
-    Meter
+    Pagination
 };
