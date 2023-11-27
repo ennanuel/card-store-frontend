@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import { useGetOrderQuery } from '../state/api'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Loading } from '../components/fetch_states';
 import { convertNumberToPriceFormat, convertToDateFormat } from '../utils/site';
 
@@ -9,7 +10,7 @@ const Order = () => {
   const { id } = useParams();
   const { _id: user_id } = useSelector(state => state.user);
   const { data, isFetching, error } = useGetOrderQuery({ order_id: id, user_id });
-  const { _id, cards, destination, amount, status, createdAt } = useMemo(() => data || {}, []);
+  const { _id, cards, destination, amount, status, createdAt } = useMemo(() => data || {}, [data]);
   const date = useMemo(() => convertToDateFormat(createdAt), [createdAt]);
   const price = useMemo(() => convertNumberToPriceFormat(amount?.toFixed(2)), [amount])
 
@@ -18,7 +19,10 @@ const Order = () => {
   
   return (
     <section className="order">
-      <h2 className="title full-border">Order Details</h2>
+      <div className="flex-row order-title title ai-center full-border">
+        <h3>Order Details</h3>
+        <Link to="/orders/all/0" className="flex-row ai-center jc-center"><AiOutlineArrowLeft /></Link>
+      </div>
       <div className="order-details">
         <div className="top flex-row">
           <p className="date"><b>{status}</b></p>
