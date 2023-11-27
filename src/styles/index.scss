@@ -161,6 +161,7 @@ a {
   min-height: 40px;
   padding: 10px 15px;
   justify-content: space-between;
+  margin-bottom: 15px;
 
   ul {
     gap: 5px;
@@ -244,6 +245,31 @@ a {
 .truncate {
   color: var(--text-color1);
   font-weight: bold;
+}
+
+.pagination {
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 10px;
+
+  .page {
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-color: var(--notification-bg);
+    color: var(--text-color2);
+    cursor: pointer;
+
+    &:hover,
+    &.current-page {
+      background-color: var(--notification-bg);
+      color: white;
+    }
+  }
 }
 
 
