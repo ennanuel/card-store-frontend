@@ -57,6 +57,13 @@
                     }
                 }
             }
+
+            &.loading-det {
+                max-width: 250px;
+                tr {
+                    height: 25px;
+                }
+            }
         }
     }
 
