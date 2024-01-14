@@ -1,0 +1,209 @@
+.filter-container {
+    gap: 10px;
+}
+
+.option-items {
+    max-width: 2048px;
+    width: 100%;
+    padding: 15px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    gap: 10px;
+    margin-top: -20px;
+
+    .search-option {
+        gap: 10px;
+        align-items: stretch;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+
+        input {
+            flex: 1;
+            border-radius: 18px;
+            padding: 0 15px;
+            outline: none;
+            height: 35px;
+        }
+
+        button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: white;
+            cursor: pointer;
+            outline: none;
+
+            &:hover {
+                background-color: var(--notification-bg);
+                color: white;
+                border-color: var(--notification-bg)
+            }
+
+            &.clear-search {
+                background-color: rgb(255, 200, 200);
+                border-color: rgb(255, 150, 150);
+                transform: rotate(45deg);
+                color: red;
+
+                &:hover {
+                    background-color: rgb(255, 180, 180);
+                }
+            }
+        }
+    }
+
+    .options-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+
+        @media (max-width: 780px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+
+        .option-item {
+            position: relative;
+            height: 40px;
+            padding: 0 10px;
+            padding-left: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.15),
+                0 1px 6px rgba(0, 0, 0, 0.05);
+            text-transform: capitalize;
+
+            .option-name {
+                font-size: .9rem;
+            }
+
+            .team-sport {
+                font-size: .7rem;
+                color: var(--notification-bg)
+            }
+
+            &:hover {
+                background-color: var(--text-color1);
+                color: white;
+
+                &:before {
+                    background-color: white;
+                }
+            }
+
+            &:before {
+                content: '';
+                width: 5px;
+                height: 20px;
+                position: absolute;
+                top: 50%;
+                left: 5px;
+                transform: translateY(-50%);
+                background-color: var(--text-color2);
+                border-radius: 5px;
+            }
+
+            &.active-option {
+                background-color: var(--notification-bg);
+                color: white;
+
+                &:before {
+                    background-color: white;
+                }
+
+                .team-sport {
+                    color: white;
+                }
+            }
+
+            &.remove-filter {
+                background-color: rgba(255, 100, 100, 0.2);
+                color: red;
+
+                &:before {
+                    background-color: red;
+                }
+
+                &:hover {
+                    background-color: rgba(255, 100, 100, 0.4);
+                }
+            }
+        }
+    }
+}
+
+.current-option {
+    height: 38px;
+    max-width: max-content;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    gap: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    transition: box-shadow 0.2s ease;
+    overflow: hidden;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.15),
+        0 1px 6px rgba(0, 0, 0, 0.05);
+
+    @media (max-width: 600px) {
+        margin-top: 5px;
+    }
+
+    span {
+        &.text {
+            padding-right: 10px;
+            padding-left: 15px;
+            flex: 1;
+            min-width: 70px;
+        }
+
+        &.more-icon {
+            padding: 5px 10px;
+            border-left: 1px solid var(--border);
+            height: 30px;
+        }
+    }
+
+    &.is-open,
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+        box-shadow:
+            0 2px 3px rgba(0, 0, 0, 0.3),
+            0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.pagination-alt {
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    button {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: white;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--text-color3);
+            border-color: var(--text-color3);
+            color: white;
+        }
+
+        &.current-page {
+            background-color: var(--text-color1);
+            border-color: var(--text-color1);
+            color: white;
+        }
+    }
+}
