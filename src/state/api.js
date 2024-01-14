@@ -45,11 +45,11 @@ export const cardStoreApi = createApi({
             providesTags: ["Cards", "Related"]
         }),
         getSports: builder.query({
-            query: () => "/sport",
+            query: ({ limit, page, search }) => `/sport?search=${search}&limit=${limit}&page=${page}`,
             providesTags: ["Sports"]
         }),
         getTeams: builder.query({
-            query: () => "/team",
+            query: ({ limit, page, search }) => `/team?search=${search}&limit=${limit}&page=${page}`,
             providesTags: ["Teams"]
         }),
         getSearchResults: builder.query({
