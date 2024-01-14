@@ -10,6 +10,7 @@ import CardsList from "./CardsList";
 import DemoUser from "./DemoUser";
 import SearchResult from "./SearchResult";
 import Pagination from "./Pagination";
+import PaginationAlt from "./PaginationAlt";
 
 export { 
     Layout,
@@ -23,5 +24,6 @@ export {
     CardsList, 
     DemoUser,
     SearchResult,
-    Pagination
+    Pagination,
+    PaginationAlt
 };
