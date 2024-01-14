@@ -272,6 +272,12 @@ a {
   }
 }
 
+.truncate-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 
 @keyframes rotate {
   0% {
