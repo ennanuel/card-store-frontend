@@ -34,7 +34,7 @@ export const fetchSports = () => new Promise(
       const response = await fetch(`${import.meta.env.VITE_API_URL}/sport?limit=10`, fetchOptions);
       const res = await response.json();
       if (response.status !== 200) throw new Error(res);
-      resolve(res);
+      resolve(res.sports);
     } catch (error) {
       reject(error);
     }
@@ -47,7 +47,7 @@ export const fetchTeams = () => new Promise(
       const response = await fetch(`${import.meta.env.VITE_API_URL}/team?limit=10`, fetchOptions);
       const res = await response.json();
       if (response.status !== 200) throw new Error(res.message);
-      resolve(res);
+      resolve(res.teams);
     } catch (error) {
       reject(error.message);
     }
