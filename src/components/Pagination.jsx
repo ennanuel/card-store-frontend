@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { createPagination } from '../utils/site';
 
 const Pagination = ({ totalPages, to }) => {
     const pages = useMemo(() => createPagination(totalPages), [totalPages]);
-    if (pages.length <= 1) return;
+    const { page } = useParams();
+    const invalidPage = useMemo(() => /nan/i.test(Number(page)), [page]);
+    
     return (
         <ul className="pagination flex-row">
             {
@@ -12,7 +14,7 @@ const Pagination = ({ totalPages, to }) => {
                     <li key={i}>
                         <NavLink
                             to={`${to}/${i}`}
-                            className={({ isActive }) => `page flex-row full-border ${isActive && 'current-page'}`}
+                            className={({ isActive }) => `page flex-row full-border ${((invalidPage && i === 0) || isActive) && 'current-page'}`}
                         >
                             {page}
                         </NavLink>

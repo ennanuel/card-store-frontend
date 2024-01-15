@@ -4,8 +4,6 @@ import { createPagination } from '../utils/site';
 const PaginationAlt = ({ totalPages, currentPage, setCurrentPage }) => {
     const pages = useMemo(() => createPagination(totalPages), [totalPages]);
 
-    if (pages.length <= 1) return;
-
     return (
         <ul className="pagination-alt flex-row jc-center">
             {
