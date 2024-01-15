@@ -198,8 +198,8 @@ export function convertToDateFormat(date, noTime = false) {
 
 export function createPagination(num) {
   let pages = [];
-  for (let i = 1; i <= num; i++) {
-          pages.push(i);
+  for (let i = 1; i <= num && num > 1; i++) {
+    pages.push(i);
   }
   return pages;
 }
